@@ -1,0 +1,13 @@
+C:\Users\bobo1\OneDrive\Desktop\Repositories\ProjectHub\ProjectHub\ProjectHub.Data.Models\bin\Debug\net8.0\ProjectHub.Data.Models.deps.json
+C:\Users\bobo1\OneDrive\Desktop\Repositories\ProjectHub\ProjectHub\ProjectHub.Data.Models\bin\Debug\net8.0\ProjectHub.Data.Models.dll
+C:\Users\bobo1\OneDrive\Desktop\Repositories\ProjectHub\ProjectHub\ProjectHub.Data.Models\bin\Debug\net8.0\ProjectHub.Data.Models.pdb
+C:\Users\bobo1\OneDrive\Desktop\Repositories\ProjectHub\ProjectHub\ProjectHub.Data.Models\obj\Debug\net8.0\ProjectHub.Data.Models.csproj.AssemblyReference.cache
+C:\Users\bobo1\OneDrive\Desktop\Repositories\ProjectHub\ProjectHub\ProjectHub.Data.Models\obj\Debug\net8.0\ProjectHub.Data.Models.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\bobo1\OneDrive\Desktop\Repositories\ProjectHub\ProjectHub\ProjectHub.Data.Models\obj\Debug\net8.0\ProjectHub.Data.Models.AssemblyInfoInputs.cache
+C:\Users\bobo1\OneDrive\Desktop\Repositories\ProjectHub\ProjectHub\ProjectHub.Data.Models\obj\Debug\net8.0\ProjectHub.Data.Models.AssemblyInfo.cs
+C:\Users\bobo1\OneDrive\Desktop\Repositories\ProjectHub\ProjectHub\ProjectHub.Data.Models\obj\Debug\net8.0\ProjectHub.Data.Models.csproj.CoreCompileInputs.cache
+C:\Users\bobo1\OneDrive\Desktop\Repositories\ProjectHub\ProjectHub\ProjectHub.Data.Models\obj\Debug\net8.0\ProjectHub.Data.Models.sourcelink.json
+C:\Users\bobo1\OneDrive\Desktop\Repositories\ProjectHub\ProjectHub\ProjectHub.Data.Models\obj\Debug\net8.0\ProjectHub.Data.Models.dll
+C:\Users\bobo1\OneDrive\Desktop\Repositories\ProjectHub\ProjectHub\ProjectHub.Data.Models\obj\Debug\net8.0\refint\ProjectHub.Data.Models.dll
+C:\Users\bobo1\OneDrive\Desktop\Repositories\ProjectHub\ProjectHub\ProjectHub.Data.Models\obj\Debug\net8.0\ProjectHub.Data.Models.pdb
+C:\Users\bobo1\OneDrive\Desktop\Repositories\ProjectHub\ProjectHub\ProjectHub.Data.Models\obj\Debug\net8.0\ref\ProjectHub.Data.Models.dll

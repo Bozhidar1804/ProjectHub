@@ -1,0 +1,12 @@
+C:\Users\bobo1\OneDrive\Desktop\Repositories\ProjectHub\ProjectHub\ProjectHub.Web.ViewModels\bin\Debug\net8.0\ProjectHub.Web.ViewModels.deps.json
+C:\Users\bobo1\OneDrive\Desktop\Repositories\ProjectHub\ProjectHub\ProjectHub.Web.ViewModels\bin\Debug\net8.0\ProjectHub.Web.ViewModels.dll
+C:\Users\bobo1\OneDrive\Desktop\Repositories\ProjectHub\ProjectHub\ProjectHub.Web.ViewModels\bin\Debug\net8.0\ProjectHub.Web.ViewModels.pdb
+C:\Users\bobo1\OneDrive\Desktop\Repositories\ProjectHub\ProjectHub\ProjectHub.Web.ViewModels\obj\Debug\net8.0\ProjectHub.Web.ViewModels.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\bobo1\OneDrive\Desktop\Repositories\ProjectHub\ProjectHub\ProjectHub.Web.ViewModels\obj\Debug\net8.0\ProjectHub.Web.ViewModels.AssemblyInfoInputs.cache
+C:\Users\bobo1\OneDrive\Desktop\Repositories\ProjectHub\ProjectHub\ProjectHub.Web.ViewModels\obj\Debug\net8.0\ProjectHub.Web.ViewModels.AssemblyInfo.cs
+C:\Users\bobo1\OneDrive\Desktop\Repositories\ProjectHub\ProjectHub\ProjectHub.Web.ViewModels\obj\Debug\net8.0\ProjectHub.Web.ViewModels.csproj.CoreCompileInputs.cache
+C:\Users\bobo1\OneDrive\Desktop\Repositories\ProjectHub\ProjectHub\ProjectHub.Web.ViewModels\obj\Debug\net8.0\ProjectHub.Web.ViewModels.sourcelink.json
+C:\Users\bobo1\OneDrive\Desktop\Repositories\ProjectHub\ProjectHub\ProjectHub.Web.ViewModels\obj\Debug\net8.0\ProjectHub.Web.ViewModels.dll
+C:\Users\bobo1\OneDrive\Desktop\Repositories\ProjectHub\ProjectHub\ProjectHub.Web.ViewModels\obj\Debug\net8.0\refint\ProjectHub.Web.ViewModels.dll
+C:\Users\bobo1\OneDrive\Desktop\Repositories\ProjectHub\ProjectHub\ProjectHub.Web.ViewModels\obj\Debug\net8.0\ProjectHub.Web.ViewModels.pdb
+C:\Users\bobo1\OneDrive\Desktop\Repositories\ProjectHub\ProjectHub\ProjectHub.Web.ViewModels\obj\Debug\net8.0\ref\ProjectHub.Web.ViewModels.dll

@@ -1,0 +1,15 @@
+C:\Users\bobo1\OneDrive\Desktop\Repositories\ProjectHub\ProjectHub\ProjectHub.Data\bin\Debug\net8.0\ProjectHub.Data.deps.json
+C:\Users\bobo1\OneDrive\Desktop\Repositories\ProjectHub\ProjectHub\ProjectHub.Data\bin\Debug\net8.0\ProjectHub.Data.runtimeconfig.json
+C:\Users\bobo1\OneDrive\Desktop\Repositories\ProjectHub\ProjectHub\ProjectHub.Data\bin\Debug\net8.0\ProjectHub.Data.dll
+C:\Users\bobo1\OneDrive\Desktop\Repositories\ProjectHub\ProjectHub\ProjectHub.Data\bin\Debug\net8.0\ProjectHub.Data.pdb
+C:\Users\bobo1\OneDrive\Desktop\Repositories\ProjectHub\ProjectHub\ProjectHub.Data\obj\Debug\net8.0\ProjectHub.Data.csproj.AssemblyReference.cache
+C:\Users\bobo1\OneDrive\Desktop\Repositories\ProjectHub\ProjectHub\ProjectHub.Data\obj\Debug\net8.0\ProjectHub.Data.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\bobo1\OneDrive\Desktop\Repositories\ProjectHub\ProjectHub\ProjectHub.Data\obj\Debug\net8.0\ProjectHub.Data.AssemblyInfoInputs.cache
+C:\Users\bobo1\OneDrive\Desktop\Repositories\ProjectHub\ProjectHub\ProjectHub.Data\obj\Debug\net8.0\ProjectHub.Data.AssemblyInfo.cs
+C:\Users\bobo1\OneDrive\Desktop\Repositories\ProjectHub\ProjectHub\ProjectHub.Data\obj\Debug\net8.0\ProjectHub.Data.csproj.CoreCompileInputs.cache
+C:\Users\bobo1\OneDrive\Desktop\Repositories\ProjectHub\ProjectHub\ProjectHub.Data\obj\Debug\net8.0\ProjectHub.Data.sourcelink.json
+C:\Users\bobo1\OneDrive\Desktop\Repositories\ProjectHub\ProjectHub\ProjectHub.Data\obj\Debug\net8.0\ProjectHub.Data.dll
+C:\Users\bobo1\OneDrive\Desktop\Repositories\ProjectHub\ProjectHub\ProjectHub.Data\obj\Debug\net8.0\refint\ProjectHub.Data.dll
+C:\Users\bobo1\OneDrive\Desktop\Repositories\ProjectHub\ProjectHub\ProjectHub.Data\obj\Debug\net8.0\ProjectHub.Data.pdb
+C:\Users\bobo1\OneDrive\Desktop\Repositories\ProjectHub\ProjectHub\ProjectHub.Data\obj\Debug\net8.0\ProjectHub.Data.genruntimeconfig.cache
+C:\Users\bobo1\OneDrive\Desktop\Repositories\ProjectHub\ProjectHub\ProjectHub.Data\obj\Debug\net8.0\ref\ProjectHub.Data.dll
