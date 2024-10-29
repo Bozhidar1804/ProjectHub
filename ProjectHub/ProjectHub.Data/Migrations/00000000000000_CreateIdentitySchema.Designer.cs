@@ -4,10 +4,10 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using ProjectHub.Web.Data;
+using ProjectHub.Data;
 using System;
 
-namespace ProjectHub.Web.Data.Migrations
+namespace ProjectHub.Data.Migrations
 {
 	[DbContext(typeof(ProjectHubDbContext))]
 	[Migration("00000000000000_CreateIdentitySchema")]

@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
-namespace ProjectHub.Web.Data
+namespace ProjectHub.Data
 {
 	public class ProjectHubDbContext : IdentityDbContext
 	{

@@ -1,5 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
-using ProjectHub.Web.Models;
+using ProjectHub.Web.ViewModels;
 using System.Diagnostics;
 
 namespace ProjectHub.Web.Controllers

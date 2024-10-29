@@ -263,3 +263,14 @@ C:\Users\bobo1\OneDrive\Desktop\Repositories\ProjectHub\ProjectHub\ProjectHub.We
 C:\Users\bobo1\OneDrive\Desktop\Repositories\ProjectHub\ProjectHub\ProjectHub.Web\obj\Debug\net8.0\ProjectHub.Web.pdb
 C:\Users\bobo1\OneDrive\Desktop\Repositories\ProjectHub\ProjectHub\ProjectHub.Web\obj\Debug\net8.0\ProjectHub.Web.genruntimeconfig.cache
 C:\Users\bobo1\OneDrive\Desktop\Repositories\ProjectHub\ProjectHub\ProjectHub.Web\obj\Debug\net8.0\ref\ProjectHub.Web.dll
+C:\Users\bobo1\OneDrive\Desktop\Repositories\ProjectHub\ProjectHub\ProjectHub.Web\bin\Debug\net8.0\Microsoft.Extensions.Caching.Memory.dll
+C:\Users\bobo1\OneDrive\Desktop\Repositories\ProjectHub\ProjectHub\ProjectHub.Web\bin\Debug\net8.0\Microsoft.Extensions.Logging.dll
+C:\Users\bobo1\OneDrive\Desktop\Repositories\ProjectHub\ProjectHub\ProjectHub.Web\bin\Debug\net8.0\Microsoft.Extensions.Logging.Abstractions.dll
+C:\Users\bobo1\OneDrive\Desktop\Repositories\ProjectHub\ProjectHub\ProjectHub.Web\bin\Debug\net8.0\ProjectHub.Common.dll
+C:\Users\bobo1\OneDrive\Desktop\Repositories\ProjectHub\ProjectHub\ProjectHub.Web\bin\Debug\net8.0\ProjectHub.Data.dll
+C:\Users\bobo1\OneDrive\Desktop\Repositories\ProjectHub\ProjectHub\ProjectHub.Web\bin\Debug\net8.0\ProjectHub.Data.Models.dll
+C:\Users\bobo1\OneDrive\Desktop\Repositories\ProjectHub\ProjectHub\ProjectHub.Web\bin\Debug\net8.0\ProjectHub.Web.ViewModels.dll
+C:\Users\bobo1\OneDrive\Desktop\Repositories\ProjectHub\ProjectHub\ProjectHub.Web\bin\Debug\net8.0\ProjectHub.Common.pdb
+C:\Users\bobo1\OneDrive\Desktop\Repositories\ProjectHub\ProjectHub\ProjectHub.Web\bin\Debug\net8.0\ProjectHub.Data.Models.pdb
+C:\Users\bobo1\OneDrive\Desktop\Repositories\ProjectHub\ProjectHub\ProjectHub.Web\bin\Debug\net8.0\ProjectHub.Data.pdb
+C:\Users\bobo1\OneDrive\Desktop\Repositories\ProjectHub\ProjectHub\ProjectHub.Web\bin\Debug\net8.0\ProjectHub.Web.ViewModels.pdb
