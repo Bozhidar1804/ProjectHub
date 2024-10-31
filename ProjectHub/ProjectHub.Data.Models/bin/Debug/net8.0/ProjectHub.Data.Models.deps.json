@@ -8,7 +8,8 @@
     ".NETCoreApp,Version=v8.0": {
       "ProjectHub.Data.Models/1.0.0": {
         "dependencies": {
-          "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "8.0.10"
+          "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "8.0.10",
+          "ProjectHub.Common": "1.0.0"
         },
         "runtime": {
           "ProjectHub.Data.Models.dll": {}
@@ -205,6 +206,14 @@
             "fileVersion": "8.0.23.53103"
           }
         }
+      },
+      "ProjectHub.Common/1.0.0": {
+        "runtime": {
+          "ProjectHub.Common.dll": {
+            "assemblyVersion": "1.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
       }
     }
   },
@@ -339,6 +348,11 @@
       "sha512": "sha512-bXJEZrW9ny8vjMF1JV253WeLhpEVzFo1lyaZu1vQ4ZxWUlVvknZ/+ftFgVheLubb4eZPSwwxBeqS1JkCOjxd8g==",
       "path": "microsoft.extensions.primitives/8.0.0",
       "hashPath": "microsoft.extensions.primitives.8.0.0.nupkg.sha512"
+    },
+    "ProjectHub.Common/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
     }
   }
 }

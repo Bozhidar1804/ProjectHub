@@ -2026,7 +2026,8 @@
       },
       "ProjectHub.Data.Models/1.0.0": {
         "dependencies": {
-          "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "8.0.10"
+          "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "8.0.10",
+          "ProjectHub.Common": "1.0.0"
         },
         "runtime": {
           "ProjectHub.Data.Models.dll": {

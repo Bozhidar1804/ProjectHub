@@ -316,6 +316,16 @@
         "build": {
           "buildTransitive/net6.0/_._": {}
         }
+      },
+      "ProjectHub.Common/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "compile": {
+          "bin/placeholder/ProjectHub.Common.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/ProjectHub.Common.dll": {}
+        }
       }
     }
   },
@@ -807,11 +817,17 @@
         "microsoft.extensions.primitives.nuspec",
         "useSharedDesignerContext.txt"
       ]
+    },
+    "ProjectHub.Common/1.0.0": {
+      "type": "project",
+      "path": "../ProjectHub.Common/ProjectHub.Common.csproj",
+      "msbuildProject": "../ProjectHub.Common/ProjectHub.Common.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net8.0": [
-      "Microsoft.AspNetCore.Identity.EntityFrameworkCore >= 8.0.10"
+      "Microsoft.AspNetCore.Identity.EntityFrameworkCore >= 8.0.10",
+      "ProjectHub.Common >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -841,7 +857,11 @@
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\bobo1\\OneDrive\\Desktop\\Repositories\\ProjectHub\\ProjectHub\\ProjectHub.Common\\ProjectHub.Common.csproj": {
+              "projectPath": "C:\\Users\\bobo1\\OneDrive\\Desktop\\Repositories\\ProjectHub\\ProjectHub\\ProjectHub.Common\\ProjectHub.Common.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
