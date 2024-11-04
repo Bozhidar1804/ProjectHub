@@ -20,5 +20,10 @@ namespace ProjectHub.Data.Models
 		public DateTime StartDate { get; set; }
 		public DateTime EndDate { get; set; }
 		public ProjectStatus Status { get; set; }
+		public bool IsDeleted { get; set; }
+
+		public ICollection<Task> Tasks { get; set; } = new List<Task>();
+		public ICollection<Milestone> Milestones { get; set; } = new List<Milestone>();
+		public ICollection<TeamMember> TeamMembers { get; set; } = new List<TeamMember>();
 	}
 }

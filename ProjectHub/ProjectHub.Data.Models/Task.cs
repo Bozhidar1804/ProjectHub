@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 using ProjectHub.Data.Models.Enums;
 using static ProjectHub.Common.EntityValidationConstants.Task;
@@ -19,6 +20,19 @@ namespace ProjectHub.Data.Models
 		public string Description { get; set; } = null!;
 		public DateTime DueDate { get; set; }
 		public TaskPriority Priority { get; set; }
+		public bool IsDeleted { get; set; }
+
+
+		[Required]
+		public Guid ProjectId { get; set; }
+
+		[ForeignKey(nameof(ProjectId))]
+		public Project Project { get; set; } = null!;
+
+		public ICollection<Tag> Tags { get; set; } = new HashSet<Tag>();
+		public ICollection<Comment> Comments { get; set; } = new HashSet<Comment>();
+		public ICollection<ActivityLog> ActivityLogs { get; set; } = new HashSet<ActivityLog>();
+		public ICollection<CheckList> Checklists { get; set; } = new HashSet<CheckList>();
 
 	}
 }

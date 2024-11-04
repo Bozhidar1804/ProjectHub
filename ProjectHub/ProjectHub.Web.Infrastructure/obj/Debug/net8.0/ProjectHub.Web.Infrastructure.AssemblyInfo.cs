@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ProjectHub.Web.Infrastructure")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+eeb79316c187d40ca1819eb2a22588f99d84400c")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d6e7868d9a4eaa85a1a3baf0ee596dd150aab324")]
 [assembly: System.Reflection.AssemblyProductAttribute("ProjectHub.Web.Infrastructure")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ProjectHub.Web.Infrastructure")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
