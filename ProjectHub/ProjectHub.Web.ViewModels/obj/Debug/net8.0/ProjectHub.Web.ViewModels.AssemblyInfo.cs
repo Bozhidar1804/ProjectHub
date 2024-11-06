@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ProjectHub.Web.ViewModels")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d6e7868d9a4eaa85a1a3baf0ee596dd150aab324")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e45edc448179afb883b39ac9c9afabcbd7666abf")]
 [assembly: System.Reflection.AssemblyProductAttribute("ProjectHub.Web.ViewModels")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ProjectHub.Web.ViewModels")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

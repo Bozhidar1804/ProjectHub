@@ -2926,7 +2926,8 @@
         "framework": ".NETCoreApp,Version=v8.0",
         "dependencies": {
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "8.0.10",
-          "Microsoft.EntityFrameworkCore.SqlServer": "8.0.10"
+          "Microsoft.EntityFrameworkCore.SqlServer": "8.0.10",
+          "ProjectHub.Data.Models": "1.0.0"
         },
         "compile": {
           "bin/placeholder/ProjectHub.Data.dll": {}

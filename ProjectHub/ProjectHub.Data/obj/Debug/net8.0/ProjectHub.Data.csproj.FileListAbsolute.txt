@@ -13,3 +13,8 @@ C:\Users\bobo1\OneDrive\Desktop\Repositories\ProjectHub\ProjectHub\ProjectHub.Da
 C:\Users\bobo1\OneDrive\Desktop\Repositories\ProjectHub\ProjectHub\ProjectHub.Data\obj\Debug\net8.0\ProjectHub.Data.pdb
 C:\Users\bobo1\OneDrive\Desktop\Repositories\ProjectHub\ProjectHub\ProjectHub.Data\obj\Debug\net8.0\ProjectHub.Data.genruntimeconfig.cache
 C:\Users\bobo1\OneDrive\Desktop\Repositories\ProjectHub\ProjectHub\ProjectHub.Data\obj\Debug\net8.0\ref\ProjectHub.Data.dll
+C:\Users\bobo1\OneDrive\Desktop\Repositories\ProjectHub\ProjectHub\ProjectHub.Data\bin\Debug\net8.0\ProjectHub.Common.dll
+C:\Users\bobo1\OneDrive\Desktop\Repositories\ProjectHub\ProjectHub\ProjectHub.Data\bin\Debug\net8.0\ProjectHub.Data.Models.dll
+C:\Users\bobo1\OneDrive\Desktop\Repositories\ProjectHub\ProjectHub\ProjectHub.Data\bin\Debug\net8.0\ProjectHub.Data.Models.pdb
+C:\Users\bobo1\OneDrive\Desktop\Repositories\ProjectHub\ProjectHub\ProjectHub.Data\bin\Debug\net8.0\ProjectHub.Common.pdb
+C:\Users\bobo1\OneDrive\Desktop\Repositories\ProjectHub\ProjectHub\ProjectHub.Data\obj\Debug\net8.0\ProjectH.69D6BF30.Up2Date

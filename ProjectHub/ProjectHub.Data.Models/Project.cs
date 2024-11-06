@@ -24,6 +24,6 @@ namespace ProjectHub.Data.Models
 
 		public ICollection<Task> Tasks { get; set; } = new List<Task>();
 		public ICollection<Milestone> Milestones { get; set; } = new List<Milestone>();
-		public ICollection<TeamMember> TeamMembers { get; set; } = new List<TeamMember>();
+		public ICollection<User> TeamMembers { get; set; } = new List<User>();
 	}
 }
