@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ProjectHub.Data.Models")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e45edc448179afb883b39ac9c9afabcbd7666abf")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ceacd56ae83602d482191498b7ff9b4d0ad0c761")]
 [assembly: System.Reflection.AssemblyProductAttribute("ProjectHub.Data.Models")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ProjectHub.Data.Models")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

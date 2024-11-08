@@ -4,9 +4,9 @@ using ProjectHub.Data.Models;
 
 namespace ProjectHub.Data.Configuration
 {
-    public class TeamMemberConfiguration : IEntityTypeConfiguration<User>
+    public class TeamMemberConfiguration : IEntityTypeConfiguration<ApplicationUser>
     {
-        public void Configure(EntityTypeBuilder<User> builder)
+        public void Configure(EntityTypeBuilder<ApplicationUser> builder)
         {
             builder
                 .HasKey(tm => tm.Id);

@@ -7,7 +7,7 @@ using ProjectHub.Data.Models;
 
 namespace ProjectHub.Data
 {
-	public class ProjectHubDbContext : IdentityDbContext<User, IdentityRole<Guid>, Guid>
+	public class ProjectHubDbContext : IdentityDbContext<ApplicationUser, IdentityRole<Guid>, Guid>
     {
         public ProjectHubDbContext()
         {
@@ -21,7 +21,7 @@ namespace ProjectHub.Data
 
 		public DbSet<Project> Projects { get; set; }
 		public DbSet<Models.Task> Tasks { get; set; }
-		public DbSet<User> TeamMembers { get; set; }
+		public DbSet<ApplicationUser> TeamMembers { get; set; }
 		public DbSet<Milestone> Milestones { get; set; }
 		public DbSet<Comment> Comments { get; set; }
 		public DbSet<ActivityLog> ActivityLogs { get; set; }

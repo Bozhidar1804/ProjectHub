@@ -19,13 +19,13 @@ namespace ProjectHub.Web
                 options.UseSqlServer(connectionString);
             });
 
-			builder.Services.AddIdentity<User, IdentityRole<Guid>>(cfg =>
+			builder.Services.AddIdentity<ApplicationUser, IdentityRole<Guid>>(cfg =>
 			{
 				ConfigureIdentity(cfg, builder);
 			})
 				.AddEntityFrameworkStores<ProjectHubDbContext>()
 			    .AddRoles<IdentityRole<Guid>>()
-                .AddSignInManager<SignInManager<User>>();
+                .AddSignInManager<SignInManager<ApplicationUser>>();
 
             builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
