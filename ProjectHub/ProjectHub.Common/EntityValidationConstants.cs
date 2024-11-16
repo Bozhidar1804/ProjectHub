@@ -20,12 +20,15 @@
 			public const string TaskDueDateFormat = "dd-MM-yyyy";
 		}
 
-        public static class TeamMember
+        public static class ApplicationUser
         {
-            public const int TeamMemberFullNameMaxLength = 50;
-			public const int TeamMemberFullNameMinLength = 5;
-			public const int TeamMemberEmailMaxLength = 254;
-			public const int TeamMemberEmailMinLength = 6;
+            public const int ApplicationUserFullNameMaxLength = 50;
+			public const int ApplicationUserFullNameMinLength = 5;
+            public const int ApplicationUserPasswordMaxLength = 100;
+            public const int ApplicationUserPasswordMinLength = 6;
+            // Email constants still not used
+            public const int ApplicationUserEmailMaxLength = 254;
+			public const int ApplicationUserEmailMinLength = 6;
 		}
 
 		public static class Checklist

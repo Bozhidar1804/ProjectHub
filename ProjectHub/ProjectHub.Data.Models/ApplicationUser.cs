@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using System.ComponentModel.DataAnnotations;
 
-using static ProjectHub.Common.EntityValidationConstants.TeamMember;
+using static ProjectHub.Common.EntityValidationConstants.ApplicationUser;
 
 
 namespace ProjectHub.Data.Models
@@ -15,7 +15,7 @@ namespace ProjectHub.Data.Models
         }
 
 		[Required]
-		[MaxLength(TeamMemberFullNameMaxLength)]
+		[MaxLength(ApplicationUserFullNameMaxLength)]
 		public string FullName { get; set; } = null!;
 
 		public bool IsDeleted { get; set; }

@@ -9,15 +9,19 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web", "Web", "{BD3AFC99-E50
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data", "Data", "{E4DD46FB-FBC5-4063-A53C-4AC43A7C5DF0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjectHub.Data", "ProjectHub.Data\ProjectHub.Data.csproj", "{7ACBBCAC-7E01-4056-BF35-035272E73BE5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProjectHub.Data", "ProjectHub.Data\ProjectHub.Data.csproj", "{7ACBBCAC-7E01-4056-BF35-035272E73BE5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjectHub.Common", "ProjectHub.Common\ProjectHub.Common.csproj", "{581318F2-9293-4DDE-B589-0F43CE4BDE00}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProjectHub.Common", "ProjectHub.Common\ProjectHub.Common.csproj", "{581318F2-9293-4DDE-B589-0F43CE4BDE00}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjectHub.Data.Models", "ProjectHub.Data.Models\ProjectHub.Data.Models.csproj", "{C52D9203-0C06-447E-945F-00E2A8975E32}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProjectHub.Data.Models", "ProjectHub.Data.Models\ProjectHub.Data.Models.csproj", "{C52D9203-0C06-447E-945F-00E2A8975E32}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjectHub.Web.Infrastructure", "ProjectHub.Web.Infrastructure\ProjectHub.Web.Infrastructure.csproj", "{9062D964-FC40-458D-9046-D0880F488764}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProjectHub.Web.Infrastructure", "ProjectHub.Web.Infrastructure\ProjectHub.Web.Infrastructure.csproj", "{9062D964-FC40-458D-9046-D0880F488764}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjectHub.Web.ViewModels", "ProjectHub.Web.ViewModels\ProjectHub.Web.ViewModels.csproj", "{62C762EA-70C3-4794-897F-01AB14561482}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProjectHub.Web.ViewModels", "ProjectHub.Web.ViewModels\ProjectHub.Web.ViewModels.csproj", "{62C762EA-70C3-4794-897F-01AB14561482}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{30A7EFB0-24E2-405C-9A5E-454B8361DE6A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjectHub.Services.Data", "ProjectHub.Services.Data\ProjectHub.Services.Data.csproj", "{014D43C9-A761-4025-A007-8A289D3F4016}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -49,6 +53,10 @@ Global
 		{62C762EA-70C3-4794-897F-01AB14561482}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{62C762EA-70C3-4794-897F-01AB14561482}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{62C762EA-70C3-4794-897F-01AB14561482}.Release|Any CPU.Build.0 = Release|Any CPU
+		{014D43C9-A761-4025-A007-8A289D3F4016}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{014D43C9-A761-4025-A007-8A289D3F4016}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{014D43C9-A761-4025-A007-8A289D3F4016}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{014D43C9-A761-4025-A007-8A289D3F4016}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -59,6 +67,7 @@ Global
 		{C52D9203-0C06-447E-945F-00E2A8975E32} = {E4DD46FB-FBC5-4063-A53C-4AC43A7C5DF0}
 		{9062D964-FC40-458D-9046-D0880F488764} = {BD3AFC99-E505-4A50-8763-F7714631F976}
 		{62C762EA-70C3-4794-897F-01AB14561482} = {BD3AFC99-E505-4A50-8763-F7714631F976}
+		{014D43C9-A761-4025-A007-8A289D3F4016} = {30A7EFB0-24E2-405C-9A5E-454B8361DE6A}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A56979FD-7F58-40D5-9738-A1E9B9CC5100}

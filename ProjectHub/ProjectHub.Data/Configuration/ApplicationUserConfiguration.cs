@@ -4,19 +4,23 @@ using ProjectHub.Data.Models;
 
 namespace ProjectHub.Data.Configuration
 {
-    public class TeamMemberConfiguration : IEntityTypeConfiguration<ApplicationUser>
+    public class ApplicationUserConfiguration : IEntityTypeConfiguration<ApplicationUser>
     {
         public void Configure(EntityTypeBuilder<ApplicationUser> builder)
         {
             builder
-                .HasKey(tm => tm.Id);
+                .Property(au => au.FullName)
+                .HasDefaultValue("DefaultFullName");
 
             builder
-                .HasMany(tm => tm.Projects)
+                .HasKey(au => au.Id);
+
+            builder
+                .HasMany(au => au.Projects)
                 .WithMany(p => p.TeamMembers);
 
             builder
-                .Property(tm => tm.IsDeleted)
+                .Property(au => au.IsDeleted)
                 .HasDefaultValue(false);
         }
     }
