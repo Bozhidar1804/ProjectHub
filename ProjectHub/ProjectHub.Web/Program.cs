@@ -8,24 +8,29 @@ namespace ProjectHub.Web
 	public class Program
 	{
 		public static void Main(string[] args)
-		{//
+		{
 			var builder = WebApplication.CreateBuilder(args);
 
 			// Add services to the container.
             string? connectionString = builder.Configuration.GetConnectionString("SQLServer") ?? throw new InvalidOperationException("Connection string 'SQLServer' not found.");
 
-            builder.Services.AddDbContext<ProjectHubDbContext>(options =>
-            {
-                options.UseSqlServer(connectionString);
-            });
+            builder.Services.AddDbContext<ProjectHubDbContext>(options => options.UseSqlServer(connectionString));
 
-			builder.Services.AddIdentity<ApplicationUser, IdentityRole<Guid>>(cfg =>
-			{
-				ConfigureIdentity(cfg, builder);
-			})
+            builder.Services
+				.AddDbContext<ProjectHubDbContext>(options =>
+				{
+				   options.UseSqlServer(connectionString);
+				});
+
+			builder.Services
+				.AddIdentity<ApplicationUser, IdentityRole<Guid>>(cfg =>
+				{
+					ConfigureIdentity(cfg, builder);
+				})
+				.AddRoles<IdentityRole<Guid>>()
 				.AddEntityFrameworkStores<ProjectHubDbContext>()
-			    .AddRoles<IdentityRole<Guid>>()
                 .AddSignInManager<SignInManager<ApplicationUser>>();
+
 
             builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
@@ -56,6 +61,7 @@ namespace ProjectHub.Web
 
 			app.UseRouting();
 
+			app.UseAuthentication();
 			app.UseAuthorization();
 
 			app.MapControllerRoute(
