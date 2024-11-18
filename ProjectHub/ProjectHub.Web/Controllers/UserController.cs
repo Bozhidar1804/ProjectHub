@@ -89,5 +89,20 @@ namespace ProjectHub.Web.Controllers
 
             return Redirect(model.ReturnUrl ?? "/Home/Index");
         }
+
+        [HttpPost]
+        public async Task<IActionResult> Logout(string returnUrl = null)
+        {
+            await signInManager.SignOutAsync();
+
+            if (returnUrl != null)
+            {
+                return LocalRedirect(returnUrl);
+            }
+            else
+            {
+                return RedirectToAction("Home", "Index");
+            }
+        }
     }
 }
