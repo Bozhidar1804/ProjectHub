@@ -28,4 +28,8 @@
     <ProjectReference Include="..\ProjectHub.Web.ViewModels\ProjectHub.Web.ViewModels.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Areas\Identity\Pages\Account\" />
+  </ItemGroup>
+
 </Project>

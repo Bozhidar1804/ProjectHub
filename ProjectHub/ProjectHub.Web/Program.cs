@@ -36,7 +36,7 @@ namespace ProjectHub.Web
 
             builder.Services.ConfigureApplicationCookie(cfg =>
             {
-                cfg.LoginPath = "/Identity/Account/Login";
+                cfg.LoginPath = "/User/Login";
             });
 
             builder.Services.AddControllersWithViews();
