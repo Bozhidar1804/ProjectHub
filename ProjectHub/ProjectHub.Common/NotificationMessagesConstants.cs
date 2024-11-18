@@ -10,7 +10,7 @@ namespace ProjectHub.Common
     {
         public static class User
         {
-            public const string ErrorMessage = "";
+            public const string ErrorMessage = "ErrorMessage";
         }
     }
 }

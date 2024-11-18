@@ -7,7 +7,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Interfaces\" />
+    <ProjectReference Include="..\ProjectHub.Data.Models\ProjectHub.Data.Models.csproj" />
+    <ProjectReference Include="..\ProjectHub.Data\ProjectHub.Data.csproj" />
   </ItemGroup>
 
 </Project>

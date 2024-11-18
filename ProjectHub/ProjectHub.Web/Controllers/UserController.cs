@@ -39,7 +39,7 @@ namespace ProjectHub.Web.Controllers
             };
 
             await this.userManager.SetEmailAsync(user, model.Email);
-            await this.userManager.SetUserNameAsync(user, model.FullName);
+            await this.userManager.SetUserNameAsync(user, model.Email);
 
             IdentityResult result = await this.userManager.CreateAsync(user, model.Password);
 
@@ -78,7 +78,7 @@ namespace ProjectHub.Web.Controllers
                 return View(model);
             }
 
-            var result = await this.signInManager.PasswordSignInAsync(model.Username, model.Password, model.RememberMe, lockoutOnFailure: false);
+            var result = await this.signInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, lockoutOnFailure: false);
 
             if (!result.Succeeded)
             {

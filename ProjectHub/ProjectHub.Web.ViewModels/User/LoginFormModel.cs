@@ -6,9 +6,8 @@ namespace ProjectHub.Web.ViewModels.User
 {
     public class LoginFormModel
     {
-        [Required]
-        [StringLength(ApplicationUserFullNameMaxLength, MinimumLength = ApplicationUserFullNameMinLength, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.")]
-        public string Username { get; set; } = null!;
+        [EmailAddress]
+        public string Email { get; set; } = null!;
 
         [Required]
         [DataType(DataType.Password)]

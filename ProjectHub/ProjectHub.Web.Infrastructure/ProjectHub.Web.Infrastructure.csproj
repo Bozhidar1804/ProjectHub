@@ -7,12 +7,15 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Extensions\" />
+    <PackageReference Include="Microsoft.AspNet.Identity.Core" Version="2.2.4" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Abstractions" Version="2.1.38" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="8.0.1" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.Mvc.Abstractions" Version="2.1.38" />
-    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="8.0.1" />
+    <ProjectReference Include="..\ProjectHub.Data.Models\ProjectHub.Data.Models.csproj" />
+    <ProjectReference Include="..\ProjectHub.Data\ProjectHub.Data.csproj" />
+    <ProjectReference Include="..\ProjectHub.Services.Data\ProjectHub.Services.Data.csproj" />
   </ItemGroup>
 
 </Project>

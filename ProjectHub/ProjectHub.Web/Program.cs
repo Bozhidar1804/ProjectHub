@@ -1,7 +1,11 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+
 using ProjectHub.Data;
 using ProjectHub.Data.Models;
+using static ProjectHub.Web.Infrastructure.Extensions.ApplicationBuilderExtensions;
+using static ProjectHub.Common.GeneralApplicationConstants;
+using ProjectHub.Web.Infrastructure.Extensions;
 
 namespace ProjectHub.Web
 {
@@ -15,6 +19,7 @@ namespace ProjectHub.Web
             string? connectionString = builder.Configuration.GetConnectionString("SQLServer") ?? throw new InvalidOperationException("Connection string 'SQLServer' not found.");
 
             builder.Services.AddDbContext<ProjectHubDbContext>(options => options.UseSqlServer(connectionString));
+            builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
             builder.Services
 				.AddDbContext<ProjectHubDbContext>(options =>
@@ -31,16 +36,15 @@ namespace ProjectHub.Web
 				.AddEntityFrameworkStores<ProjectHubDbContext>()
                 .AddSignInManager<SignInManager<ApplicationUser>>();
 
+            builder.Services.AddControllersWithViews();
+            builder.Services.AddRazorPages();
 
-            builder.Services.AddDatabaseDeveloperPageExceptionFilter();
+            builder.Services.AddServices();
 
             builder.Services.ConfigureApplicationCookie(cfg =>
             {
                 cfg.LoginPath = "/User/Login";
             });
-
-            builder.Services.AddControllersWithViews();
-			builder.Services.AddRazorPages();
 
             WebApplication app = builder.Build();
 
@@ -63,6 +67,8 @@ namespace ProjectHub.Web
 
 			app.UseAuthentication();
 			app.UseAuthorization();
+
+			app.SeedAdministrator(AdminEmail);
 
 			app.MapControllerRoute(
 				name: "default",
