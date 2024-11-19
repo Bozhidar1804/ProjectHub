@@ -9,7 +9,9 @@ namespace ProjectHub.Web.Infrastructure.Extensions
     {
         public static void AddServices(this IServiceCollection serviceCollection)
         {
+            serviceCollection.AddScoped<IBaseService, BaseService>();
             serviceCollection.AddScoped<IUserService, UserService>();
+            serviceCollection.AddScoped<IProjectService, ProjectService>();
         }
     }
 }

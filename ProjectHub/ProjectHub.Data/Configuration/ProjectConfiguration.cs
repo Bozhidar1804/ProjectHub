@@ -28,6 +28,12 @@ namespace ProjectHub.Data.Configuration
                 .WithMany(tm => tm.Projects);
 
             builder
+                .HasOne(p => p.Creator)
+                .WithMany()
+                .HasForeignKey(p => p.CreatorId)
+                .OnDelete(DeleteBehavior.Restrict); // !!!
+
+            builder
                 .Property(p => p.IsDeleted)
                 .HasDefaultValue(false);
         }

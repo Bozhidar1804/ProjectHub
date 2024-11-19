@@ -68,7 +68,10 @@ namespace ProjectHub.Web
 			app.UseAuthentication();
 			app.UseAuthorization();
 
-			app.SeedAdministrator(AdminEmail);
+			if (app.Environment.IsDevelopment())
+			{
+                app.SeedAdministrator(AdminEmail);
+            }
 
 			app.MapControllerRoute(
 				name: "default",

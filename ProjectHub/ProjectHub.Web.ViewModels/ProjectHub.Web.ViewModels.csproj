@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\ProjectHub.Common\ProjectHub.Common.csproj" />
+    <ProjectReference Include="..\ProjectHub.Data.Models\ProjectHub.Data.Models.csproj" />
   </ItemGroup>
 
 </Project>

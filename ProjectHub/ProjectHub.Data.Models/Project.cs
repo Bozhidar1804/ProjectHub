@@ -22,6 +22,10 @@ namespace ProjectHub.Data.Models
 		public ProjectStatus Status { get; set; }
 		public bool IsDeleted { get; set; }
 
+		[Required]
+		public Guid CreatorId { get; set; }
+		public ApplicationUser Creator { get; set; } = null!;
+
 		public ICollection<Task> Tasks { get; set; } = new List<Task>();
 		public ICollection<Milestone> Milestones { get; set; } = new List<Milestone>();
 		public ICollection<ApplicationUser> TeamMembers { get; set; } = new List<ApplicationUser>();
