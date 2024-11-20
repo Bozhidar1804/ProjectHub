@@ -33,6 +33,10 @@ namespace ProjectHub.Data.Configuration
                 .WithMany()
                 .HasForeignKey(c => c.ApplicantId)
                 .OnDelete(DeleteBehavior.Cascade);
+
+            builder
+                .Property(c => c.IsDeleted)
+                .HasDefaultValue(false);
         }
     }
 }

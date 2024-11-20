@@ -23,9 +23,14 @@
                         <p>
                             <strong>End Date:</strong> @project.EndDate
                         </p>
-                        <a href="@Url.Action("Details", "Project", new { id = project.Id })" class="btn btn-primary btn-sm">
-                            View Details
-                        </a>
+                        <div class="d-flex justify-content-between">
+                            <a asp-action="Details" asp-controller="Project" asp-route-id="@project.Id" class="btn btn-primary btn-sm">
+                                View Details
+                            </a>
+                            <a asp-action="Create" asp-controller="Candidature" asp-route-projectId="@project.Id" class="btn btn-success btn-sm">
+                                Apply
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>

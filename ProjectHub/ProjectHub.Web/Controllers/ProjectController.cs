@@ -43,13 +43,14 @@ namespace ProjectHub.Web.Controllers
         {
             if (!ModelState.IsValid)
             {
+                this.ModelState.AddModelError(string.Empty, "An error occurred while creating the project!");
                 return View(model);
             }
 
             string userId = ClaimsPrincipalExtensions.GetUserId(User)!;
-            bool addedResult = await projectService.CreateProjectAsync(model, userId);
+            bool isAddedResult = await projectService.CreateProjectAsync(model, userId);
 
-            if (!addedResult)
+            if (!isAddedResult)
             {
                 ModelState.AddModelError(string.Empty, "An error occurred while creating the project.");
                 return View(model);

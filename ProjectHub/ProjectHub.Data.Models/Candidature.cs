@@ -9,7 +9,7 @@ namespace ProjectHub.Data.Models
     public class Candidature
     {
         [Key]
-        public int Id { get; set; }
+        public Guid Id { get; set; } = Guid.NewGuid();
 
         [Required]
         [StringLength(CandidatureContentMaxLength, ErrorMessage = "{0} cannot exceed {1} characters.")]
@@ -32,5 +32,7 @@ namespace ProjectHub.Data.Models
 
         [Required]
         public DateTime ApplicationDate { get; set; } = DateTime.UtcNow;
+
+        public bool IsDeleted { get; set; }
     }
 }
