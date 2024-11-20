@@ -60,5 +60,10 @@
 			public const int TagNameMaxLength = 20;
 			public const int TagNameMinLength = 2;
 		}
+
+		public static class Candidature
+		{
+			public const int CandidatureContentMaxLength = 2000;
+		}
 	}
 }

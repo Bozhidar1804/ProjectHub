@@ -27,6 +27,7 @@ namespace ProjectHub.Data
 		public DbSet<ActivityLog> ActivityLogs { get; set; }
 		public DbSet<CheckList> CheckLists { get; set; }
 		public DbSet<Tag> Tags { get; set; }
+        public DbSet<Candidature> Candidatures { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
