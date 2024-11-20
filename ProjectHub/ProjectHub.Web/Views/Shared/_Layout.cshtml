@@ -23,7 +23,7 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Project" asp-action="Index">Projects</a>
                         </li>
                     </ul>
                     <partial name="_LoginPartial" />
@@ -37,10 +37,21 @@
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
+    <footer class="border-top footer text-muted mt-auto">
         <div class="container">
-            &copy; 2024 - ProjectHub.Web - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            &copy; @{
+                var currentYear = DateTime.Now.Year;
+                if (currentYear == 2024)
+                {
+                    @currentYear
+                }
+                else
+                {
+                    @:2024 - @(DateTime.Now.Year)
+                }
+            } - ProjectHub
         </div>
+
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>

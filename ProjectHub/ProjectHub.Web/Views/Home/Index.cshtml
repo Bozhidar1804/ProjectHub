@@ -1,8 +1,53 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Welcome to ProjectHub";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="container mt-5">
+    <div class="row align-items-center">
+        <div class="col-md-6 text-center text-md-start">
+            <h1 class="display-4 fw-bold">Welcome to <span class="text-primary">ProjectHub</span></h1>
+            <p class="lead mt-3">
+                A platform to manage projects, collaborate, and turn ideas into reality. Sign in to start creating, join exciting projects, or explore endless possibilities!
+            </p>
+            @if (User?.Identity?.IsAuthenticated == false)
+            {
+                <div class="mt-4">
+                    <a asp-controller="User" asp-action="Login" class="btn btn-primary btn-lg me-3">Sign In</a>
+                    <a asp-controller="User" asp-action="Register" class="btn btn-outline-secondary btn-lg">Register</a>
+                </div>
+            }
+        </div>
+        <div class="col-md-6 text-center">
+            <img src="https://via.placeholder.com/500x400" class="img-fluid rounded" alt="Collaboration illustration">
+        </div>
+    </div>
 </div>
+
+<section class="container mt-5">
+    <div class="row">
+        <div class="col-md-4 text-center">
+            <div class="card shadow-sm h-100">
+                <div class="card-body">
+                    <h5 class="card-title text-primary">Create Projects</h5>
+                    <p class="card-text">Easily create and manage your projects with intuitive tools.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 text-center">
+            <div class="card shadow-sm h-100">
+                <div class="card-body">
+                    <h5 class="card-title text-primary">Join Teams</h5>
+                    <p class="card-text">Apply to join exciting projects and contribute your skills.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 text-center">
+            <div class="card shadow-sm h-100">
+                <div class="card-body">
+                    <h5 class="card-title text-primary">Collaborate Efficiently</h5>
+                    <p class="card-text">Streamline teamwork and communication for success.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

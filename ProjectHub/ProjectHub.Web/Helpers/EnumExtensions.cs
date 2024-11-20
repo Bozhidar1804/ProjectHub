@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.Reflection;
 
-namespace ProjectHub.Web.Extensions
+namespace ProjectHub.Web.Helpers
 {
     public static class EnumExtensions
     {
