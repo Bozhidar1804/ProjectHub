@@ -6,6 +6,7 @@ using ProjectHub.Data.Models;
 using static ProjectHub.Web.Infrastructure.Extensions.ApplicationBuilderExtensions;
 using static ProjectHub.Common.GeneralApplicationConstants;
 using ProjectHub.Web.Infrastructure.Extensions;
+using Microsoft.Extensions.Options;
 
 namespace ProjectHub.Web
 {
@@ -44,6 +45,7 @@ namespace ProjectHub.Web
             builder.Services.ConfigureApplicationCookie(cfg =>
             {
                 cfg.LoginPath = "/User/Login";
+                cfg.LogoutPath = "/Home/Index";
             });
 
             WebApplication app = builder.Build();
@@ -73,12 +75,17 @@ namespace ProjectHub.Web
                 app.SeedAdministrator(AdminEmail);
             }
 
-			app.MapControllerRoute(
+            app.MapControllerRoute(
+                name: "areas",
+                pattern: "/{area:exists}/{controller=Home}/{action=Index}/{id?}");
+
+            app.MapControllerRoute(
 				name: "default",
-				pattern: "{controller=Home}/{action=Index}/{id?}");
+				pattern: "/{controller=Home}/{action=Index}/{id?}");
+
 			app.MapRazorPages();
 
-			app.Run();
+            app.Run();
 		}
 
         private static void ConfigureIdentity(IdentityOptions cfg, WebApplicationBuilder builder)

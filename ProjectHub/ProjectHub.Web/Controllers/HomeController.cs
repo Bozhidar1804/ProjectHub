@@ -1,6 +1,9 @@
-using Microsoft.AspNetCore.Mvc;
-using ProjectHub.Web.ViewModels;
 using System.Diagnostics;
+
+using Microsoft.AspNetCore.Mvc;
+
+using ProjectHub.Web.ViewModels;
+using static ProjectHub.Common.GeneralApplicationConstants;
 
 namespace ProjectHub.Web.Controllers
 {
@@ -15,6 +18,11 @@ namespace ProjectHub.Web.Controllers
 
 		public IActionResult Index()
 		{
+			if (this.User.IsInRole(AdminRoleName))
+			{
+				return RedirectToAction("Index", "Home", new { Area = AdminAreaName });
+			}
+
 			return View();
 		}
 
