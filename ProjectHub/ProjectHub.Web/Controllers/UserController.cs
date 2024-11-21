@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using ProjectHub.Data.Models;
 using ProjectHub.Web.ViewModels.User;
 using static ProjectHub.Common.NotificationMessagesConstants.User;
+using static ProjectHub.Common.GeneralApplicationConstants;
 
 namespace ProjectHub.Web.Controllers
 {
@@ -12,11 +13,13 @@ namespace ProjectHub.Web.Controllers
     {
         private readonly SignInManager<ApplicationUser> signInManager;
         private readonly UserManager<ApplicationUser> userManager;
+        private readonly RoleManager<IdentityRole<Guid>> roleManager;
 
-        public UserController(SignInManager<ApplicationUser> signInManager, UserManager<ApplicationUser> userManager)
+        public UserController(SignInManager<ApplicationUser> signInManager, UserManager<ApplicationUser> userManager, RoleManager<IdentityRole<Guid>> roleManager)
         {
             this.signInManager = signInManager;
             this.userManager = userManager;
+            this.roleManager = roleManager;
         }
 
         [HttpGet]
@@ -51,6 +54,15 @@ namespace ProjectHub.Web.Controllers
                     return View(error);
                 }
             }
+
+            // Assign the User role to the newly created user
+            if (!await this.roleManager.RoleExistsAsync(UserRoleName))
+            {
+                var userRole = new IdentityRole<Guid>(UserRoleName);
+                await this.roleManager.CreateAsync(userRole);
+            }
+
+            await this.userManager.AddToRoleAsync(user, UserRoleName);
 
             await this.signInManager.SignInAsync(user, isPersistent: false);
 

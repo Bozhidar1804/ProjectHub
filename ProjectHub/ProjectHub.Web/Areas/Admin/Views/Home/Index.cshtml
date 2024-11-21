@@ -13,7 +13,7 @@
                 <div class="card-body">
                     <h5 class="card-title">User Role Management</h5>
                     <p class="card-text text-muted">Assign and manage user roles, such as ProjectCreator.</p>
-                    <a asp-area="Admin" asp-controller="UserManagement" asp-action="Index" class="btn btn-outline-primary">Manage Roles</a>
+                    <a asp-area="Admin" asp-controller="Management" asp-action="UserRoles" class="btn btn-outline-primary">Manage Roles</a>
                 </div>
             </div>
         </div>
@@ -22,9 +22,9 @@
         <div class="col-md-4 mb-3">
             <div class="card shadow-sm">
                 <div class="card-body">
-                    <h5 class="card-title">Project Management</h5>
+                    <h5 class="card-title">Projects Management</h5>
                     <p class="card-text text-muted">Oversee all projects and perform administrative actions.</p>
-                    <a asp-area="Admin" asp-controller="ProjectManagement" asp-action="Index" class="btn btn-outline-primary">Manage Projects</a>
+                    <a asp-area="Admin" asp-controller="Management" asp-action="Projects" class="btn btn-outline-primary">Manage Projects</a>
                 </div>
             </div>
         </div>
@@ -35,29 +35,18 @@
                 <div class="card-body">
                     <h5 class="card-title">Candidature Oversight</h5>
                     <p class="card-text text-muted">Review and monitor all submitted candidatures.</p>
-                    <a asp-area="Admin" asp-controller="CandidatureManagement" asp-action="Index" class="btn btn-outline-primary">View Candidatures</a>
+                    <a asp-area="Admin" asp-controller="Management" asp-action="Candidatures" class="btn btn-outline-primary">View Candidatures</a>
                 </div>
             </div>
         </div>
 
-        <!-- System Logs or Analytics -->
+        <!-- Statistics -->
         <div class="col-md-4 mb-3">
             <div class="card shadow-sm">
                 <div class="card-body">
-                    <h5 class="card-title">System Logs</h5>
-                    <p class="card-text text-muted">Access logs and monitor platform activities.</p>
-                    <a asp-area="Admin" asp-controller="Logs" asp-action="Index" class="btn btn-outline-primary">View Logs</a>
-                </div>
-            </div>
-        </div>
-
-        <!-- Settings -->
-        <div class="col-md-4 mb-3">
-            <div class="card shadow-sm">
-                <div class="card-body">
-                    <h5 class="card-title">Settings</h5>
-                    <p class="card-text text-muted">Configure platform settings and preferences.</p>
-                    <a asp-area="Admin" asp-controller="Settings" asp-action="Index" class="btn btn-outline-primary">Go to Settings</a>
+                    <h5 class="card-title">Statistics</h5>
+                    <p class="card-text text-muted">Access various statistics about the project.</p>
+                    <a asp-area="Admin" asp-controller="Management" asp-action="Statistics" class="btn btn-outline-primary">Analyze Statistics</a>
                 </div>
             </div>
         </div>

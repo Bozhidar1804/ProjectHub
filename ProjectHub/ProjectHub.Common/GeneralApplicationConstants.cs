@@ -11,6 +11,8 @@ namespace ProjectHub.Common
         public const string AdminRoleName = "Administrator";
         public const string AdminEmail = "admin@gmail.com";
         public const string AdminAreaName = "Admin";
+        public const string ModeratorRoleName = "Moderator";
+        public const string UserRoleName = "User";
 
         public const string DateFormat = "dd/MM/yyyy";
     }

@@ -25,12 +25,12 @@
     <ProjectReference Include="..\ProjectHub.Common\ProjectHub.Common.csproj" />
     <ProjectReference Include="..\ProjectHub.Data.Models\ProjectHub.Data.Models.csproj" />
     <ProjectReference Include="..\ProjectHub.Data\ProjectHub.Data.csproj" />
+    <ProjectReference Include="..\ProjectHub.Services.Data\ProjectHub.Services.Data.csproj" />
     <ProjectReference Include="..\ProjectHub.Web.Infrastructure\ProjectHub.Web.Infrastructure.csproj" />
     <ProjectReference Include="..\ProjectHub.Web.ViewModels\ProjectHub.Web.ViewModels.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Areas\Admin\ViewModels\" />
     <Folder Include="Areas\Identity\Pages\Account\" />
   </ItemGroup>
 

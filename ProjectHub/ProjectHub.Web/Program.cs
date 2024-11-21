@@ -3,10 +3,10 @@ using Microsoft.EntityFrameworkCore;
 
 using ProjectHub.Data;
 using ProjectHub.Data.Models;
-using static ProjectHub.Web.Infrastructure.Extensions.ApplicationBuilderExtensions;
-using static ProjectHub.Common.GeneralApplicationConstants;
 using ProjectHub.Web.Infrastructure.Extensions;
-using Microsoft.Extensions.Options;
+using static ProjectHub.Web.Infrastructure.Extensions.ApplicationBuilderExtensions;
+using static ProjectHub.Web.Helpers.AdminServicesCollectionExtensions;
+using static ProjectHub.Common.GeneralApplicationConstants;
 
 namespace ProjectHub.Web
 {
@@ -41,6 +41,7 @@ namespace ProjectHub.Web
             builder.Services.AddRazorPages();
 
             builder.Services.AddServices();
+			builder.Services.AddAdminServices();
 
             builder.Services.ConfigureApplicationCookie(cfg =>
             {

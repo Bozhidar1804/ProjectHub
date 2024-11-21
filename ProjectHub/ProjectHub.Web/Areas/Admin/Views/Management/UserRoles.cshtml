@@ -1,0 +1,57 @@
+﻿@using static ProjectHub.Common.GeneralApplicationConstants;
+@model IEnumerable<UserRoleViewModel>
+
+<h2 class="mb-4 text-center text-primary">Manage User Roles</h2>
+
+<div class="table-responsive">
+    <table class="table table-hover table-bordered">
+        <thead class="thead-dark">
+            <tr>
+                <th>User</th>
+                <th>Email</th>
+                <th>Role</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var user in Model)
+            {
+                <tr>
+                    <td>@user.UserName</td>
+                    <td>@user.Email</td>
+                    <td>
+                        <span class="badge @(
+                            user.Role == ModeratorRoleName ? "bg-warning" :
+                            user.Role == AdminRoleName ? "bg-success" : "bg-secondary")">
+                            @user.Role
+                        </span>
+                    </td>
+                    <td>
+                        @if (user.Role != AdminRoleName)
+                        {
+                            <form asp-action="ChangeUserRole" asp-controller="Management" method="post" class="d-inline">
+                                <input type="hidden" name="userId" value="@user.UserId" />
+                                @if (user.Role == ModeratorRoleName)
+                                {
+                                    <button type="submit" name="roleName" value="User" class="btn btn-outline-danger btn-sm">
+                                        <i class="bi bi-arrow-down-circle"></i> Demote to User
+                                    </button>
+                                }
+                                else
+                                {
+                                    <button type="submit" name="roleName" value="Moderator" class="btn btn-outline-success btn-sm">
+                                        <i class="bi bi-arrow-up-circle"></i> Promote to Moderator
+                                    </button>
+                                }
+                            </form>
+                        }
+                        else
+                        {
+                            <span class="text-muted">Cannot change Admin role</span>
+                        }
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
