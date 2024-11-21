@@ -221,8 +221,7 @@
               "RelativeToolTip": "ProjectHub.Web\\Controllers\\CandidatureController.cs",
               "ViewState": "AgIAACAAAAAAAAAAAAAWwC4AAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-20T22:49:10.569Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-20T22:49:10.569Z"
             },
             {
               "$type": "Document",
@@ -234,8 +233,7 @@
               "RelativeToolTip": "ProjectHub.Data.Models\\Project.cs",
               "ViewState": "AgIAAAMAAAAAAAAAAAAAAA4AAAArAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-31T21:28:27.007Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-31T21:28:27.007Z"
             },
             {
               "$type": "Document",
@@ -247,8 +245,7 @@
               "RelativeToolTip": "ProjectHub.Web.Infrastructure\\Extensions\\ClaimsPrincipalExtensions.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-18T20:56:42.725Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-18T20:56:42.725Z"
             },
             {
               "$type": "Document",
@@ -260,8 +257,7 @@
               "RelativeToolTip": "ProjectHub.Services.Data\\BaseService.cs",
               "ViewState": "AgIAAAkAAAAAAAAAAAAWwBQAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-19T21:18:40.268Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-19T21:18:40.268Z"
             },
             {
               "$type": "Document",
@@ -273,8 +269,7 @@
               "RelativeToolTip": "ProjectHub.Web\\Program.cs",
               "ViewState": "AgIAAAoAAAAAAAAAAAAWwBQAAABKAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-06T20:09:07.52Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-06T20:09:07.52Z"
             },
             {
               "$type": "Document",
@@ -282,9 +277,9 @@
               "Title": "_LoginPartial.cshtml",
               "DocumentMoniker": "C:\\Users\\bobo1\\OneDrive\\Desktop\\Repositories\\ProjectHub\\ProjectHub\\ProjectHub.Web\\Views\\Shared\\_LoginPartial.cshtml",
               "RelativeDocumentMoniker": "ProjectHub.Web\\Views\\Shared\\_LoginPartial.cshtml",
-              "ToolTip": "C:\\Users\\bobo1\\OneDrive\\Desktop\\Repositories\\ProjectHub\\ProjectHub\\ProjectHub.Web\\Views\\Shared\\_LoginPartial.cshtml*",
-              "RelativeToolTip": "ProjectHub.Web\\Views\\Shared\\_LoginPartial.cshtml*",
-              "ViewState": "AgIAAAQAAAAAAAAAAAAiwBIAAAANAAAAAAAAAA==",
+              "ToolTip": "C:\\Users\\bobo1\\OneDrive\\Desktop\\Repositories\\ProjectHub\\ProjectHub\\ProjectHub.Web\\Views\\Shared\\_LoginPartial.cshtml",
+              "RelativeToolTip": "ProjectHub.Web\\Views\\Shared\\_LoginPartial.cshtml",
+              "ViewState": "AgIAAAQAAAAAAAAAAAAiwBAAAABaAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2024-11-16T22:32:27.269Z",
               "EditorCaption": ""
@@ -299,8 +294,7 @@
               "RelativeToolTip": "ProjectHub.Services.Data\\CandidatureService.cs",
               "ViewState": "AgIAAC0AAAAAAAAAAAAWwD8AAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-20T22:52:29.56Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-20T22:52:29.56Z"
             },
             {
               "$type": "Document",
@@ -312,8 +306,7 @@
               "RelativeToolTip": "ProjectHub.Web.ViewModels\\Candidature\\CandidatureIndexViewModel.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAqwAoAAAA1AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-20T23:15:24.666Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-20T23:15:24.666Z"
             },
             {
               "$type": "Document",
@@ -325,8 +318,7 @@
               "RelativeToolTip": "ProjectHub.Web\\Views\\Candidature\\Index.cshtml",
               "ViewState": "AgIAAAMAAAAAAAAAAAAAAB8AAAA8AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-11-20T23:15:37.3Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-20T23:15:37.3Z"
             },
             {
               "$type": "Document",
@@ -338,8 +330,7 @@
               "RelativeToolTip": "ProjectHub.Web\\Controllers\\UserController.cs",
               "ViewState": "AgIAAFAAAAAAAAAAAAAuwF0AAABDAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-20T23:43:19.817Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-20T23:43:19.817Z"
             },
             {
               "$type": "Document",
@@ -351,8 +342,7 @@
               "RelativeToolTip": "ProjectHub.Data\\Configuration\\ApplicationUserConfiguration.cs",
               "ViewState": "AgIAAAYAAAAAAAAAAAAAABYAAAAtAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-20T23:31:19.425Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-20T23:31:19.425Z"
             },
             {
               "$type": "Document",
@@ -364,8 +354,7 @@
               "RelativeToolTip": "ProjectHub.Services.Data\\Interfaces\\ICandidatureService.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAqwAoAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-20T22:52:19.619Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-20T22:52:19.619Z"
             },
             {
               "$type": "Document",
@@ -377,8 +366,7 @@
               "RelativeToolTip": "ProjectHub.Web.ViewModels\\Project\\ProjectIndexViewModel.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAvAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-19T20:15:36.501Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-19T20:15:36.501Z"
             },
             {
               "$type": "Document",
@@ -390,8 +378,7 @@
               "RelativeToolTip": "ProjectHub.Web.ViewModels\\Project\\ProjectCreateFormModel.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAABCAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-19T20:36:15.024Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-19T20:36:15.024Z"
             },
             {
               "$type": "Document",
@@ -403,8 +390,7 @@
               "RelativeToolTip": "ProjectHub.Common\\GeneralApplicationConstants.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAhAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-18T20:04:14.427Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-18T20:04:14.427Z"
             },
             {
               "$type": "Document",
@@ -416,8 +402,7 @@
               "RelativeToolTip": "ProjectHub.Web\\Controllers\\ProjectController.cs",
               "ViewState": "AgIAACYAAAAAAAAAAAAlwDQAAAAfAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-16T20:41:01.55Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-16T20:41:01.55Z"
             },
             {
               "$type": "Document",
@@ -429,8 +414,7 @@
               "RelativeToolTip": "ProjectHub.Services.Data\\ProjectService.cs",
               "ViewState": "AgIAABUAAAAAAAAAAIA7wA4AAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-19T20:21:33.398Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-19T20:21:33.398Z"
             },
             {
               "$type": "Document",
@@ -442,8 +426,7 @@
               "RelativeToolTip": "ProjectHub.Web.ViewModels\\Candidature\\CandidatureCreateFormModel.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAuAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-20T22:50:05.561Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-20T22:50:05.561Z"
             },
             {
               "$type": "Document",
@@ -455,8 +438,7 @@
               "RelativeToolTip": "ProjectHub.Web\\Views\\Project\\Index.cshtml",
               "ViewState": "AgIAAAkAAAAAAAAAAAAAABcAAABHAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-11-20T16:48:13.114Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-20T16:48:13.114Z"
             },
             {
               "$type": "Document",
@@ -468,8 +450,7 @@
               "RelativeToolTip": "ProjectHub.Web\\Views\\Candidature\\Create.cshtml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAiwBQAAAA3AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-11-20T22:49:36.47Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-20T22:49:36.47Z"
             },
             {
               "$type": "Document",
@@ -481,8 +462,7 @@
               "RelativeToolTip": "ProjectHub.Web\\Views\\Home\\Index.cshtml",
               "ViewState": "AgIAADUAAAAAAAAAAAAmwEoAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-11-16T20:19:51.139Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-16T20:19:51.139Z"
             },
             {
               "$type": "Document",
@@ -506,8 +486,7 @@
               "RelativeToolTip": "ProjectHub.Web\\Views\\_ViewImports.cshtml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAsAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-11-18T19:16:04.997Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-18T19:16:04.997Z"
             },
             {
               "$type": "Document",
@@ -519,8 +498,7 @@
               "RelativeToolTip": "ProjectHub.Web\\Views\\Shared\\_Layout.cshtml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAAAZAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-11-16T20:19:21.489Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-16T20:19:21.489Z"
             },
             {
               "$type": "Document",
@@ -532,8 +510,7 @@
               "RelativeToolTip": "ProjectHub.Data.Models\\Comment.cs",
               "ViewState": "AgIAAAYAAAAAAAAAAAAqwBUAAAApAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-04T18:25:51.113Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-04T18:25:51.113Z"
             },
             {
               "$type": "Document",
@@ -545,8 +522,7 @@
               "RelativeToolTip": "ProjectHub.Data.Models\\Checklist.cs",
               "ViewState": "AgIAAAMAAAAAAAAAAAAqwAYAAAAOAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-04T18:25:47.552Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-04T18:25:47.552Z"
             },
             {
               "$type": "Document",
@@ -558,8 +534,7 @@
               "RelativeToolTip": "ProjectHub.Web\\Views\\Project\\Create.cshtml",
               "ViewState": "AgIAAAYAAAAAAAAAAAAAAAYAAAAcAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-11-20T16:50:05.906Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-20T16:50:05.906Z"
             },
             {
               "$type": "Document",
