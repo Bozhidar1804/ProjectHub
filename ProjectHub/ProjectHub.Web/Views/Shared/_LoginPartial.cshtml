@@ -9,25 +9,34 @@
     string userFullName = await UserService.GetFullNameByEmailAsync(User.Identity?.Name!);
 }
 
-<ul class="navbar-nav">
-@if (SignInManager.IsSignedIn(User))
-{
-    <li class="nav-item">
-        <a  class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @userFullName</a>
-    </li>
-    <li class="nav-item">
-        <form  class="form-inline" asp-area="" asp-controller="User" asp-action="Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
-            <button  type="submit" class="nav-link btn btn-link text-dark">Logout</button>
-        </form>
-    </li>
-}
-else
-{
-    <li class="nav-item">
-        <a class="nav-link text-dark" asp-area="" asp-controller="User" asp-action="Register">Register</a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link text-dark" asp-area="" asp-controller="User" asp-action="Login">Login</a>
-    </li>
-}
+<ul class="navbar-nav ms-auto">
+    @if (SignInManager.IsSignedIn(User))
+    {
+        <li class="nav-item">
+            <a class="nav-link text-dark btn btn-outline-light rounded-pill px-3 py-2" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">
+                Welcome, @userFullName! <span class="badge bg-success text-white">You're logged in</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <form class="form-inline" asp-area="" asp-controller="User" asp-action="Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+                <button type="submit" class="btn btn-outline-danger rounded-pill px-3 py-2">Logout</button>
+            </form>
+        </li>
+    }
+    else
+    {
+        <li class="nav-item">
+            <a class="nav-link text-dark" asp-area="" asp-controller="User" asp-action="Register">
+                <span class="btn btn-outline-primary rounded-pill px-3 py-2">Register</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link text-dark" asp-area="" asp-controller="User" asp-action="Login">
+                <span class="btn btn-outline-success rounded-pill px-3 py-2">Login</span>
+            </a>
+        </li>
+    }
 </ul>
+
+
+
