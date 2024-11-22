@@ -1,0 +1,62 @@
+﻿@model IEnumerable<ProjectIndexViewModel>
+
+<h2 class="text-center text-primary mb-4">My Created Projects</h2>
+
+<div class="container">
+    @if (!Model.Any())
+    {
+        <div class="alert alert-info text-center">
+            <i class="bi bi-info-circle"></i> You have not created any projects yet.
+        </div>
+    }
+    else
+    {
+        <div class="row g-4">
+            @foreach (var project in Model)
+            {
+                <div class="col-md-4">
+                    <div class="card shadow-sm">
+                        <div class="card-header bg-primary text-white">
+                            <h5 class="card-title mb-0">@project.Name</h5>
+                        </div>
+                        <div class="card-body">
+                            <p class="card-text text-muted">@project.Description</p>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item">
+                                    <strong>Start Date:</strong> @project.StartDate
+                                </li>
+                                <li class="list-group-item">
+                                    <strong>End Date:</strong> @project.EndDate? ?? "Ongoing"
+                                </li>
+                                <li class="list-group-item">
+                                    <strong>Status:</strong>
+                                    <span class="badge @(project.IsCompleted ? "bg-success" : "bg-warning")">
+                                        @(project.IsCompleted ? "Completed" : "In Progress")
+                                    </span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="card-footer text-end">
+                            <a asp-controller="Project" asp-action="Details" asp-route-id="@project.Id" class="btn btn-outline-primary btn-sm">
+                                <i class="bi bi-info-circle"></i> Details
+                            </a>
+                            <a asp-controller="Project" asp-action="Edit" asp-route-id="@project.Id" class="btn btn-outline-secondary btn-sm">
+                                <i class="bi bi-pencil-square"></i> Edit
+                            </a>
+                            <form asp-controller="Project" asp-action="Delete" asp-route-id="@project.Id" method="post" class="d-inline">
+                                <button type="submit" class="btn btn-outline-danger btn-sm">
+                                    <i class="bi bi-trash"></i> Delete
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    }
+    <div class="text-center mt-4">
+        <a asp-controller="Project" asp-action="Create" class="btn btn-success btn-lg">
+            <i class="bi bi-plus-circle"></i> Create New Project
+        </a>
+    </div>
+</div>

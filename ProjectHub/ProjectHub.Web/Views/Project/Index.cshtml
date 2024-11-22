@@ -3,6 +3,7 @@
 
 @{
     ViewData["Title"] = "Projects";
+    string currentUserId = this.User.GetUserId()!;
 }
 
 <div class="container mt-5">
@@ -27,9 +28,16 @@
                             <a asp-action="Details" asp-controller="Project" asp-route-id="@project.Id" class="btn btn-primary btn-sm">
                                 View Details
                             </a>
-                            <a asp-action="Create" asp-controller="Candidature" asp-route-projectId="@project.Id" class="btn btn-success btn-sm">
-                                Apply
-                            </a>
+                            @if (project.CreatorId != currentUserId.ToUpper())
+                            {
+                                <a asp-action="Create" asp-controller="Candidature" asp-route-projectId="@project.Id" class="btn btn-success btn-sm">
+                                    Apply
+                                </a>
+                            }
+                            else
+                            {
+                                <span class="text-muted small">You created this project</span>
+                            }
                         </div>
                     </div>
                 </div>

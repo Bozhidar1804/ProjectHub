@@ -27,6 +27,27 @@ namespace ProjectHub.Services.Data
                 .Select(p => new ProjectIndexViewModel()
                 {
                     Id = p.Id.ToString(),
+                    CreatorId = p.CreatorId.ToString(),
+                    Name = p.Name,
+                    Description = p.Description,
+                    StartDate = p.StartDate.ToString(DateFormat),
+                    EndDate = p.EndDate.ToString(DateFormat),
+                    Status = p.Status
+                })
+                .ToListAsync();
+
+            return projects;
+        }
+
+        public async Task<IEnumerable<ProjectIndexViewModel>> GetCreatorAllProjectsAsync(string userId)
+        {
+            IEnumerable<ProjectIndexViewModel> projects = await this.dbContext
+                .Projects
+                .Where(p => p.IsDeleted == false && p.CreatorId.ToString() == userId)
+                .Select(p => new ProjectIndexViewModel()
+                {
+                    Id = p.Id.ToString(),
+                    CreatorId = p.CreatorId.ToString(),
                     Name = p.Name,
                     Description = p.Description,
                     StartDate = p.StartDate.ToString(DateFormat),
@@ -73,6 +94,6 @@ namespace ProjectHub.Services.Data
             await this.dbContext.SaveChangesAsync();
 
             return true;
-        } 
+        }
     }
 }

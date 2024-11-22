@@ -7,6 +7,7 @@ using ProjectHub.Services.Data.Interfaces;
 using ProjectHub.Web.Infrastructure.Extensions;
 using ProjectHub.Web.ViewModels.Project;
 using static ProjectHub.Web.Infrastructure.Extensions.ClaimsPrincipalExtensions;
+using static ProjectHub.Common.GeneralApplicationConstants;
 
 namespace ProjectHub.Web.Controllers
 {
@@ -31,6 +32,17 @@ namespace ProjectHub.Web.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles = ModeratorRoleName)]
+        public async Task<IActionResult> MyProjects()
+        {
+            string userId = this.User.GetUserId()!;
+            IEnumerable<ProjectIndexViewModel> myProjectsModels = await this.projectService.GetCreatorAllProjectsAsync(userId);
+
+            return View(myProjectsModels);
+        }
+
+        [HttpGet]
+        [Authorize(Roles = ModeratorRoleName)]
         public IActionResult Create()
         {
             ProjectCreateFormModel model = new ProjectCreateFormModel();
@@ -39,6 +51,7 @@ namespace ProjectHub.Web.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = ModeratorRoleName)]
         public async Task<IActionResult> Create(ProjectCreateFormModel model)
         {
             if (!ModelState.IsValid)
