@@ -43,11 +43,9 @@
                             <a asp-controller="Project" asp-action="Edit" asp-route-id="@project.Id" class="btn btn-outline-secondary btn-sm">
                                 <i class="bi bi-pencil-square"></i> Edit
                             </a>
-                            <form asp-controller="Project" asp-action="Delete" asp-route-id="@project.Id" method="post" class="d-inline">
-                                <button type="submit" class="btn btn-outline-danger btn-sm">
-                                    <i class="bi bi-trash"></i> Delete
-                                </button>
-                            </form>
+                            <a asp-controller="Project" asp-action="Delete" asp-route-id="@project.Id" class="btn btn-outline-danger btn-sm">
+                                <i class="bi bi-trash"></i> Delete
+                            </a>
                         </div>
                     </div>
                 </div>

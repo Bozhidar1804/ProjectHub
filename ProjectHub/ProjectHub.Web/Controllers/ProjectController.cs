@@ -71,5 +71,32 @@ namespace ProjectHub.Web.Controllers
 
             return RedirectToAction(nameof(Index));
         }
+
+        [HttpGet]
+		public async Task<IActionResult> Delete(string Id)
+		{
+			ProjectDeleteViewModel projectModel = await this.projectService.GetProjectByIdAsync(Id);
+
+			if (projectModel == null || projectModel.IsDeleted)
+			{
+				return NotFound();
+			}
+
+			return View(projectModel);
+		}
+
+        [HttpPost]
+        public async Task<IActionResult> DeleteConfirmed(string Id)
+        {
+            bool result = await this.projectService.SoftDeleteProjectAsync(Id);
+
+            if (!result)
+            {
+                return BadRequest("Unable to delete the project. Please try again.");
+            }
+
+            return RedirectToAction(nameof(MyProjects));
+        }
+
     }
 }

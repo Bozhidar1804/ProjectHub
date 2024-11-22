@@ -1,4 +1,5 @@
-﻿using ProjectHub.Data.Models.Enums;
+﻿using ProjectHub.Data.Models;
+using ProjectHub.Data.Models.Enums;
 
 namespace ProjectHub.Web.ViewModels.Project
 {
@@ -13,5 +14,6 @@ namespace ProjectHub.Web.ViewModels.Project
         public ProjectStatus Status { get; set; }
         public bool IsCompleted { get; set; }
         public bool IsDeleted { get; set; }
+        public ICollection<ApplicationUser> TeamMembers { get; set; } = new List<ApplicationUser>();
     }
 }

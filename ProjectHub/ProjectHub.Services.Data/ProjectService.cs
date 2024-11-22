@@ -32,7 +32,8 @@ namespace ProjectHub.Services.Data
                     Description = p.Description,
                     StartDate = p.StartDate.ToString(DateFormat),
                     EndDate = p.EndDate.ToString(DateFormat),
-                    Status = p.Status
+                    Status = p.Status,
+                    TeamMembers = p.TeamMembers
                 })
                 .ToListAsync();
 
@@ -52,7 +53,8 @@ namespace ProjectHub.Services.Data
                     Description = p.Description,
                     StartDate = p.StartDate.ToString(DateFormat),
                     EndDate = p.EndDate.ToString(DateFormat),
-                    Status = p.Status
+                    Status = p.Status,
+                    TeamMembers = p.TeamMembers
                 })
                 .ToListAsync();
 
@@ -80,7 +82,13 @@ namespace ProjectHub.Services.Data
                 return false;
             }
 
-            Project projectToAdd = new Project()
+			ApplicationUser creatorUser = await this.dbContext.Users.FindAsync(userGuid);
+			if (creatorUser == null)
+			{
+				return false;
+			}
+
+			Project projectToAdd = new Project()
             {
                 Name = model.Name,
                 Description = model.Description,
@@ -90,7 +98,59 @@ namespace ProjectHub.Services.Data
                 Status = 0
             };
 
+            projectToAdd.TeamMembers.Add(creatorUser);
+
             await this.dbContext.AddAsync(projectToAdd);
+            await this.dbContext.SaveChangesAsync();
+
+            return true;
+        }
+
+		public async Task<ProjectDeleteViewModel> GetProjectByIdAsync(string projectId)
+		{
+            Guid projectGuid = Guid.Empty;
+            bool isProjectGuidValid = IsGuidValid(projectId, ref projectGuid);
+
+			Project project = await this.dbContext.Projects
+                .FirstOrDefaultAsync(p => p.Id == projectGuid && !p.IsDeleted);
+
+            if (project == null)
+            {
+				throw new KeyNotFoundException($"Project with ID {projectId} not found.");
+			}
+
+            ProjectDeleteViewModel projectModel = new ProjectDeleteViewModel()
+            {
+                Id = project.Id.ToString(),
+                Name = project.Name,
+                Description = project.Description,
+                EndDate = project.EndDate.ToString(DateFormat),
+                Status = project.Status,
+                IsDeleted = project.IsDeleted
+            };
+
+            return projectModel;
+		}
+
+        public async Task<bool> SoftDeleteProjectAsync(string projectId)
+        {
+            Guid projectGuid = Guid.Empty;
+            bool isProjectGuidValid = IsGuidValid(projectId, ref projectGuid);
+
+            if (isProjectGuidValid == false)
+            {
+                return false;
+            }
+
+            Project projectToDelete = await this.dbContext.Projects
+                .FirstOrDefaultAsync(p => p.Id == projectGuid && !p.IsDeleted);
+
+            if (projectToDelete == null)
+            {
+                return false;
+            }
+
+            projectToDelete.IsDeleted = true;
             await this.dbContext.SaveChangesAsync();
 
             return true;
