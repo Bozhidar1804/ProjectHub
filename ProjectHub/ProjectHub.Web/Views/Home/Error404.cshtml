@@ -1,0 +1,17 @@
+﻿<!-- Displayed when the requested page or resource can't' be found -->
+
+@{
+    ViewData["Title"] = "Page Not Found";
+}
+
+<div class="container text-center my-5">
+    <h1 class="display-1 text-danger">404</h1>
+    <h2 class="text-muted">Oops! Page Not Found</h2>
+    <p class="lead">The page you're looking for doesn't exist or has been moved.</p>
+    <div class="mt-4">
+        <a asp-controller="Home" asp-action="Index" class="btn btn-primary btn-lg">
+            <i class="bi bi-house-door-fill"></i> Back to Home
+        </a>
+    </div>
+    <img src="/img/error-404.png" alt="404 Error" class="img-fluid mt-4" style="max-width: 500px;">
+</div>

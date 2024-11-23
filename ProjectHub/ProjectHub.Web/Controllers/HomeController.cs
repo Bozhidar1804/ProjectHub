@@ -31,10 +31,23 @@ namespace ProjectHub.Web.Controllers
 			return View();
 		}
 
-		[ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-		public IActionResult Error()
-		{
-			return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-		}
-	}
+        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+        public IActionResult Error(int statusCode)
+        {
+            if (statusCode == 404 || statusCode == 400)
+            {
+                return this.View("Error404");
+            }
+            else if (statusCode == 401)
+            {
+                return View("Unauthorized");
+            }
+            else if (statusCode == 500)
+            {
+                return View("Error500");
+            }
+
+            return View("Error");
+        }
+    }
 }

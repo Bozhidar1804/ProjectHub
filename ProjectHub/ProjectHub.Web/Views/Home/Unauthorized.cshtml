@@ -1,0 +1,18 @@
+﻿<!-- Displayed when a user attempts to access a resource without the necessary permissions -->
+@{
+    ViewData["Title"] = "Unauthorized Access";
+}
+<div class="container text-center my-5">
+    <h1 class="display-1 text-warning">401</h1>
+    <h2 class="text-muted">Unauthorized</h2>
+    <p class="lead">You do not have permission to access this page.</p>
+    <div class="mt-4">
+        <a asp-controller="User" asp-action="Login" class="btn btn-primary btn-lg">
+            <i class="bi bi-box-arrow-in-right"></i> Login
+        </a>
+        <a asp-controller="Home" asp-action="Index" class="btn btn-primary btn-lg">
+            <i class="bi bi-house-door-fill"></i> Back to Home
+        </a>
+    </div>
+    <img src="/img/unauthorized.jpg" alt="Unauthorized Access" class="img-fluid mt-4" style="max-width: 500px;">
+</div>
