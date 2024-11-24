@@ -25,7 +25,12 @@ namespace ProjectHub.Web.Infrastructure.Extensions
                 }
 
                 IdentityRole<Guid> role = new IdentityRole<Guid>(AdminRoleName);
-                await roleManager.CreateAsync(role);
+                IdentityResult result = await roleManager.CreateAsync(role);
+
+                if (!result.Succeeded)
+                {
+                    throw new InvalidOperationException($"Error occurred while creating the {AdminRoleName} role!");
+                }
 
                 ApplicationUser adminUser = await userManager.FindByEmailAsync(email);
 
