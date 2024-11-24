@@ -6,6 +6,7 @@ using ProjectHub.Services.Data.Interfaces;
 using ProjectHub.Data.Models;
 using ProjectHub.Web.ViewModels.Candidature;
 using ProjectHub.Web.Infrastructure.Extensions;
+using static ProjectHub.Common.GeneralApplicationConstants;
 
 namespace ProjectHub.Web.Controllers
 {
@@ -62,5 +63,42 @@ namespace ProjectHub.Web.Controllers
 
             return RedirectToAction(nameof(Index));
         }
+
+        [HttpGet]
+        [Authorize(Roles = ModeratorRoleName)]
+        public async Task<IActionResult> ReviewAll()
+        {
+            string moderatorId = this.User.GetUserId();
+
+            if (string.IsNullOrWhiteSpace(moderatorId))
+            {
+                return Unauthorized();
+            }
+
+            ICollection<Project> moderatorProjects = await this.candidatureService
+                .GetAllModeratorProjectsByIdAsync(moderatorId);
+
+            ICollection<Candidature> selectedCandidatures = await this.candidatureService
+                .GetCandidaturesForModeratorProjectsAsync(moderatorProjects);
+
+            List<CandidaturesGroupedByProjectViewModel> groupedCandidatures = selectedCandidatures
+                .GroupBy(c => c.ProjectId)
+                .Select(group => new CandidaturesGroupedByProjectViewModel
+                {
+                    ProjectId = group.Key,
+                    ProjectName = moderatorProjects.First(p => p.Id == group.Key).Name,
+                    Candidatures = group.Select(c => new CandidatureToReviewViewModel
+                    {
+                        Id = c.Id,
+                        Content = c.Content,
+                        ApplicationDate = c.ApplicationDate,
+                        ApplicantName = c.Applicant.FullName
+                    }).ToList()
+                })
+                .ToList();
+
+            return View(groupedCandidatures);
+        }
+
     }
 }

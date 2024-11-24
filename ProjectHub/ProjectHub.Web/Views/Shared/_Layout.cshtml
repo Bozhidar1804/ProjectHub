@@ -1,5 +1,6 @@
 ﻿@using Microsoft.AspNetCore.Identity
 @using ProjectHub.Data.Models;
+@using static ProjectHub.Common.GeneralApplicationConstants;
 @inject SignInManager<ApplicationUser> SignInManager
 
 <!DOCTYPE html>
@@ -31,7 +32,7 @@
                             </a>
                         </li>
 
-                        @if (User.IsInRole("Moderator"))
+                        @if (User.IsInRole(ModeratorRoleName))
                         {
                             <li class="nav-item dropdown">
                                 <a class="btn btn-outline-primary nav-link dropdown-toggle px-2 mx-1" href="#" id="projectsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -61,9 +62,32 @@
                         }
 
                         <li class="nav-item">
-                            <a class="btn btn-outline-primary nav-link px-2 mx-1" asp-area="" asp-controller="Candidature" asp-action="Index">
-                                <i class="bi bi-card-list"></i> My Candidatures
-                            </a>
+                            @if (User.IsInRole(ModeratorRoleName))
+                            {
+                                <div class="dropdown">
+                                    <a class="btn btn-outline-primary nav-link dropdown-toggle px-2 mx-1" href="#" id="candidaturesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        <i class="bi bi-card-list"></i> Candidatures
+                                    </a>
+                                    <ul class="dropdown-menu" aria-labelledby="candidaturesDropdown">
+                                        <li>
+                                            <a class="dropdown-item" asp-area="" asp-controller="Candidature" asp-action="Index">
+                                                <i class="bi bi-person"></i> Mine
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item" asp-area="" asp-controller="Candidature" asp-action="ReviewAll">
+                                                <i class="bi bi-people"></i> To Review
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            }
+                            else
+                            {
+                                <a class="btn btn-outline-primary nav-link px-2 mx-1" asp-area="" asp-controller="Candidature" asp-action="Index">
+                                    <i class="bi bi-card-list"></i> Candidatures
+                                </a>
+                            }
                         </li>
                     </ul>
                     <partial name="_LoginPartial" />

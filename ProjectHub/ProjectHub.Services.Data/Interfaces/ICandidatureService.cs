@@ -1,9 +1,5 @@
 ﻿using ProjectHub.Web.ViewModels.Candidature;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using ProjectHub.Data.Models;
 
 namespace ProjectHub.Services.Data.Interfaces
 {
@@ -11,5 +7,8 @@ namespace ProjectHub.Services.Data.Interfaces
     {
         Task<bool> CreateCandidatureAsync(CandidatureCreateFormModel model, string userId);
         Task<IEnumerable<CandidatureIndexViewModel>> GetAllCandidaturesAsync(string userId);
+        Task<ICollection<Project>> GetAllModeratorProjectsByIdAsync(string moderatorId);
+
+        Task<ICollection<Candidature>> GetCandidaturesForModeratorProjectsAsync(ICollection<Project> moderatorProjects);
     }
 }

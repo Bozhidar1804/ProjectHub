@@ -1,11 +1,18 @@
 ﻿@using static ProjectHub.Web.Helpers.EnumExtensions;
+@using ProjectHub.Data.Models.Enums;
 @model IEnumerable<ProjectIndexViewModel>
 
 @{
     ViewData["Title"] = "Projects";
     string currentUserId = this.User.GetUserId()!;
-    var userProjects = Model.Where(p => p.TeamMembers.Any(m => m.Id.ToString().ToLower() == currentUserId)).ToList();
-    var otherProjects = Model.Where(p => !p.TeamMembers.Any(m => m.Id.ToString().ToLower() == currentUserId)).ToList();
+    List<ProjectIndexViewModel> userProjects = Model.Where(p => p.TeamMembers.Any(m => m.Id.ToString().ToLower() == currentUserId)).ToList();
+    List<ProjectIndexViewModel> otherProjects = Model.Where(p => !p.TeamMembers.Any(m => m.Id.ToString().ToLower() == currentUserId)).ToList();
+
+    HashSet<string> appliedProjects = Model
+    .Where(p => p.Candidatures
+        .Any(c => c.ApplicantId.ToString().ToLower() == currentUserId && c.Status == CandidatureStatus.Pending))
+    .Select(p => p.Id.ToLower())
+    .ToHashSet();
 }
 
 <div class="container my-5">
@@ -100,9 +107,18 @@
                                         <a asp-action="Details" asp-controller="Project" asp-route-id="@project.Id" class="btn btn-outline-primary btn-sm">
                                             <i class="bi bi-info-circle"></i> View Details
                                         </a>
-                                        <a asp-action="Create" asp-controller="Candidature" asp-route-projectId="@project.Id" class="btn btn-success btn-sm ms-2">
-                                            <i class="bi bi-check-circle"></i> Apply
-                                        </a>
+                                        @if (appliedProjects.Contains(project.Id.ToLower()))
+                                        {
+                                            <button class="btn btn-secondary btn-sm" disabled>
+                                                Already Applied
+                                            </button>
+                                        }
+                                        else
+                                        {
+                                            <a asp-action="Create" asp-controller="Candidature" asp-route-projectId="@project.Id" class="btn btn-success btn-sm">
+                                                Apply
+                                            </a>
+                                        }
                                     </div>
                                 </div>
                             </div>

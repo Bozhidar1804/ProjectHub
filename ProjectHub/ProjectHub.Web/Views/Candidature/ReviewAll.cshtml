@@ -1,0 +1,55 @@
+﻿@model List<CandidaturesGroupedByProjectViewModel>
+
+<div class="container mt-5">
+    <h1 class="mb-4">Candidatures to Review</h1>
+    @if (!Model.Any())
+    {
+        <div class="alert alert-info text-center" role="alert">
+            No pending candidatures to review.
+        </div>
+    }
+    else
+    {
+        @foreach (var group in Model)
+        {
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h4>@group.ProjectName</h4>
+                </div>
+                <div class="card-body">
+                    @if (!group.Candidatures.Any())
+                    {
+                        <p class="text-muted">No pending candidatures for this project.</p>
+                    }
+                    else
+                    {
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Applicant</th>
+                                    <th>Content</th>
+                                    <th>Application Date</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var candidature in group.Candidatures)
+                                {
+                                    <tr>
+                                        <td>@candidature.ApplicantName</td>
+                                        <td>@candidature.Content</td>
+                                        <td>@candidature.ApplicationDate.ToString("g")</td>
+                                        <td>
+                                            <a asp-action="Approve" asp-route-id="@candidature.Id" class="btn btn-success btn-sm">Approve</a>
+                                            <a asp-action="Deny" asp-route-id="@candidature.Id" class="btn btn-danger btn-sm">Deny</a>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    }
+                </div>
+            </div>
+        }
+    }
+</div>

@@ -15,5 +15,6 @@ namespace ProjectHub.Web.ViewModels.Project
         public bool IsCompleted { get; set; }
         public bool IsDeleted { get; set; }
         public ICollection<ApplicationUser> TeamMembers { get; set; } = new List<ApplicationUser>();
+        public ICollection<Data.Models.Candidature> Candidatures { get; set; } = new List<Data.Models.Candidature>();
     }
 }

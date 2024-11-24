@@ -2,6 +2,7 @@
 
 using ProjectHub.Data;
 using ProjectHub.Data.Models;
+using ProjectHub.Data.Models.Enums;
 using ProjectHub.Services.Data.Interfaces;
 using ProjectHub.Web.ViewModels.Candidature;
 using static ProjectHub.Common.GeneralApplicationConstants;
@@ -49,10 +50,18 @@ namespace ProjectHub.Services.Data
 
             string content = $"{model.Answer1}\n\n{model.Answer2}\n\n{model.Answer3}\n\n{model.Answer4}";
 
+            ApplicationUser applicant = await this.dbContext.Users.FirstOrDefaultAsync(u => u.Id == userGuid);
+
+            if (applicant == null)
+            {
+                return false;
+            }
+
             Candidature candidatureToCreate = new Candidature()
             {
                 ProjectId = model.ProjectId,
                 ApplicantId = userGuid,
+                Applicant = applicant,
                 Content = content,
                 Status = 0
             };
@@ -61,6 +70,28 @@ namespace ProjectHub.Services.Data
             await this.dbContext.SaveChangesAsync();
 
             return true;
+        }
+
+        public async Task<ICollection<Project>> GetAllModeratorProjectsByIdAsync(string moderatorId)
+        {
+            List<Project> moderatorProjects = await this.dbContext
+                .Projects
+                .Where(p => !p.IsDeleted && p.CreatorId.ToString() == moderatorId)
+                .ToListAsync();
+
+            return moderatorProjects;
+        }
+
+        public async Task<ICollection<Candidature>> GetCandidaturesForModeratorProjectsAsync(ICollection<Project> moderatorProjects)
+        {
+            ICollection<Candidature> candidaturesToReturn = await this.dbContext.Candidatures
+                .Where(c => moderatorProjects.Select(p => p.Id).Contains(c.ProjectId)
+                            && c.Status == CandidatureStatus.Pending
+                            && !c.IsDeleted)
+                .Include(c => c.Applicant)
+                .ToListAsync();
+
+            return candidaturesToReturn;
         }
     }
 }

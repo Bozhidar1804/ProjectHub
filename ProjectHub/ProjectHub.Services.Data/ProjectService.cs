@@ -33,7 +33,8 @@ namespace ProjectHub.Services.Data
                     StartDate = p.StartDate.ToString(DateFormat),
                     EndDate = p.EndDate.ToString(DateFormat),
                     Status = p.Status,
-                    TeamMembers = p.TeamMembers
+                    TeamMembers = p.TeamMembers,
+                    Candidatures = p.Candidatures
                 })
                 .ToListAsync();
 
