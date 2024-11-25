@@ -12,5 +12,10 @@ namespace ProjectHub.Common
         {
             public const string ErrorMessage = "ErrorMessage";
         }
+
+        public static class Candidature
+        {
+            public const string AnswerRequiredMessage = "Answer cannot be empty.";
+        }
     }
 }

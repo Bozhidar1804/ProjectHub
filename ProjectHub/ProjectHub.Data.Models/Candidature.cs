@@ -12,7 +12,7 @@ namespace ProjectHub.Data.Models
         public Guid Id { get; set; } = Guid.NewGuid();
 
         [Required]
-        [StringLength(CandidatureContentMaxLength, ErrorMessage = "{0} cannot exceed {1} characters.")]
+        [Column(TypeName = "nvarchar(max)")]
         public string Content { get; set; } = null!;
 
         [Required]

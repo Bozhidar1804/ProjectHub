@@ -2,7 +2,6 @@
 using Microsoft.EntityFrameworkCore;
 using ProjectHub.Data.Models.Enums;
 using ProjectHub.Data.Models;
-using static ProjectHub.Common.EntityValidationConstants.Candidature;
 
 namespace ProjectHub.Data.Configuration
 {
@@ -13,8 +12,9 @@ namespace ProjectHub.Data.Configuration
             builder
                 .HasKey(c => c.Id);
 
-            builder.Property(c => c.Content)
-                .HasMaxLength(CandidatureContentMaxLength)
+            builder
+                .Property(c => c.Content)
+                .HasColumnType("nvarchar(max)")
                 .IsRequired();
 
             builder

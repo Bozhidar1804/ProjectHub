@@ -7,6 +7,7 @@ using ProjectHub.Data.Models;
 using ProjectHub.Web.ViewModels.Candidature;
 using ProjectHub.Web.Infrastructure.Extensions;
 using static ProjectHub.Common.GeneralApplicationConstants;
+using Newtonsoft.Json;
 
 namespace ProjectHub.Web.Controllers
 {
@@ -90,14 +91,44 @@ namespace ProjectHub.Web.Controllers
                     Candidatures = group.Select(c => new CandidatureToReviewViewModel
                     {
                         Id = c.Id,
-                        Content = c.Content,
                         ApplicationDate = c.ApplicationDate,
-                        ApplicantName = c.Applicant.FullName
+                        ApplicantName = c.Applicant.FullName,
+                        ApplicantEmail = c.Applicant.Email!
                     }).ToList()
                 })
                 .ToList();
 
             return View(groupedCandidatures);
+        }
+
+        [HttpGet]
+        [Authorize(Roles = ModeratorRoleName)]
+        public async Task<IActionResult> Decide(string candidatureId)
+        {
+            if (string.IsNullOrWhiteSpace(candidatureId))
+            {
+                return NotFound("Invalid candidature ID. Please try again.");
+            }
+
+            Candidature candidature = await this.candidatureService.GetCandidatureByIdAsync(candidatureId);
+
+            if (candidature == null || candidature.IsDeleted)
+            {
+                return NotFound("Candidature not found or has been deleted.");
+            }
+
+            List<CandidatureContentModel> deserializedContent = JsonConvert.DeserializeObject<List<CandidatureContentModel>>(candidature.Content)!;
+
+            CandidatureDecideViewModel candidatureDecideViewModel = new CandidatureDecideViewModel()
+            {
+                CandidatureId = candidature.Id.ToString(),
+                ApplicantName = candidature.Applicant.FullName,
+                ApplicationDate = candidature.ApplicationDate.ToString(DateFormat),
+                Content = deserializedContent!,
+                ProjectName = candidature.Project.Name ?? "Unknown Project"
+            };
+
+            return View(candidatureDecideViewModel);
         }
 
     }

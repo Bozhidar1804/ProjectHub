@@ -9,8 +9,8 @@ namespace ProjectHub.Web.ViewModels.Candidature
     public class CandidatureToReviewViewModel
     {
         public Guid Id { get; set; }
-        public string Content { get; set; } = null!;
         public string ApplicantName { get; set; } = null!;
+        public string ApplicantEmail { get; set; } = null!;
         public DateTime ApplicationDate { get; set; }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
 
 using ProjectHub.Data;
 using ProjectHub.Data.Models;
@@ -28,7 +29,7 @@ namespace ProjectHub.Services.Data
                 .Select(c => new CandidatureIndexViewModel()
                 {
                     CandidatureId = c.Id.ToString(),
-                    Content = c.Content,
+                    AnswersWordCount = GetAnswerWordCount(c.Content),
                     DateApplied = c.ApplicationDate.ToString(DateFormat),
                     Status = c.Status,
                     ProjectName = c.Project.Name
@@ -48,7 +49,14 @@ namespace ProjectHub.Services.Data
                 return false;
             }
 
-            string content = $"{model.Answer1}\n\n{model.Answer2}\n\n{model.Answer3}\n\n{model.Answer4}";
+            List<CandidatureContentModel> content = new List<CandidatureContentModel>
+            {
+                new CandidatureContentModel { Question = Question1, Answer = model.Answer1 },
+                new CandidatureContentModel { Question = Question2, Answer = model.Answer2 },
+                new CandidatureContentModel { Question = Question3, Answer = model.Answer3 },
+                new CandidatureContentModel { Question = Question4, Answer = model.Answer4 },
+            };
+            string serializedContent = JsonConvert.SerializeObject(content);
 
             ApplicationUser applicant = await this.dbContext.Users.FirstOrDefaultAsync(u => u.Id == userGuid);
 
@@ -62,7 +70,7 @@ namespace ProjectHub.Services.Data
                 ProjectId = model.ProjectId,
                 ApplicantId = userGuid,
                 Applicant = applicant,
-                Content = content,
+                Content = serializedContent,
                 Status = 0
             };
 
@@ -92,6 +100,30 @@ namespace ProjectHub.Services.Data
                 .ToListAsync();
 
             return candidaturesToReturn;
+        }
+
+        public async Task<Candidature> GetCandidatureByIdAsync(string candidatureId)
+        {
+            Guid candidatureGuid = Guid.Empty;
+            bool isCandidatureGuidValid = IsGuidValid(candidatureId, ref candidatureGuid);
+
+            if (!isCandidatureGuidValid)
+            {
+                return null;
+            }
+
+            Candidature candidatureToReturn = await this.dbContext.Candidatures
+                .Include(c => c.Applicant)
+                .Include(c => c.Project)
+                .FirstOrDefaultAsync(c => c.Id == candidatureGuid && !c.IsDeleted);
+
+            return candidatureToReturn;
+        }
+
+        private static int GetAnswerWordCount(string content)
+        {
+            var answers = JsonConvert.DeserializeObject<List<CandidatureContentModel>>(content);
+            return answers?.Sum(a => a.Answer.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries).Length) ?? 0;
         }
     }
 }

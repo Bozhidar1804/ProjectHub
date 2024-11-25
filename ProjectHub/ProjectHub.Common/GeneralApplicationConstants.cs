@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ProjectHub.Common
 {
-    public class GeneralApplicationConstants
+    public static class GeneralApplicationConstants
     {
         public const string AdminRoleName = "Administrator";
         public const string AdminEmail = "admin@gmail.com";
@@ -15,5 +15,11 @@ namespace ProjectHub.Common
         public const string UserRoleName = "User";
 
         public const string DateFormat = "dd/MM/yyyy";
+
+        // Candidature Questions:
+        public const string Question1 = "1. What interests you about this project?";
+        public const string Question2 = "2. What skills can you contribute?";
+        public const string Question3 = "3. Why should we choose you?";
+        public const string Question4 = "4. What are your goals for joining this project?";
     }
 }

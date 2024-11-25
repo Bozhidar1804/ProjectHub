@@ -63,7 +63,7 @@
 
 		public static class Candidature
 		{
-			public const int CandidatureContentMaxLength = 2000;
+			// public const int CandidatureContentMaxLength = 2000; NOT USED CURRENTLY
 		}
 	}
 }

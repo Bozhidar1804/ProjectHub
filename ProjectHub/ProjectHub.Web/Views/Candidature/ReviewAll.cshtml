@@ -1,7 +1,7 @@
 ﻿@model List<CandidaturesGroupedByProjectViewModel>
 
 <div class="container mt-5">
-    <h1 class="mb-4">Candidatures to Review</h1>
+    <h1 class="mb-4 text-center">Candidatures to Review</h1>
     @if (!Model.Any())
     {
         <div class="alert alert-info text-center" role="alert">
@@ -12,22 +12,22 @@
     {
         @foreach (var group in Model)
         {
-            <div class="card mb-4">
-                <div class="card-header">
-                    <h4>@group.ProjectName</h4>
+            <div class="card shadow-sm mb-4">
+                <div class="card-header bg-primary text-white">
+                    <h4 class="mb-0">@group.ProjectName</h4>
                 </div>
                 <div class="card-body">
                     @if (!group.Candidatures.Any())
                     {
-                        <p class="text-muted">No pending candidatures for this project.</p>
+                        <p class="text-muted text-center">No pending candidatures for this project.</p>
                     }
                     else
                     {
-                        <table class="table table-striped">
-                            <thead>
+                        <table class="table table-hover">
+                            <thead class="table-light">
                                 <tr>
-                                    <th>Applicant</th>
-                                    <th>Content</th>
+                                    <th>Applicant Name</th>
+                                    <th>Applicant Email</th>
                                     <th>Application Date</th>
                                     <th>Actions</th>
                                 </tr>
@@ -37,11 +37,12 @@
                                 {
                                     <tr>
                                         <td>@candidature.ApplicantName</td>
-                                        <td>@candidature.Content</td>
+                                        <td>@candidature.ApplicantEmail</td>
                                         <td>@candidature.ApplicationDate.ToString("g")</td>
                                         <td>
-                                            <a asp-action="Approve" asp-route-id="@candidature.Id" class="btn btn-success btn-sm">Approve</a>
-                                            <a asp-action="Deny" asp-route-id="@candidature.Id" class="btn btn-danger btn-sm">Deny</a>
+                                            <a asp-action="Decide" asp-controller="Candidature" asp-route-candidatureId="@candidature.Id" class="btn btn-outline-primary btn-sm">
+                                                <i class="bi bi-eye"></i> Decide
+                                            </a>
                                         </td>
                                     </tr>
                                 }

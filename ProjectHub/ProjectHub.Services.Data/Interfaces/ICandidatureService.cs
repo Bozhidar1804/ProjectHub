@@ -10,5 +10,6 @@ namespace ProjectHub.Services.Data.Interfaces
         Task<ICollection<Project>> GetAllModeratorProjectsByIdAsync(string moderatorId);
 
         Task<ICollection<Candidature>> GetCandidaturesForModeratorProjectsAsync(ICollection<Project> moderatorProjects);
+        Task<Candidature> GetCandidatureByIdAsync(string candidatureId);
     }
 }
