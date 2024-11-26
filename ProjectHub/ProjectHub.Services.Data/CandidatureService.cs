@@ -117,6 +117,11 @@ namespace ProjectHub.Services.Data
                 .Include(c => c.Project)
                 .FirstOrDefaultAsync(c => c.Id == candidatureGuid && !c.IsDeleted);
 
+            if (candidatureToReturn == null)
+            {
+                throw new KeyNotFoundException($"Candidature with ID {candidatureId} not found.");
+            }
+
             return candidatureToReturn;
         }
 
@@ -124,6 +129,30 @@ namespace ProjectHub.Services.Data
         {
             var answers = JsonConvert.DeserializeObject<List<CandidatureContentModel>>(content);
             return answers?.Sum(a => a.Answer.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries).Length) ?? 0;
+        }
+
+        public async System.Threading.Tasks.Task UpdateCandidatureAsync(Candidature candidature)
+        {
+            if (candidature == null)
+            {
+                throw new ArgumentNullException(nameof(candidature), "Candidature cannot be null.");
+            }
+
+            Candidature candidatureToUpdate = await this.dbContext.Candidatures
+                .FirstOrDefaultAsync(c => c.Id == candidature.Id);
+
+            if (candidatureToUpdate == null)
+            {
+                throw new InvalidOperationException($"Candidature with ID {candidature.Id} not found.");
+            }
+
+            candidatureToUpdate.Content = candidature.Content;
+            candidatureToUpdate.ApplicationDate = candidature.ApplicationDate;
+            candidatureToUpdate.Status = candidature.Status;
+            candidatureToUpdate.ProjectId = candidature.ProjectId;
+            candidatureToUpdate.ApplicantId = candidature.ApplicantId;
+
+            await this.dbContext.SaveChangesAsync();
         }
     }
 }

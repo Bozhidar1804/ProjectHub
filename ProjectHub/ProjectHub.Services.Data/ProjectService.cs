@@ -107,7 +107,7 @@ namespace ProjectHub.Services.Data
             return true;
         }
 
-		public async Task<ProjectDeleteViewModel> GetProjectByIdAsync(string projectId)
+		public async Task<Project> GetProjectByIdAsync(string projectId)
 		{
             Guid projectGuid = Guid.Empty;
             bool isProjectGuidValid = IsGuidValid(projectId, ref projectGuid);
@@ -120,17 +120,7 @@ namespace ProjectHub.Services.Data
 				throw new KeyNotFoundException($"Project with ID {projectId} not found.");
 			}
 
-            ProjectDeleteViewModel projectModel = new ProjectDeleteViewModel()
-            {
-                Id = project.Id.ToString(),
-                Name = project.Name,
-                Description = project.Description,
-                EndDate = project.EndDate.ToString(DateFormat),
-                Status = project.Status,
-                IsDeleted = project.IsDeleted
-            };
-
-            return projectModel;
+            return project;
 		}
 
         public async Task<bool> SoftDeleteProjectAsync(string projectId)
@@ -155,6 +145,33 @@ namespace ProjectHub.Services.Data
             await this.dbContext.SaveChangesAsync();
 
             return true;
+        }
+
+        public async System.Threading.Tasks.Task UpdateProjectAsync(Project project)
+        {
+            if (project == null)
+            {
+                throw new ArgumentNullException(nameof(project), "Project cannot be null.");
+            }
+
+            Project projectToUpdate = await this.dbContext.Projects
+                .Include(p => p.TeamMembers)
+                .FirstOrDefaultAsync(p => p.Id == project.Id);
+
+            if (projectToUpdate == null)
+            {
+                throw new InvalidOperationException($"Project with ID {project.Id} not found.");
+            }
+
+            projectToUpdate.Name = project.Name;
+            projectToUpdate.Description = project.Description;
+            projectToUpdate.StartDate = project.StartDate;
+            projectToUpdate.EndDate = project.EndDate;
+            projectToUpdate.Status = project.Status;
+            projectToUpdate.IsDeleted = project.IsDeleted;
+            projectToUpdate.TeamMembers = project.TeamMembers;
+
+            await this.dbContext.SaveChangesAsync();
         }
     }
 }

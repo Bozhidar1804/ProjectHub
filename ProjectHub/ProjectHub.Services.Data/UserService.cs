@@ -5,7 +5,7 @@ using ProjectHub.Services.Data.Interfaces;
 
 namespace ProjectHub.Services.Data
 {
-    public class UserService : IUserService
+    public class UserService : BaseService, IUserService
     {
         private readonly ProjectHubDbContext dbContext;
 
@@ -21,10 +21,22 @@ namespace ProjectHub.Services.Data
 
             if (user == null)
             {
-                return string.Empty;
+                return "User not found";
             }
 
             return user.FullName;
+        }
+
+        public async Task<ApplicationUser> GetUserByIdAsync(string userId)
+        {
+            Guid userGuid = Guid.Empty;
+            bool isUserGuidValid = IsGuidValid(userId, ref userGuid);
+
+            ApplicationUser user = await this.dbContext
+                .Users
+                .FirstOrDefaultAsync(u => u.Id == userGuid);
+
+            return user;
         }
     }
 }

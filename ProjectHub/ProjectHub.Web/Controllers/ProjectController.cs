@@ -75,9 +75,19 @@ namespace ProjectHub.Web.Controllers
         [HttpGet]
 		public async Task<IActionResult> Delete(string Id)
 		{
-			ProjectDeleteViewModel projectModel = await this.projectService.GetProjectByIdAsync(Id);
+			Project project = await this.projectService.GetProjectByIdAsync(Id);
 
-			if (projectModel == null || projectModel.IsDeleted)
+            ProjectDeleteViewModel projectModel = new ProjectDeleteViewModel()
+            {
+                Id = project.Id.ToString(),
+                Name = project.Name,
+                Description = project.Description,
+                EndDate = project.EndDate.ToString(DateFormat),
+                Status = project.Status,
+                IsDeleted = project.IsDeleted
+            };
+
+            if (projectModel == null || projectModel.IsDeleted)
 			{
 				return NotFound();
 			}

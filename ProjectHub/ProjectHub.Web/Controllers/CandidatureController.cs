@@ -8,6 +8,7 @@ using ProjectHub.Web.ViewModels.Candidature;
 using ProjectHub.Web.Infrastructure.Extensions;
 using static ProjectHub.Common.GeneralApplicationConstants;
 using Newtonsoft.Json;
+using ProjectHub.Data.Models.Enums;
 
 namespace ProjectHub.Web.Controllers
 {
@@ -16,12 +17,14 @@ namespace ProjectHub.Web.Controllers
     {
         private readonly IProjectService projectService;
         private readonly ICandidatureService candidatureService;
+        private readonly IUserService userService;
         private readonly UserManager<ApplicationUser> userManager;
 
-        public CandidatureController(IProjectService projectService, ICandidatureService candidatureService, UserManager<ApplicationUser> userManager)
+        public CandidatureController(IProjectService projectService, ICandidatureService candidatureService, UserManager<ApplicationUser> userManager, IUserService userService)
         {
             this.projectService = projectService;
             this.candidatureService = candidatureService;
+            this.userService = userService;
             this.userManager = userManager;
         }
 
@@ -129,6 +132,59 @@ namespace ProjectHub.Web.Controllers
             };
 
             return View(candidatureDecideViewModel);
+        }
+
+        [HttpPost]
+        [Authorize(Roles = ModeratorRoleName)]
+        public async Task<IActionResult> Approve(string candidatureId)
+        {
+            if (string.IsNullOrEmpty(candidatureId))
+            {
+                return BadRequest("Candidature ID cannot be null or empty.");
+            }
+
+            try
+            {
+                Candidature candidature = await this.candidatureService.GetCandidatureByIdAsync(candidatureId);
+                if (candidature == null)
+                {
+                    return NotFound("Candidature not found.");
+                }
+
+                string projectId = candidature.ProjectId.ToString();
+
+                Project project = await this.projectService.GetProjectByIdAsync(projectId);
+                if (project == null)
+                {
+                    return NotFound("Associated project not found.");
+                }
+
+                string applicantId = candidature.ApplicantId.ToString();
+                ApplicationUser applicant = await this.userService.GetUserByIdAsync(applicantId);
+                if (applicant == null)
+                {
+                    return NotFound("Applicant not found.");
+                }
+
+                if (project.TeamMembers.Any(m => m.Id == applicant.Id))
+                {
+                    TempData["Error"] = "The user is already a member of this project.";
+                    return RedirectToAction("Decide", new { candidatureId });
+                }
+
+                project.TeamMembers.Add(applicant);
+                candidature.Status = CandidatureStatus.Approved;
+
+                await this.projectService.UpdateProjectAsync(project);
+                await this.candidatureService.UpdateCandidatureAsync(candidature);
+
+                TempData["Success"] = "Candidature approved successfully, and the applicant has been added to the project.";
+                return RedirectToAction(nameof(ReviewAll));
+            } catch (Exception ex)
+            {
+                TempData["Error"] = "An unexpected error occurred while processing the request.";
+                return RedirectToAction(nameof(Decide), new { candidatureId });
+            }
         }
 
     }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ProjectHub.Data.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,5 +10,6 @@ namespace ProjectHub.Services.Data.Interfaces
     public interface IUserService
     {
         Task<string> GetFullNameByEmailAsync(string email);
+        Task<ApplicationUser> GetUserByIdAsync(string userId);
     }
 }
