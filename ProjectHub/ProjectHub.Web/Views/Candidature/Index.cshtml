@@ -3,53 +3,125 @@
 
 @{
     ViewData["Title"] = "My Candidatures";
+    List<CandidatureIndexViewModel> pendingCandidatures = Model.Where(c => c.Status == CandidatureStatus.Pending).ToList();
+    List<CandidatureIndexViewModel> approvedCandidatures = Model.Where(c => c.Status == CandidatureStatus.Approved).ToList();
+    List<CandidatureIndexViewModel> deniedCandidatures = Model.Where(c => c.Status == CandidatureStatus.Denied).ToList();
 }
 
 <div class="container mt-4">
     <h2 class="text-center mb-4">My Candidatures</h2>
 
-    @if (Model.Any())
+    @if (!Model.Any())
     {
-        <div class="row">
-            @foreach (var candidature in Model)
-            {
-                <div class="col-md-4 mb-4">
-                    <div class="card shadow-sm">
-                        <div class="card-body">
-                            <h5 class="card-title">@candidature.ProjectName</h5>
-                            <p class="card-text text-muted">
-                                <strong>Status:</strong>
-                                <span class="badge
-                                    @(candidature.Status == CandidatureStatus.Pending ? "bg-warning" :
-                                      candidature.Status == CandidatureStatus.Approved ? "bg-success" :
-                                      "bg-danger")">
-                                    @(candidature.Status == CandidatureStatus.Pending ? "Pending" :
-                                      candidature.Status == CandidatureStatus.Approved ? "Approved" :
-                                     "Denied")
-                                </span>
-                            </p>
-                            <p>
-                                <strong>Application Date:</strong> @candidature.DateApplied
-                            </p>
-                            <p>
-                                <strong>Content size:</strong>
-                                @candidature.AnswersWordCount words
-                            </p>
-
-                            <!-- Add actions like "View Details" -->
-                            <a asp-action="Details" asp-controller="Candidature" asp-route-id="@candidature.CandidatureId" class="btn btn-info btn-sm">
-                                View Details
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            }
+        <div class="alert alert-info text-center">
+            You haven't applied to any projects yet.
         </div>
     }
     else
     {
-        <div class="alert alert-info text-center">
-            You haven't applied to any projects yet.
+        <!-- Pending Candidatures -->
+        <div class="mb-5">
+            <h3 class="text-warning">Pending Candidatures</h3>
+            <div class="row">
+                @if (!pendingCandidatures.Any())
+                {
+                    <div class="col-12">
+                        <div class="alert alert-warning">No pending candidatures at the moment.</div>
+                    </div>
+                }
+                else
+                {
+                    @foreach (var candidature in pendingCandidatures)
+                    {
+                        <div class="col-md-4 mb-4">
+                            <div class="card border-warning shadow-sm">
+                                <div class="card-body">
+                                    <h5 class="card-title">@candidature.ProjectName</h5>
+                                    <p class="card-text">
+                                        <strong>Application Date:</strong> @candidature.DateApplied
+                                    </p>
+                                    <p>
+                                        <strong>Content size:</strong> @candidature.AnswersWordCount words
+                                    </p>
+                                    <a asp-action="Details" asp-controller="Candidature" asp-route-id="@candidature.CandidatureId" class="btn btn-warning btn-sm">
+                                        View Details
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                }
+            </div>
+        </div>
+
+        <!-- Approved Candidatures -->
+        <div class="mb-5">
+            <h3 class="text-success">Approved Candidatures</h3>
+            <div class="row">
+                @if (!approvedCandidatures.Any())
+                {
+                    <div class="col-12">
+                        <div class="alert alert-success">No approved candidatures yet.</div>
+                    </div>
+                }
+                else
+                {
+                    @foreach (var candidature in approvedCandidatures)
+                    {
+                        <div class="col-md-4 mb-4">
+                            <div class="card border-success shadow-sm">
+                                <div class="card-body">
+                                    <h5 class="card-title">@candidature.ProjectName</h5>
+                                    <p class="card-text">
+                                        <strong>Application Date:</strong> @candidature.DateApplied
+                                    </p>
+                                    <p>
+                                        <strong>Content size:</strong> @candidature.AnswersWordCount words
+                                    </p>
+                                    <a asp-action="Details" asp-controller="Candidature" asp-route-id="@candidature.CandidatureId" class="btn btn-success btn-sm">
+                                        View Details
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                }
+            </div>
+        </div>
+
+        <!-- Denied Candidatures -->
+        <div>
+            <h3 class="text-danger">Denied Candidatures</h3>
+            <div class="row">
+                @if (!deniedCandidatures.Any())
+                {
+                    <div class="col-12">
+                        <div class="alert alert-danger">No denied candidatures found.</div>
+                    </div>
+                }
+                else
+                {
+                    @foreach (var candidature in deniedCandidatures)
+                    {
+                        <div class="col-md-4 mb-4">
+                            <div class="card border-danger shadow-sm">
+                                <div class="card-body">
+                                    <h5 class="card-title">@candidature.ProjectName</h5>
+                                    <p class="card-text">
+                                        <strong>Application Date:</strong> @candidature.DateApplied
+                                    </p>
+                                    <p>
+                                        <strong>Content size:</strong> @candidature.AnswersWordCount words
+                                    </p>
+                                    <a asp-action="Details" asp-controller="Candidature" asp-route-id="@candidature.CandidatureId" class="btn btn-danger btn-sm">
+                                        View Details
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                }
+            </div>
         </div>
     }
 </div>

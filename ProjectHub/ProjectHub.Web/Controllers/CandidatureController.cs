@@ -9,6 +9,7 @@ using ProjectHub.Web.Infrastructure.Extensions;
 using static ProjectHub.Common.GeneralApplicationConstants;
 using Newtonsoft.Json;
 using ProjectHub.Data.Models.Enums;
+using ProjectHub.Services.Data;
 
 namespace ProjectHub.Web.Controllers
 {
@@ -178,7 +179,7 @@ namespace ProjectHub.Web.Controllers
                 await this.projectService.UpdateProjectAsync(project);
                 await this.candidatureService.UpdateCandidatureAsync(candidature);
 
-                TempData["Success"] = "Candidature approved successfully, and the applicant has been added to the project.";
+                TempData["SuccessMessage"] = "Candidature approved successfully, and the applicant has been added to the project.";
                 return RedirectToAction(nameof(ReviewAll));
             } catch (Exception ex)
             {
@@ -187,5 +188,38 @@ namespace ProjectHub.Web.Controllers
             }
         }
 
+        [HttpPost]
+        [Authorize(Roles = ModeratorRoleName)]
+        public async Task<IActionResult> Deny(string candidatureId)
+        {
+            if (string.IsNullOrEmpty(candidatureId))
+            {
+                return BadRequest("Candidature ID cannot be null or empty.");
+            }
+
+            try
+            {
+                Candidature candidature = await this.candidatureService.GetCandidatureByIdAsync(candidatureId);
+                if (candidature == null)
+                {
+                    return NotFound("Candidature not found.");
+                }
+
+                if (candidature.Status != CandidatureStatus.Pending)
+                {
+                    return BadRequest("Only pending candidatures can be denied.");
+                }
+
+                candidature.Status = CandidatureStatus.Denied;
+                await this.candidatureService.UpdateCandidatureAsync(candidature);
+
+                TempData["SuccessMessage"] = "Candidature has been denied successfully.";
+                return RedirectToAction(nameof(ReviewAll));
+            } catch (Exception ex)
+            {
+                TempData["ErrorMessage"] = "An error occurred while processing the request.";
+                return RedirectToAction(nameof(Decide), new { candidatureId });
+            }
+        }
     }
 }
