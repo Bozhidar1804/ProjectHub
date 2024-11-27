@@ -29,10 +29,14 @@ namespace ProjectHub.Data.Models
 		[ForeignKey(nameof(ProjectId))]
 		public Project Project { get; set; } = null!;
 
+		[Required]
+		public Guid AssignedToUserId { get; set; }
+		[ForeignKey(nameof(AssignedToUserId))]
+		public ApplicationUser AssignedToUser { get; set; } = null!;
+
 		public ICollection<Tag> Tags { get; set; } = new HashSet<Tag>();
 		public ICollection<Comment> Comments { get; set; } = new HashSet<Comment>();
 		public ICollection<ActivityLog> ActivityLogs { get; set; } = new HashSet<ActivityLog>();
-		public ICollection<CheckList> Checklists { get; set; } = new HashSet<CheckList>();
 
 	}
 }

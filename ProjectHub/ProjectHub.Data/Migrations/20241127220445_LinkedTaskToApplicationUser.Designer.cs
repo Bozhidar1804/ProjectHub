@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ProjectHub.Data;
 
@@ -11,9 +12,11 @@ using ProjectHub.Data;
 namespace ProjectHub.Data.Migrations
 {
     [DbContext(typeof(ProjectHubDbContext))]
-    partial class ProjectHubDbContextModelSnapshot : ModelSnapshot
+    [Migration("20241127220445_LinkedTaskToApplicationUser")]
+    partial class LinkedTaskToApplicationUser
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -177,30 +180,25 @@ namespace ProjectHub.Data.Migrations
                     b.Property<int>("Action")
                         .HasColumnType("int");
 
-                    b.Property<Guid?>("ApplicationUserId")
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<DateTime>("ActionDate")
+                        .HasColumnType("datetime2");
 
                     b.Property<bool>("IsDeleted")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bit")
                         .HasDefaultValue(false);
 
+                    b.Property<string>("Reason")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
                     b.Property<Guid>("TaskId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<DateTime>("Timestamp")
-                        .HasColumnType("datetime2");
-
-                    b.Property<Guid>("UserId")
                         .HasColumnType("uniqueidentifier");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ApplicationUserId");
-
                     b.HasIndex("TaskId");
-
-                    b.HasIndex("UserId");
 
                     b.ToTable("ActivityLogs");
                 });
@@ -559,25 +557,13 @@ namespace ProjectHub.Data.Migrations
 
             modelBuilder.Entity("ProjectHub.Data.Models.ActivityLog", b =>
                 {
-                    b.HasOne("ProjectHub.Data.Models.ApplicationUser", null)
-                        .WithMany("ActivityLogs")
-                        .HasForeignKey("ApplicationUserId");
-
                     b.HasOne("ProjectHub.Data.Models.Task", "Task")
                         .WithMany("ActivityLogs")
                         .HasForeignKey("TaskId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("ProjectHub.Data.Models.ApplicationUser", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
                     b.Navigation("Task");
-
-                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("ProjectHub.Data.Models.Candidature", b =>
@@ -668,8 +654,6 @@ namespace ProjectHub.Data.Migrations
 
             modelBuilder.Entity("ProjectHub.Data.Models.ApplicationUser", b =>
                 {
-                    b.Navigation("ActivityLogs");
-
                     b.Navigation("Tasks");
                 });
 

@@ -21,5 +21,7 @@ namespace ProjectHub.Data.Models
 		public bool IsDeleted { get; set; }
 
         public ICollection<Project> Projects { get; set; } = new List<Project>();
+		public ICollection<Task> Tasks { get; set; } = new List<Task>();
+        public ICollection<ActivityLog> ActivityLogs { get; set; } = new List<ActivityLog>();
     }
 }

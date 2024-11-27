@@ -8,6 +8,9 @@ using ProjectHub.Web.Infrastructure.Extensions;
 using ProjectHub.Web.ViewModels.Project;
 using static ProjectHub.Web.Infrastructure.Extensions.ClaimsPrincipalExtensions;
 using static ProjectHub.Common.GeneralApplicationConstants;
+using ProjectHub.Services.Data;
+using ProjectHub.Data.Models.Enums;
+using System.Text;
 
 namespace ProjectHub.Web.Controllers
 {
@@ -108,5 +111,22 @@ namespace ProjectHub.Web.Controllers
             return RedirectToAction(nameof(MyProjects));
         }
 
+        /*[HttpGet]
+        [Authorize(Roles = ModeratorRoleName)]
+        public async Task<IActionResult> Manage(string projectId)
+        {
+            try
+            {
+                Project project = await projectService.GetProjectByIdAsync(projectId);
+
+
+                
+            }
+            catch (Exception ex)
+            {
+                TempData["ErrorMessage"] = "An error occurred while processing the request.";
+                return RedirectToAction(nameof(MyProjects));
+            }
+        }*/
     }
 }

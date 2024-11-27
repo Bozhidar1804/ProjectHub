@@ -25,7 +25,6 @@ namespace ProjectHub.Data
 		public DbSet<Milestone> Milestones { get; set; }
 		public DbSet<Comment> Comments { get; set; }
 		public DbSet<ActivityLog> ActivityLogs { get; set; }
-		public DbSet<CheckList> CheckLists { get; set; }
 		public DbSet<Tag> Tags { get; set; }
         public DbSet<Candidature> Candidatures { get; set; }
 
@@ -36,7 +35,6 @@ namespace ProjectHub.Data
             modelBuilder.ApplyConfiguration(new ProjectConfiguration());
             modelBuilder.ApplyConfiguration(new TaskConfiguration());
             modelBuilder.ApplyConfiguration(new ApplicationUserConfiguration());
-            modelBuilder.ApplyConfiguration(new ChecklistConfiguration());
             modelBuilder.ApplyConfiguration(new MilestoneConfiguration());
             modelBuilder.ApplyConfiguration(new CommentConfiguration());
             modelBuilder.ApplyConfiguration(new ActivityLogConfiguration());

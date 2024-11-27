@@ -9,12 +9,8 @@ namespace ProjectHub.Data.Models
 	{
 		[Key]
 		public Guid Id { get; set; } = Guid.NewGuid();
-
-		[Required]
-		[MaxLength(ActivityLogReasonMaxLength)]
-		public string Reason { get; set; } = null!;
 		public TaskAction Action { get; set; }
-		public DateTime ActionDate { get; set; }
+		public DateTime Timestamp { get; set; }
 		public bool IsDeleted { get; set; }
 
 		[Required]
@@ -22,5 +18,10 @@ namespace ProjectHub.Data.Models
 		[ForeignKey(nameof(TaskId))]
 		public Task Task { get; set; } = null!;
 
-	}
+        [Required]
+        public Guid UserId { get; set; }
+        [ForeignKey(nameof(UserId))]
+        public ApplicationUser User { get; set; } = null!;
+
+    }
 }

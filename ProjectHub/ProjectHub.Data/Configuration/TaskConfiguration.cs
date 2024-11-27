@@ -27,9 +27,10 @@ namespace ProjectHub.Data.Configuration
                 .HasForeignKey(a => a.TaskId);
 
             builder
-                .HasMany(t => t.Checklists)
-                .WithOne(c => c.Task)
-                .HasForeignKey(c => c.TaskId);
+                .HasOne(t => t.AssignedToUser)
+                .WithMany(au => au.Tasks)
+                .HasForeignKey(t => t.AssignedToUserId)
+                .OnDelete(DeleteBehavior.Restrict);
 
             builder
                 .Property(t => t.IsDeleted)
