@@ -6,11 +6,11 @@ using ProjectHub.Data.Models;
 using ProjectHub.Services.Data.Interfaces;
 using ProjectHub.Web.Infrastructure.Extensions;
 using ProjectHub.Web.ViewModels.Project;
+using ProjectHub.Web.ViewModels.ActivityLog;
 using static ProjectHub.Web.Infrastructure.Extensions.ClaimsPrincipalExtensions;
 using static ProjectHub.Common.GeneralApplicationConstants;
-using ProjectHub.Services.Data;
-using ProjectHub.Data.Models.Enums;
-using System.Text;
+using ProjectHub.Web.ViewModels.Milestone;
+using ProjectHub.Web.ViewModels.Task;
 
 namespace ProjectHub.Web.Controllers
 {
@@ -19,11 +19,19 @@ namespace ProjectHub.Web.Controllers
     {
         private readonly UserManager<ApplicationUser> userManager;
         private readonly IProjectService projectService;
+        private readonly IMilestoneService milestoneService;
+        private readonly ITaskService taskService;
+        private readonly ITagService tagService;
+        private readonly IActivityLogService activityLogService;
 
-        public ProjectController(UserManager<ApplicationUser> userManager, IProjectService projectService)
+        public ProjectController(UserManager<ApplicationUser> userManager, IProjectService projectService, IMilestoneService milestoneService, ITaskService taskService, ITagService tagService, IActivityLogService activityLogService)
         {
             this.userManager = userManager;
             this.projectService = projectService;
+            this.milestoneService = milestoneService;
+            this.taskService = taskService;
+            this.tagService = tagService;
+            this.activityLogService = activityLogService;
         }
 
         [HttpGet]
@@ -111,22 +119,72 @@ namespace ProjectHub.Web.Controllers
             return RedirectToAction(nameof(MyProjects));
         }
 
-        /*[HttpGet]
+        [HttpGet]
         [Authorize(Roles = ModeratorRoleName)]
         public async Task<IActionResult> Manage(string projectId)
         {
             try
             {
                 Project project = await projectService.GetProjectByIdAsync(projectId);
+                if (project == null)
+                {
+                    return NotFound();
+                }
 
+                List<Milestone> milestones = await this.milestoneService.GetMilestonesByProjectIdAsync(projectId);
+                if (milestones == null)
+                {
+                    milestones = new List<Milestone>(); // Empty list if no milestones found
+                }
 
-                
+                List<Data.Models.Task> tasks = await this.taskService.GetTasksByProjectIdAsync(projectId);
+                if (tasks == null)
+                {
+                    tasks = new List<Data.Models.Task>(); // Empty list if no tasks found
+                }
+
+                List<string> tagsForProject = await this.tagService.GetTagsByProjectIdAsync(projectId);
+                List<ActivityLog> activityLogsByProject = await this.activityLogService.GetActivityLogsByProjectIdAsync(projectId);
+
+                ProjectManageViewModel projectViewModel = new ProjectManageViewModel()
+                {
+                    ProjectId = projectId,
+                    Name = project.Name,
+                    Description = project.Description,
+                    Members = project.TeamMembers.Select(tm => new ProjectMemberViewModel()
+                    {
+                        UserId = tm.Id.ToString(),
+                        UserName = tm.UserName!
+                    }).ToList(),
+                    Milestones = milestones.Select(m => new MilestoneViewModel
+                    {
+                        Id = m.Id.ToString(),
+                        Name = m.Name,
+                        Deadline = m.Deadline.ToString(DateFormat)
+                    }).ToList(),
+                    Tasks = tasks.Select(t => new TaskViewModel
+                    {
+                        Id = t.Id.ToString(),
+                        Title = t.Title,
+                        Priority = t.Priority.ToString(),
+                        AssignedTo = t.AssignedToUser?.UserName ?? "Unassigned",
+                        ActivityLogs = activityLogsByProject.Select(al => new ActivityLogViewModel
+                        {
+                            Id = al.Id.ToString(),
+                            Action = al.Action.ToString(),
+                            PerformedBy = al.User.UserName ?? "error",
+                            Timestamp = al.Timestamp.ToString(DateFormat)
+                        }).ToList()
+                    }).ToList(),
+                };
+
+                return View(projectViewModel);
             }
             catch (Exception ex)
             {
                 TempData["ErrorMessage"] = "An error occurred while processing the request.";
                 return RedirectToAction(nameof(MyProjects));
             }
-        }*/
+        }
     }
 }

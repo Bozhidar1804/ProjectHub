@@ -113,6 +113,7 @@ namespace ProjectHub.Services.Data
             bool isProjectGuidValid = IsGuidValid(projectId, ref projectGuid);
 
 			Project project = await this.dbContext.Projects
+                .Include(p => p.TeamMembers)
                 .FirstOrDefaultAsync(p => p.Id == projectGuid && !p.IsDeleted);
 
             if (project == null)

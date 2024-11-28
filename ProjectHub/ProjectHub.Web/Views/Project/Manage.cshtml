@@ -1,0 +1,102 @@
+﻿@model ProjectManageViewModel
+
+@{
+    ViewData["Title"] = "Manage Project";
+    string DateFormat = "MM/dd/yyyy"; // Define your date format for consistency
+}
+
+<div class="container mt-5">
+    <div class="text-center mb-4">
+        <h2 class="display-4 text-primary">@Model.Name - Manage</h2>
+        <p class="lead text-muted">@Model.Description</p>
+    </div>
+
+    <!-- Members Section -->
+    <div class="mb-5">
+        <h4 class="text-info">Project Members</h4>
+        @if (Model.Members.Any())
+        {
+            <ul class="list-group list-group-flush">
+                @foreach (var member in Model.Members)
+                {
+                    <li class="list-group-item list-group-item-light">
+                        <strong>@member.UserName</strong>
+                    </li>
+                }
+            </ul>
+        }
+        else
+        {
+            <div class="alert alert-warning" role="alert">
+                No members added to this project yet.
+            </div>
+        }
+    </div>
+
+    <!-- Milestones Section -->
+    <div class="mb-5">
+        <h4 class="text-info">Milestones</h4>
+        @if (Model.Milestones.Any())
+        {
+            <ul class="list-group list-group-flush">
+                @foreach (var milestone in Model.Milestones)
+                {
+                    <li class="list-group-item list-group-item-light">
+                        <strong>@milestone.Name</strong> - <span class="text-muted">Due: @milestone.Deadline</span>
+                    </li>
+                }
+            </ul>
+        }
+        else
+        {
+            <div class="alert alert-warning" role="alert">
+                No milestones available for this project.
+            </div>
+        }
+    </div>
+
+    <!-- Tasks Section -->
+    <div class="mb-5">
+        <h4 class="text-info">Tasks</h4>
+        @if (Model.Tasks.Any())
+        {
+            @foreach (var task in Model.Tasks)
+            {
+                <div class="card shadow-sm mb-4">
+                    <div class="card-header bg-primary text-white">
+                        <h5>@task.Title</h5>
+                        <p class="mb-0"><strong>Priority:</strong> @task.Priority</p>
+                        <p class="mb-0"><strong>Assigned To:</strong> @task.AssignedTo</p>
+                    </div>
+                    <div class="card-body">
+                        <h6 class="text-muted">Activity Logs</h6>
+                        <ul class="list-group">
+                            @if (task.ActivityLogs.Any())
+                            {
+                                @foreach (var activityLog in task.ActivityLogs)
+                                {
+                                    <li class="list-group-item">
+                                        <strong>@activityLog.PerformedBy</strong> - @activityLog.Action
+                                        <p class="text-muted">@activityLog.Timestamp</p>
+                                    </li>
+                                }
+                            }
+                            else
+                            {
+                                <li class="list-group-item">
+                                    <em>No activity logs available for this task.</em>
+                                </li>
+                            }
+                        </ul>
+                    </div>
+                </div>
+            }
+        }
+        else
+        {
+            <div class="alert alert-warning" role="alert">
+                No tasks available for this project.
+            </div>
+        }
+    </div>
+</div>
