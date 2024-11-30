@@ -12,5 +12,6 @@ namespace ProjectHub.Web.ViewModels.Milestone
         public string Name { get; set; } = null!;
         public string Deadline { get; set; } = null!;
         public string Status { get; set; } = null!;
+        public bool IsCompleted { get; set; }
     }
 }

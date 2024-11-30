@@ -1,0 +1,37 @@
+﻿@model MilestoneCreateFormModel
+
+@{
+    ViewData["Title"] = "Create Milestone";
+}
+
+<div class="container mt-5">
+    <div class="text-center mb-4">
+        <h2 class="display-4 text-primary">Create New Milestone</h2>
+    </div>
+
+    <form asp-action="Create" method="post">
+        <input type="hidden" asp-for="ProjectId" />
+
+        <div class="form-group mb-3">
+            <label for="Name" class="form-label">Milestone Name</label>
+            <input type="text" class="form-control" asp-for="Name" placeholder="Enter milestone name" />
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+
+        <div class="form-group mb-3">
+            <label asp-for="Deadline" class="form-label">Deadline</label>
+            <input asp-for="Deadline" class="form-control" 
+                   value="@(Model?.Deadline ?? string.Empty)"
+                   placeholder="dd/MM/yyyy" />
+            <span asp-validation-for="Deadline" class="text-danger"></span>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Create Milestone</button>
+    </form>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

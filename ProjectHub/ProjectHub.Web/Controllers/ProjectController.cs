@@ -151,16 +151,19 @@ namespace ProjectHub.Web.Controllers
                     ProjectId = projectId,
                     Name = project.Name,
                     Description = project.Description,
+                    MaxMilestones = project.MaxMilestones,
                     Members = project.TeamMembers.Select(tm => new ProjectMemberViewModel()
                     {
                         UserId = tm.Id.ToString(),
-                        UserName = tm.UserName!
+                        UserName = tm.UserName!,
+                        Role = tm.Id == project.CreatorId ? "Creator" : "Member"
                     }).ToList(),
                     Milestones = milestones.Select(m => new MilestoneViewModel
                     {
                         Id = m.Id.ToString(),
                         Name = m.Name,
-                        Deadline = m.Deadline.ToString(DateFormat)
+                        Deadline = m.Deadline.ToString(DateFormat),
+                        IsCompleted = m.IsCompleted
                     }).ToList(),
                     Tasks = tasks.Select(t => new TaskViewModel
                     {
@@ -184,6 +187,29 @@ namespace ProjectHub.Web.Controllers
             {
                 TempData["ErrorMessage"] = "An error occurred while processing the request.";
                 return RedirectToAction(nameof(MyProjects));
+            }
+        }
+
+        [HttpPost]
+        [Authorize(Roles = ModeratorRoleName)]
+        public async Task<IActionResult> SetMaxMilestones(string projectId, int maxMilestones)
+        {
+            try
+            {
+                if (maxMilestones < 1)
+                {
+                    TempData["ErrorMessage"] = "Maximum milestones must be at least 1.";
+                    return RedirectToAction(nameof(Manage), new { projectId });
+                }
+
+                await projectService.SetMaxMilestonesAsync(projectId, maxMilestones);
+                TempData["SuccessMessage"] = "Max milestones set successfully.";
+                return RedirectToAction(nameof(Manage), new { projectId });
+            }
+            catch (Exception ex)
+            {
+                TempData["ErrorMessage"] = "An error occurred while setting max milestones.";
+                return RedirectToAction(nameof(Manage), new { projectId });
             }
         }
     }

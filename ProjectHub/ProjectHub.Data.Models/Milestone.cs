@@ -14,6 +14,7 @@ namespace ProjectHub.Data.Models
 		public string Name { get; set; } = null!;
 
 		public DateTime Deadline { get; set; }
+		public bool IsCompleted {  get; set; }
 		public bool IsDeleted { get; set; }
 
 		[Required]

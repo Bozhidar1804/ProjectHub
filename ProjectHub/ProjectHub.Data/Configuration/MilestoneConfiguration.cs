@@ -22,6 +22,10 @@ namespace ProjectHub.Data.Configuration
                 .HasForeignKey(m => m.ProjectId);
 
             builder
+                .Property(m => m.IsCompleted)
+                .HasDefaultValue(false);
+
+            builder
                 .Property(m => m.IsDeleted)
                 .HasDefaultValue(false);
         }

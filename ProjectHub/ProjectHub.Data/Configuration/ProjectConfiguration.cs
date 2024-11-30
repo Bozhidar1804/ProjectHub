@@ -13,6 +13,10 @@ namespace ProjectHub.Data.Configuration
             builder
                 .HasKey(p => p.Id);
 
+            builder.Property(p => p.MaxMilestones)
+            .IsRequired(false)
+            .HasDefaultValue(null);
+
             builder
                 .HasMany(p => p.Tasks)
                 .WithOne(t => t.Project)

@@ -1,12 +1,11 @@
 ﻿using Microsoft.EntityFrameworkCore;
-
+using System.Globalization;
 
 using ProjectHub.Data;
 using ProjectHub.Data.Models;
 using ProjectHub.Services.Data.Interfaces;
 using ProjectHub.Web.ViewModels.Project;
 using static ProjectHub.Common.GeneralApplicationConstants;
-using System.Globalization;
 
 namespace ProjectHub.Services.Data
 {
@@ -83,7 +82,7 @@ namespace ProjectHub.Services.Data
                 return false;
             }
 
-			ApplicationUser creatorUser = await this.dbContext.Users.FindAsync(userGuid);
+			ApplicationUser? creatorUser = await this.dbContext.Users.FindAsync(userGuid);
 			if (creatorUser == null)
 			{
 				return false;
@@ -112,7 +111,7 @@ namespace ProjectHub.Services.Data
             Guid projectGuid = Guid.Empty;
             bool isProjectGuidValid = IsGuidValid(projectId, ref projectGuid);
 
-			Project project = await this.dbContext.Projects
+			Project? project = await this.dbContext.Projects
                 .Include(p => p.TeamMembers)
                 .FirstOrDefaultAsync(p => p.Id == projectGuid && !p.IsDeleted);
 
@@ -134,7 +133,7 @@ namespace ProjectHub.Services.Data
                 return false;
             }
 
-            Project projectToDelete = await this.dbContext.Projects
+            Project? projectToDelete = await this.dbContext.Projects
                 .FirstOrDefaultAsync(p => p.Id == projectGuid && !p.IsDeleted);
 
             if (projectToDelete == null)
@@ -155,7 +154,7 @@ namespace ProjectHub.Services.Data
                 throw new ArgumentNullException(nameof(project), "Project cannot be null.");
             }
 
-            Project projectToUpdate = await this.dbContext.Projects
+            Project? projectToUpdate = await this.dbContext.Projects
                 .Include(p => p.TeamMembers)
                 .FirstOrDefaultAsync(p => p.Id == project.Id);
 
@@ -173,6 +172,40 @@ namespace ProjectHub.Services.Data
             projectToUpdate.TeamMembers = project.TeamMembers;
 
             await this.dbContext.SaveChangesAsync();
+        }
+
+        public async Task<bool> SetMaxMilestonesAsync(string projectId, int maxMilestones)
+        {
+            Guid projectGuid = Guid.Empty;
+            bool isProjectGuidValid = IsGuidValid(projectId, ref projectGuid);
+
+            if (isProjectGuidValid == false)
+            {
+                return false;
+            }
+
+            Project? projectToUpdate = await this.dbContext.Projects
+                .FirstOrDefaultAsync(p => p.Id == projectGuid && !p.IsDeleted);
+
+            if (projectToUpdate == null)
+            {
+                throw new InvalidOperationException("Project not found.");
+            }
+
+            if (maxMilestones <= 0)
+            {
+                throw new ArgumentOutOfRangeException(nameof(maxMilestones), "Maximum milestones must be greater than zero.");
+            }
+
+            if (projectToUpdate.MaxMilestones.HasValue)
+            {
+                throw new InvalidOperationException("Maximum milestones for this project are already set.");
+            }
+
+            projectToUpdate.MaxMilestones = maxMilestones;
+            await this.dbContext.SaveChangesAsync();
+
+            return true;
         }
     }
 }
