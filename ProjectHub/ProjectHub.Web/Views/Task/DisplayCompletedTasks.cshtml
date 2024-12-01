@@ -1,0 +1,42 @@
+﻿@model IEnumerable<TaskCompletedViewModel>
+
+@{
+    ViewData["Title"] = "My Completed Tasks";
+}
+
+<div class="container mt-5">
+    <h2 class="text-center text-primary mb-4">My Completed Tasks</h2>
+
+    @if (Model.Any())
+    {
+        <div class="row">
+            @foreach (var task in Model)
+            {
+                <div class="col-md-4 mb-4">
+                    <div class="card shadow-sm">
+                        <div class="card-header bg-success text-white">
+                            <h5 class="mb-1">@task.Title</h5>
+                        </div>
+                        <div class="card-body">
+                            <p>
+                                <strong>Priority:</strong>
+                                <span class="badge bg-warning text-dark">@task.Priority</span>
+                            </p>
+                            <p><strong>Project:</strong> @task.ProjectName</p>
+                            <p><strong>Milestone:</strong> @task.MilestoneName</p>
+                            <div class="text-muted small">
+                                <i class="bi bi-check-circle-fill"></i> Completed
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    }
+    else
+    {
+        <div class="alert alert-info text-center">
+            <i class="bi bi-exclamation-triangle"></i> No completed tasks found.
+        </div>
+    }
+</div>

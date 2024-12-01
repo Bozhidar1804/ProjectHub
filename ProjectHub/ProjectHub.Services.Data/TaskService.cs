@@ -106,7 +106,7 @@ namespace ProjectHub.Services.Data
             bool isUserGuidValid = IsGuidValid(userId, ref userGuid);
 
             var tasks = await this.dbContext.Tasks
-                .Where(t => t.AssignedToUserId == userGuid && !t.IsDeleted)
+                .Where(t => t.AssignedToUserId == userGuid && !t.IsDeleted && !t.IsCompleted)
                 .Include(t => t.Milestone)
                 .Include(t => t.Project)
                 .Select(t => new TaskIndexViewModel
@@ -147,6 +147,32 @@ namespace ProjectHub.Services.Data
                 .ToListAsync();
 
             return tasks;
+        }
+
+        public async Task<bool> CompleteTaskAsync(ProjectHub.Data.Models.Task task)
+        {
+            task.IsCompleted = true;
+
+            await this.dbContext.SaveChangesAsync();
+            return true;
+        }
+
+        public async Task<List<TaskCompletedViewModel>> GetCompletedTasksAsync()
+        {
+            List<TaskCompletedViewModel> completedTasks = await this.dbContext.Tasks
+                .Where(t => t.IsCompleted && !t.IsDeleted)
+                .Include(t => t.Project)
+                .Include(t => t.Milestone)
+                .Select(t => new TaskCompletedViewModel
+                {
+                    Title = t.Title,
+                    Priority = t.Priority.ToString(),
+                    ProjectName = t.Project.Name,
+                    MilestoneName = t.Milestone.Name
+                })
+                .ToListAsync();
+
+            return completedTasks;
         }
     }
 }

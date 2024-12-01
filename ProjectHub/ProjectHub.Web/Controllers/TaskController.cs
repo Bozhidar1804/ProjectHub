@@ -119,6 +119,35 @@ namespace ProjectHub.Web.Controllers
             return RedirectToAction("Manage", "Project", new { projectId = model.ProjectId });
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Complete(string taskId)
+        {
+            var task = await this.taskService.GetTaskByIdAsync(taskId);
+
+            if (task == null)
+            {
+                return NotFound();
+            }
+
+            bool isCompletedResult = await this.taskService.CompleteTaskAsync(task);
+            if (!isCompletedResult)
+            {
+                return BadRequest();
+            }
+
+            return RedirectToAction(nameof(Index));
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> DisplayCompletedTasks()
+        {
+            List<TaskCompletedViewModel> completedTasks = await this.taskService.GetCompletedTasksAsync();
+
+            return View(completedTasks);
+        }
+
+
         private async System.Threading.Tasks.Task LoadProjectUsersAsync(TaskCreateFormModel model)
         {
             Project project = await this.projectService.GetProjectByIdAsync(model.ProjectId);

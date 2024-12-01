@@ -1,12 +1,5 @@
-﻿using ProjectHub.Web.ViewModels.ActivityLog;
-using ProjectHub.Web.ViewModels.Milestone;
-using ProjectHub.Web.ViewModels.Tag;
+﻿using ProjectHub.Web.ViewModels.Milestone;
 using ProjectHub.Web.ViewModels.Task;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ProjectHub.Web.ViewModels.Project
 {
