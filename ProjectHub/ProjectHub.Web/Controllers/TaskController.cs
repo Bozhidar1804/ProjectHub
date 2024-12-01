@@ -13,6 +13,7 @@ using ProjectHub.Web.Infrastructure.Extensions;
 
 namespace ProjectHub.Web.Controllers
 {
+    [Authorize]
 	public class TaskController : Controller
 	{
 		private readonly UserManager<ApplicationUser> userManager;
@@ -40,13 +41,9 @@ namespace ProjectHub.Web.Controllers
                 return Unauthorized();
             }
 
-            IEnumerable<TaskIndexViewModel> tasks = await this.taskService.GetTasksAssignedToUserAsync(userId);
+            IEnumerable<IEnumerable<IGrouping<string, TaskIndexViewModel>>> tasksGrouped = await this.taskService.GetGroupedTasksAssignedToUserAsync(userId);
 
-            IEnumerable<IGrouping<string, TaskIndexViewModel>> groupedTasks = tasks
-                .GroupBy(t => t.ProjectName)
-                .ToList();
-
-            return View(groupedTasks);
+            return View(tasksGrouped);
         }
 
         [HttpGet]
@@ -77,11 +74,18 @@ namespace ProjectHub.Web.Controllers
                     Text = p.ToString()
                 }).ToList();
 
+            List<SelectListItem> milestones = project.Milestones.Select(m => new SelectListItem
+            {
+                Value = m.Id.ToString(),
+                Text = m.Name
+            }).ToList();
+
             TaskCreateFormModel model = new TaskCreateFormModel()
             {
                 ProjectId = projectId,
                 Users = userSelectList,
-                Priorities = prioritiesSelectList
+                Priorities = prioritiesSelectList,
+                Milestones = milestones
             };
 
             return View(model);

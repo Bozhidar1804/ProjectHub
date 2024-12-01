@@ -29,6 +29,15 @@ namespace ProjectHub.Data.Configuration
                 .OnDelete(DeleteBehavior.Restrict);
 
             builder
+                .HasOne(t => t.Milestone)
+                .WithMany(m => m.Tasks)
+                .HasForeignKey(t => t.MilestoneId)
+                .OnDelete(DeleteBehavior.NoAction);
+
+            builder.Property(t => t.IsCompleted)
+            .HasDefaultValue(false);
+
+            builder
                 .Property(t => t.IsDeleted)
                 .HasDefaultValue(false);
         }

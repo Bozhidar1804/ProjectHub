@@ -17,6 +17,12 @@ namespace ProjectHub.Data.Configuration
                 .IsRequired();
 
             builder
+                .HasMany(p => p.Tasks)
+                .WithOne(t => t.Milestone)
+                .HasForeignKey(t => t.MilestoneId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            builder
                 .HasOne(m => m.Project)
                 .WithMany(p => p.Milestones)
                 .HasForeignKey(m => m.ProjectId);

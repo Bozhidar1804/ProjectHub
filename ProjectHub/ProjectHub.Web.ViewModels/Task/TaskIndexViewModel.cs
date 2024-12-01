@@ -13,6 +13,9 @@ namespace ProjectHub.Web.ViewModels.Task
         public string Description { get; set; } = null!;
         public string DueDate { get; set; } = null!;
         public string ProjectName { get; set; } = null!;
+        public string MilestoneName { get; set; } = null!;
         public string Priority { get; set; } = null!;
+        public string ProjectId {  get; set; } = null!;
+        public string MilestoneId { get; set; } = null!;
     }
 }

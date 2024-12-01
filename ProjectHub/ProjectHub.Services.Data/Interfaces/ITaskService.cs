@@ -8,6 +8,6 @@ namespace ProjectHub.Services.Data.Interfaces
         Task<List<ProjectHub.Data.Models.Task>> GetTasksByProjectIdAsync(string projectId);
         Task<bool> CreateTaskAsync(TaskCreateFormModel model);
 
-        Task<IEnumerable<TaskIndexViewModel>> GetTasksAssignedToUserAsync(string userId);
+        Task<IEnumerable<IEnumerable<IGrouping<string, TaskIndexViewModel>>>> GetGroupedTasksAssignedToUserAsync(string userId);
     }
 }

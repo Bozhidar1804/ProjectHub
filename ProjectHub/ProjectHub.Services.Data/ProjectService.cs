@@ -113,6 +113,8 @@ namespace ProjectHub.Services.Data
 
 			Project? project = await this.dbContext.Projects
                 .Include(p => p.TeamMembers)
+                .Include(p => p.Milestones)
+                .Include(p => p.Tasks)
                 .FirstOrDefaultAsync(p => p.Id == projectGuid && !p.IsDeleted);
 
             if (project == null)

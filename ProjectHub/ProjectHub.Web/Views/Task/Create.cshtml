@@ -38,6 +38,19 @@
             </select>
         </div>
 
+        <!-- Link with a Milestone -->
+        <div class="form-group mb-3">
+            <label asp-for="MilestoneId" class="form-label">Link the Task with a Milestone</label>
+            <select asp-for="MilestoneId" class="form-control" required>
+                <option value="" disabled selected>Select a Milestone</option>
+                @foreach (var milestone in Model.Milestones)
+                {
+                    <option value="@milestone.Value">@milestone.Text</option>
+                }
+            </select>
+            <span asp-validation-for="MilestoneId" class="text-danger"></span>
+        </div>
+
         <!-- Due Date -->
         <div class="form-group mb-3">
             <label asp-for="DueDate" class="form-label">Due Date</label>

@@ -20,7 +20,8 @@ namespace ProjectHub.Data.Models
 		public string Description { get; set; } = null!;
 		public DateTime DueDate { get; set; }
 		public TaskPriority Priority { get; set; }
-		public bool IsDeleted { get; set; }
+        public bool IsCompleted { get; set; }
+        public bool IsDeleted { get; set; }
 
 
 		[Required]
@@ -29,7 +30,13 @@ namespace ProjectHub.Data.Models
 		[ForeignKey(nameof(ProjectId))]
 		public Project Project { get; set; } = null!;
 
-		[Required]
+        [Required]
+        public Guid MilestoneId { get; set; }
+
+        [ForeignKey(nameof(MilestoneId))]
+        public Milestone Milestone { get; set; } = null!;
+
+        [Required]
 		public Guid AssignedToUserId { get; set; }
 		[ForeignKey(nameof(AssignedToUserId))]
 		public ApplicationUser AssignedToUser { get; set; } = null!;

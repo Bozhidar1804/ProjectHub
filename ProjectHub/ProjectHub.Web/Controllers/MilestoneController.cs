@@ -10,6 +10,7 @@ using static ProjectHub.Common.NotificationMessagesConstants;
 
 namespace ProjectHub.Web.Controllers
 {
+    [Authorize]
     public class MilestoneController : Controller
     {
         private readonly UserManager<ApplicationUser> userManager;

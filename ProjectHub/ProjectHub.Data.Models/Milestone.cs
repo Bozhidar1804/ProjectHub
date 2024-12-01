@@ -20,5 +20,7 @@ namespace ProjectHub.Data.Models
 		[Required]
 		public Guid ProjectId { get; set; }
 		public Project Project { get; set; } = null!;
-	}
+
+        public ICollection<Task> Tasks { get; set; } = new List<Task>();
+    }
 }

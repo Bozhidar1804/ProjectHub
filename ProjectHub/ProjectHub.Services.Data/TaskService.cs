@@ -6,6 +6,7 @@ using ProjectHub.Services.Data.Interfaces;
 using ProjectHub.Web.ViewModels.Task;
 using ProjectHub.Data.Models;
 using static ProjectHub.Common.GeneralApplicationConstants;
+using System.Linq;
 
 namespace ProjectHub.Services.Data
 {
@@ -32,6 +33,14 @@ namespace ProjectHub.Services.Data
             bool isUserGuidValid = IsGuidValid(model.AssignedToUserId, ref userGuid);
 
             if (!isUserGuidValid)
+            {
+                return false;
+            }
+
+            Guid milestoneGuid = Guid.Empty;
+            bool isMilestoneGuidValid = IsGuidValid(model.MilestoneId, ref milestoneGuid);
+
+            if (!isMilestoneGuidValid)
             {
                 return false;
             }
@@ -63,9 +72,10 @@ namespace ProjectHub.Services.Data
                 Title = model.Title,
                 Description = model.Description,
                 DueDate = dueDate,
-                AssignedToUserId = userGuid,
+                Priority = model.Priority,
                 ProjectId = projectGuid,
-                Priority = model.Priority
+                MilestoneId = milestoneGuid,
+                AssignedToUserId = userGuid
             };
 
             await this.dbContext.Tasks.AddAsync(task);
@@ -90,13 +100,15 @@ namespace ProjectHub.Services.Data
             return task;
         }
 
-        public async Task<IEnumerable<TaskIndexViewModel>> GetTasksAssignedToUserAsync(string userId)
+        public async Task<IEnumerable<IEnumerable<IGrouping<string, TaskIndexViewModel>>>> GetGroupedTasksAssignedToUserAsync(string userId)
         {
             Guid userGuid = Guid.Empty;
             bool isUserGuidValid = IsGuidValid(userId, ref userGuid);
 
-            IEnumerable<TaskIndexViewModel> tasks = await this.dbContext.Tasks
+            var tasks = await this.dbContext.Tasks
                 .Where(t => t.AssignedToUserId == userGuid && !t.IsDeleted)
+                .Include(t => t.Milestone)
+                .Include(t => t.Project)
                 .Select(t => new TaskIndexViewModel
                 {
                     Id = t.Id.ToString(),
@@ -104,11 +116,24 @@ namespace ProjectHub.Services.Data
                     Description = t.Description,
                     DueDate = t.DueDate.ToString(DateFormat),
                     Priority = t.Priority.ToString(),
-                    ProjectName = t.Project.Name
+                    ProjectId = t.ProjectId.ToString(),
+                    ProjectName = t.Project.Name,
+                    MilestoneName = t.Milestone.Name,
+                    MilestoneId = t.MilestoneId.ToString()
                 })
                 .ToListAsync();
 
-            return tasks;
+
+
+            IEnumerable<IEnumerable<IGrouping<string, TaskIndexViewModel>>> groupedTasks = tasks
+                    .GroupBy(t => t.ProjectName) // Group tasks by ProjectName
+                    .Select(projectGroup =>
+                        projectGroup
+                            .GroupBy(t => t.MilestoneName) // Group tasks within each project by MilestoneName
+                            .AsEnumerable()) // Make sure the result is enumerable
+                    .AsEnumerable();
+
+            return groupedTasks;
         }
 
         public async Task<List<ProjectHub.Data.Models.Task>> GetTasksByProjectIdAsync(string projectId)

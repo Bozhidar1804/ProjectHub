@@ -28,7 +28,11 @@ namespace ProjectHub.Web.ViewModels.Task
         [Required]
         public string ProjectId { get; set; } = null!;
 
+        [Required(ErrorMessage = "Please select a milestone.")]
+        public string MilestoneId { get; set; } = null!;
+
         public IEnumerable<SelectListItem> Users { get; set; } = new List<SelectListItem>();
         public IEnumerable<SelectListItem> Priorities { get; set; } = new List<SelectListItem>();
+        public IEnumerable<SelectListItem> Milestones { get; set; } = new List<SelectListItem>();
     }
 }
