@@ -4,7 +4,7 @@ using static ProjectHub.Common.NotificationMessagesConstants.Candidature;
 
 namespace ProjectHub.Web.ViewModels.Candidature
 {
-    public class CandidatureCreateFormModel
+    public class CandidatureCreateInputModel
     {
         public Guid ProjectId { get; set; }
 

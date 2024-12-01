@@ -80,7 +80,7 @@ namespace ProjectHub.Web.Controllers
                 Text = m.Name
             }).ToList();
 
-            TaskCreateFormModel model = new TaskCreateFormModel()
+            TaskCreateInputModel model = new TaskCreateInputModel()
             {
                 ProjectId = projectId,
                 Users = userSelectList,
@@ -94,7 +94,7 @@ namespace ProjectHub.Web.Controllers
         [HttpPost]
         [Authorize(Roles = ModeratorRoleName)]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(TaskCreateFormModel model)
+        public async Task<IActionResult> Create(TaskCreateInputModel model)
         {
             if (!ModelState.IsValid)
             {
@@ -155,7 +155,7 @@ namespace ProjectHub.Web.Controllers
         }
 
 
-        private async System.Threading.Tasks.Task LoadProjectUsersAsync(TaskCreateFormModel model)
+        private async System.Threading.Tasks.Task LoadProjectUsersAsync(TaskCreateInputModel model)
         {
             Project project = await this.projectService.GetProjectByIdAsync(model.ProjectId);
             ICollection<ApplicationUser> projectMembers = project.TeamMembers;

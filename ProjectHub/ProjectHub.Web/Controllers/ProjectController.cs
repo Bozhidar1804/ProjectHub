@@ -54,14 +54,14 @@ namespace ProjectHub.Web.Controllers
         [Authorize(Roles = ModeratorRoleName)]
         public IActionResult Create()
         {
-            ProjectCreateFormModel model = new ProjectCreateFormModel();
+            ProjectCreateInputModel model = new ProjectCreateInputModel();
 
             return View(model);
         }
 
         [HttpPost]
         [Authorize(Roles = ModeratorRoleName)]
-        public async Task<IActionResult> Create(ProjectCreateFormModel model)
+        public async Task<IActionResult> Create(ProjectCreateInputModel model)
         {
             if (!ModelState.IsValid)
             {

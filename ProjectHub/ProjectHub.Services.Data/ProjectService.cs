@@ -61,7 +61,7 @@ namespace ProjectHub.Services.Data
             return projects;
         }
 
-        public async Task<bool> CreateProjectAsync(ProjectCreateFormModel model, string userId)
+        public async Task<bool> CreateProjectAsync(ProjectCreateInputModel model, string userId)
         {
             Guid userGuid = Guid.Empty;
             bool isUserGuidValid = IsGuidValid(userId, ref userGuid);

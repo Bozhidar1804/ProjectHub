@@ -4,7 +4,7 @@ using static ProjectHub.Common.EntityValidationConstants.Milestone;
 
 namespace ProjectHub.Web.ViewModels.Milestone
 {
-    public class MilestoneCreateFormModel
+    public class MilestoneCreateInputModel
     {
         [Required]
         [StringLength(MilestoneNameMaxLength, MinimumLength = MilestoneNameMinLength)]

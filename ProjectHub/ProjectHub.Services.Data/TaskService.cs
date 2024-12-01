@@ -19,7 +19,7 @@ namespace ProjectHub.Services.Data
             this.dbContext = dbContext;
         }
 
-        public async Task<bool> CreateTaskAsync(TaskCreateFormModel model)
+        public async Task<bool> CreateTaskAsync(TaskCreateInputModel model)
         {
             Guid projectGuid = Guid.Empty;
             bool isProjectGuidValid = IsGuidValid(model.ProjectId, ref projectGuid);

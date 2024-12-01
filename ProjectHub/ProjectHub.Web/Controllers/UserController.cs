@@ -29,7 +29,7 @@ namespace ProjectHub.Web.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Register(RegisterFormModel model)
+        public async Task<IActionResult> Register(RegisterInputModel model)
         {
             if (!ModelState.IsValid)
             {
@@ -74,7 +74,7 @@ namespace ProjectHub.Web.Controllers
         {
             await HttpContext.SignOutAsync(IdentityConstants.ExternalScheme);
 
-            LoginFormModel model = new LoginFormModel()
+            LoginInputModel model = new LoginInputModel()
             {
                 ReturnUrl = returnUrl
             };
@@ -83,7 +83,7 @@ namespace ProjectHub.Web.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Login(LoginFormModel model)
+        public async Task<IActionResult> Login(LoginInputModel model)
         {
             if (!ModelState.IsValid)
             {

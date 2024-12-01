@@ -39,7 +39,7 @@ namespace ProjectHub.Services.Data
             return allCandidatures;
         }
 
-        public async Task<bool> CreateCandidatureAsync(CandidatureCreateFormModel model, string userId)
+        public async Task<bool> CreateCandidatureAsync(CandidatureCreateInputModel model, string userId)
         {
             Guid userGuid = Guid.Empty;
             bool isUserGuidValid = IsGuidValid(userId, ref userGuid);

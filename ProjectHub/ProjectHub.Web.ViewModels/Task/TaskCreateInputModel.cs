@@ -6,7 +6,7 @@ using static ProjectHub.Common.EntityValidationConstants.Task;
 
 namespace ProjectHub.Web.ViewModels.Task
 {
-    public class TaskCreateFormModel
+    public class TaskCreateInputModel
     {
         [Required]
         [StringLength(TaskTitleMaxLength, MinimumLength = TaskTitleMinLength)]

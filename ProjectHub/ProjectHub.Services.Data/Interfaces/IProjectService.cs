@@ -7,7 +7,7 @@ namespace ProjectHub.Services.Data.Interfaces
     {
         Task<IEnumerable<ProjectIndexViewModel>> GetAllProjectsAsync();
         Task<IEnumerable<ProjectIndexViewModel>> GetCreatorAllProjectsAsync(string userId);
-        Task<bool> CreateProjectAsync(ProjectCreateFormModel model, string userId);
+        Task<bool> CreateProjectAsync(ProjectCreateInputModel model, string userId);
         Task<Project> GetProjectByIdAsync(string projectId);
         Task<bool> SoftDeleteProjectAsync(string projectId);
         System.Threading.Tasks.Task UpdateProjectAsync(Project project);

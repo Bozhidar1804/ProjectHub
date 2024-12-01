@@ -41,7 +41,7 @@ namespace ProjectHub.Web.Controllers
         [HttpGet]
         public IActionResult Create(Guid projectId)
         {
-            CandidatureCreateFormModel model = new CandidatureCreateFormModel
+            CandidatureCreateInputModel model = new CandidatureCreateInputModel
             {
                 ProjectId = projectId
             };
@@ -49,7 +49,7 @@ namespace ProjectHub.Web.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create(CandidatureCreateFormModel model)
+        public async Task<IActionResult> Create(CandidatureCreateInputModel model)
         {
             if (!ModelState.IsValid)
             {

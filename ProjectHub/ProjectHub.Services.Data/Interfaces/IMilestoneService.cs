@@ -7,6 +7,6 @@ namespace ProjectHub.Services.Data.Interfaces
     {
        Task<Milestone> GetMilestoneByIdAsync(string milestoneId);
        Task<List<Milestone>> GetMilestonesByProjectIdAsync(string projectId);
-       Task<bool> CreateMilestoneAsync(MilestoneCreateFormModel model);
+       Task<bool> CreateMilestoneAsync(MilestoneCreateInputModel model);
 	}
 }

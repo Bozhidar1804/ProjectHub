@@ -5,7 +5,7 @@ namespace ProjectHub.Services.Data.Interfaces
 {
     public interface ICandidatureService
     {
-        Task<bool> CreateCandidatureAsync(CandidatureCreateFormModel model, string userId);
+        Task<bool> CreateCandidatureAsync(CandidatureCreateInputModel model, string userId);
         Task<IEnumerable<CandidatureIndexViewModel>> GetAllCandidaturesAsync(string userId);
         Task<ICollection<Project>> GetAllModeratorProjectsByIdAsync(string moderatorId);
 

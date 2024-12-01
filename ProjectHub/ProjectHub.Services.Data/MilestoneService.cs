@@ -18,7 +18,7 @@ namespace ProjectHub.Services.Data
             this.dbContext = dbContext;
         }
 
-		public async Task<bool> CreateMilestoneAsync(MilestoneCreateFormModel model)
+		public async Task<bool> CreateMilestoneAsync(MilestoneCreateInputModel model)
 		{
 			Guid projectGuid = Guid.Empty;
 			bool isProjectGuidValid = IsGuidValid(model.ProjectId, ref projectGuid);

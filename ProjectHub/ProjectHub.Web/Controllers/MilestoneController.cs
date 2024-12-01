@@ -33,7 +33,7 @@ namespace ProjectHub.Web.Controllers
         [Authorize(Roles = ModeratorRoleName)]
         public IActionResult Create(string projectId)
         {
-			MilestoneCreateFormModel model = new MilestoneCreateFormModel
+			MilestoneCreateInputModel model = new MilestoneCreateInputModel
             {
                 ProjectId = projectId
             };
@@ -44,7 +44,7 @@ namespace ProjectHub.Web.Controllers
 		[HttpPost]
 		[Authorize(Roles = ModeratorRoleName)]
 		[ValidateAntiForgeryToken]
-		public async Task<IActionResult> Create(MilestoneCreateFormModel model)
+		public async Task<IActionResult> Create(MilestoneCreateInputModel model)
         {
 			if (!ModelState.IsValid)
 			{

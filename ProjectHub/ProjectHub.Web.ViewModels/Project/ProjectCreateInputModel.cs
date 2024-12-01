@@ -5,9 +5,9 @@ using static ProjectHub.Common.GeneralApplicationConstants;
 
 namespace ProjectHub.Web.ViewModels.Project
 {
-    public class ProjectCreateFormModel
+    public class ProjectCreateInputModel
     {
-        public ProjectCreateFormModel()
+        public ProjectCreateInputModel()
         {
             this.StartDate = DateTime.UtcNow.ToString(DateFormat);
         }

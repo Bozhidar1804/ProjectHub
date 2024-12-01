@@ -4,7 +4,7 @@ using static ProjectHub.Common.EntityValidationConstants.ApplicationUser;
 
 namespace ProjectHub.Web.ViewModels.User
 {
-    public class LoginFormModel
+    public class LoginInputModel
     {
         [EmailAddress]
         public string Email { get; set; } = null!;

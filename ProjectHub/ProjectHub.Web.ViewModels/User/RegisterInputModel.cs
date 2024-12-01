@@ -4,7 +4,7 @@ using static ProjectHub.Common.EntityValidationConstants.ApplicationUser;
 
 namespace ProjectHub.Web.ViewModels.User
 {
-    public class RegisterFormModel
+    public class RegisterInputModel
     {
         [Required]
         [StringLength(ApplicationUserFullNameMaxLength, MinimumLength = ApplicationUserFullNameMinLength, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.")]
