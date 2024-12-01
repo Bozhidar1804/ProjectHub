@@ -25,7 +25,6 @@ namespace ProjectHub.Data
 		public DbSet<Milestone> Milestones { get; set; }
 		public DbSet<Comment> Comments { get; set; }
 		public DbSet<ActivityLog> ActivityLogs { get; set; }
-		public DbSet<Tag> Tags { get; set; }
         public DbSet<Candidature> Candidatures { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -38,7 +37,6 @@ namespace ProjectHub.Data
             modelBuilder.ApplyConfiguration(new MilestoneConfiguration());
             modelBuilder.ApplyConfiguration(new CommentConfiguration());
             modelBuilder.ApplyConfiguration(new ActivityLogConfiguration());
-            modelBuilder.ApplyConfiguration(new TagConfiguration());
         }
     }
 }

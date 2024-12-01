@@ -90,6 +90,27 @@ namespace ProjectHub.Services.Data
             return task;
         }
 
+        public async Task<IEnumerable<TaskIndexViewModel>> GetTasksAssignedToUserAsync(string userId)
+        {
+            Guid userGuid = Guid.Empty;
+            bool isUserGuidValid = IsGuidValid(userId, ref userGuid);
+
+            IEnumerable<TaskIndexViewModel> tasks = await this.dbContext.Tasks
+                .Where(t => t.AssignedToUserId == userGuid && !t.IsDeleted)
+                .Select(t => new TaskIndexViewModel
+                {
+                    Id = t.Id.ToString(),
+                    Title = t.Title,
+                    Description = t.Description,
+                    DueDate = t.DueDate.ToString(DateFormat),
+                    Priority = t.Priority.ToString(),
+                    ProjectName = t.Project.Name
+                })
+                .ToListAsync();
+
+            return tasks;
+        }
+
         public async Task<List<ProjectHub.Data.Models.Task>> GetTasksByProjectIdAsync(string projectId)
         {
             Guid projectGuid = Guid.Empty;

@@ -15,7 +15,6 @@ namespace ProjectHub.Web.Infrastructure.Extensions
             serviceCollection.AddScoped<ICandidatureService, CandidatureService>();
             serviceCollection.AddScoped<IMilestoneService, MilestoneService>();
             serviceCollection.AddScoped<ITaskService, TaskService>();
-            serviceCollection.AddScoped<ITagService, TagService>();
             serviceCollection.AddScoped<IActivityLogService, ActivityLogService>();
         }
     }

@@ -1,0 +1,48 @@
+﻿@model IEnumerable<IGrouping<string, TaskIndexViewModel>>
+
+@{
+    ViewData["Title"] = "My Tasks";
+}
+
+<div class="container mt-5">
+    <h2 class="text-center text-primary mb-4">
+        <i class="bi bi-list-task"></i> My Assigned Tasks
+    </h2>
+
+    @if (!Model.Any())
+    {
+        <div class="alert alert-warning text-center" role="alert">
+            <i class="bi bi-info-circle"></i> No tasks assigned to you.
+        </div>
+    }
+    else
+    {
+        foreach (var projectGroup in Model)
+        {
+            <div class="card mb-4 shadow-sm">
+                <div class="card-header bg-dark text-white">
+                    <h4 class="mb-0">
+                        <i class="bi bi-folder"></i> @projectGroup.Key
+                    </h4>
+                </div>
+                <div class="card-body">
+                    @foreach (var task in projectGroup)
+                    {
+                        <div class="card mb-3">
+                            <div class="card-header bg-primary text-white">
+                                <h5 class="mb-1">@task.Title</h5>
+                                <small>Due: @task.DueDate</small>
+                            </div>
+                            <div class="card-body">
+                                <p>@task.Description</p>
+                                <span class="badge bg-info text-dark">
+                                    Priority: @task.Priority
+                                </span>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        }
+    }
+</div>

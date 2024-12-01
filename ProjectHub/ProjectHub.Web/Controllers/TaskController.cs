@@ -9,6 +9,7 @@ using static ProjectHub.Common.GeneralApplicationConstants;
 using ProjectHub.Web.ViewModels.Task;
 using ProjectHub.Data.Models.Enums;
 using ProjectHub.Services.Data;
+using ProjectHub.Web.Infrastructure.Extensions;
 
 namespace ProjectHub.Web.Controllers
 {
@@ -28,10 +29,25 @@ namespace ProjectHub.Web.Controllers
 			this.taskService = taskService;
             this.userService = userService;
 		}
-		public IActionResult Index()
+
+        [HttpGet]
+		public async Task<IActionResult> Index()
 		{
-			return View();
-		}
+            string userId = this.User.GetUserId()!;
+
+            if (string.IsNullOrEmpty(userId))
+            {
+                return Unauthorized();
+            }
+
+            IEnumerable<TaskIndexViewModel> tasks = await this.taskService.GetTasksAssignedToUserAsync(userId);
+
+            IEnumerable<IGrouping<string, TaskIndexViewModel>> groupedTasks = tasks
+                .GroupBy(t => t.ProjectName)
+                .ToList();
+
+            return View(groupedTasks);
+        }
 
         [HttpGet]
         [Authorize(Roles = ModeratorRoleName)]

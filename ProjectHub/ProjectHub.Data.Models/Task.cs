@@ -34,7 +34,6 @@ namespace ProjectHub.Data.Models
 		[ForeignKey(nameof(AssignedToUserId))]
 		public ApplicationUser AssignedToUser { get; set; } = null!;
 
-		public ICollection<Tag> Tags { get; set; } = new HashSet<Tag>();
 		public ICollection<Comment> Comments { get; set; } = new HashSet<Comment>();
 		public ICollection<ActivityLog> ActivityLogs { get; set; } = new HashSet<ActivityLog>();
 

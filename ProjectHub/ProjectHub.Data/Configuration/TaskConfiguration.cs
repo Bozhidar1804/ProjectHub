@@ -13,10 +13,6 @@ namespace ProjectHub.Data.Configuration
                 .HasKey(t => t.Id);
 
             builder
-                .HasMany(t => t.Tags)
-                .WithMany(tag => tag.Tasks);
-
-            builder
                 .HasMany(t => t.Comments)
                 .WithOne(c => c.Task)
                 .HasForeignKey(c => c.TaskId);

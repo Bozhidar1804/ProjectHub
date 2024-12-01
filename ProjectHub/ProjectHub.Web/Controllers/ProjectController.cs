@@ -21,16 +21,14 @@ namespace ProjectHub.Web.Controllers
         private readonly IProjectService projectService;
         private readonly IMilestoneService milestoneService;
         private readonly ITaskService taskService;
-        private readonly ITagService tagService;
         private readonly IActivityLogService activityLogService;
 
-        public ProjectController(UserManager<ApplicationUser> userManager, IProjectService projectService, IMilestoneService milestoneService, ITaskService taskService, ITagService tagService, IActivityLogService activityLogService)
+        public ProjectController(UserManager<ApplicationUser> userManager, IProjectService projectService, IMilestoneService milestoneService, ITaskService taskService, IActivityLogService activityLogService)
         {
             this.userManager = userManager;
             this.projectService = projectService;
             this.milestoneService = milestoneService;
             this.taskService = taskService;
-            this.tagService = tagService;
             this.activityLogService = activityLogService;
         }
 
@@ -143,7 +141,6 @@ namespace ProjectHub.Web.Controllers
                     tasks = new List<Data.Models.Task>(); // Empty list if no tasks found
                 }
 
-                List<string> tagsForProject = await this.tagService.GetTagsByProjectIdAsync(projectId);
                 List<ActivityLog> activityLogsByProject = await this.activityLogService.GetActivityLogsByProjectIdAsync(projectId);
 
                 ProjectManageViewModel projectViewModel = new ProjectManageViewModel()
