@@ -157,10 +157,13 @@ namespace ProjectHub.Services.Data
             return true;
         }
 
-        public async Task<List<TaskCompletedViewModel>> GetCompletedTasksAsync()
+        public async Task<List<TaskCompletedViewModel>> GetCompletedTasksByUserAsync(string userId)
         {
+            Guid userGuid = Guid.Empty;
+            bool isUserGuidValid = IsGuidValid(userId, ref userGuid);
+
             List<TaskCompletedViewModel> completedTasks = await this.dbContext.Tasks
-                .Where(t => t.IsCompleted && !t.IsDeleted)
+                .Where(t => t.IsCompleted && !t.IsDeleted && t.AssignedToUserId == userGuid)
                 .Include(t => t.Project)
                 .Include(t => t.Milestone)
                 .Select(t => new TaskCompletedViewModel

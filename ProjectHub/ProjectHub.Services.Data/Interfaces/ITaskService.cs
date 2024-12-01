@@ -11,6 +11,6 @@ namespace ProjectHub.Services.Data.Interfaces
         Task<IEnumerable<IEnumerable<IGrouping<string, TaskIndexViewModel>>>> GetGroupedTasksAssignedToUserAsync(string userId);
 
         Task<bool> CompleteTaskAsync(ProjectHub.Data.Models.Task task);
-        Task<List<TaskCompletedViewModel>> GetCompletedTasksAsync();
+        Task<List<TaskCompletedViewModel>> GetCompletedTasksByUserAsync(string userId);
     }
 }

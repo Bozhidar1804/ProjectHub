@@ -136,13 +136,20 @@ namespace ProjectHub.Web.Controllers
                 return BadRequest();
             }
 
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction(nameof(DisplayCompletedTasks), new { userId = task.AssignedToUserId });
         }
 
         [HttpGet]
         public async Task<IActionResult> DisplayCompletedTasks()
         {
-            List<TaskCompletedViewModel> completedTasks = await this.taskService.GetCompletedTasksAsync();
+            string userId = this.User.GetUserId()!;
+
+            if (string.IsNullOrEmpty(userId))
+            {
+                return Unauthorized();
+            }
+
+            List<TaskCompletedViewModel> completedTasks = await this.taskService.GetCompletedTasksByUserAsync(userId);
 
             return View(completedTasks);
         }
