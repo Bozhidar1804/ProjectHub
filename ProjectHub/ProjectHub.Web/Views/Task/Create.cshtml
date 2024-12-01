@@ -1,0 +1,64 @@
+﻿@model TaskCreateFormModel
+
+@{
+    ViewData["Title"] = "Create Task";
+}
+
+<div class="container mt-4">
+    <h2 class="text-center text-primary mb-4">Create New Task</h2>
+
+    <form asp-action="Create" asp-controller="Task" method="post" class="bg-light p-4 rounded shadow-sm">
+
+        <!-- Hidden ProjectId -->
+        <input asp-for="ProjectId" type="hidden" />
+
+        <!-- Task Title -->
+        <div class="form-group mb-3">
+            <label asp-for="Title" class="form-label">Task Title</label>
+            <input asp-for="Title" class="form-control" placeholder="Enter task title" required />
+            <span asp-validation-for="Title" class="text-danger"></span>
+        </div>
+
+        <!-- Task Description -->
+        <div class="form-group mb-3">
+            <label asp-for="Description" class="form-label">Description</label>
+            <textarea asp-for="Description" class="form-control" rows="4" placeholder="Provide a detailed description" required></textarea>
+            <span asp-validation-for="Description" class="text-danger"></span>
+        </div>
+
+        <!-- Assign To User -->
+        <div class="form-group mb-3">
+            <label asp-for="AssignedToUserId" class="form-label">Assign To</label>
+            <select asp-for="AssignedToUserId" class="form-select" required>
+                <option value="" disabled selected>Select a User</option>
+                @foreach (var user in Model.Users)
+                {
+                    <option value="@user.Value">@user.Text</option>
+                }
+            </select>
+        </div>
+
+        <!-- Due Date -->
+        <div class="form-group mb-3">
+            <label asp-for="DueDate" class="form-label">Due Date</label>
+            <input asp-for="DueDate" class="form-control"
+                   value="@(Model?.DueDate ?? string.Empty)"
+                   placeholder="dd/MM/yyyy" />
+            <span asp-validation-for="DueDate" class="text-danger"></span>
+        </div>
+
+        <!-- Task Priority -->
+        <div class="form-group mb-4">
+            <label as-for="Priority" class="form-label">Priority</label>
+            <select asp-for="Priority" class="form-select" required>
+                <option value="Low">Low</option>
+                <option value="Medium">Medium</option>
+                <option value="High">High</option>
+            </select>
+        </div>
+
+        <div class="text-center">
+            <button type="submit" class="btn btn-success btn-lg">Create Task</button>
+        </div>
+    </form>
+</div>

@@ -11,5 +11,6 @@ namespace ProjectHub.Services.Data.Interfaces
     {
         Task<string> GetFullNameByEmailAsync(string email);
         Task<ApplicationUser> GetUserByIdAsync(string userId);
+        Task<List<ApplicationUser>> GetAllUsersAsync();
     }
 }

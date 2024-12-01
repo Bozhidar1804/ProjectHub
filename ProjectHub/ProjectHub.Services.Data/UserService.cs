@@ -13,6 +13,13 @@ namespace ProjectHub.Services.Data
         {
             this.dbContext = dbContext;
         }
+
+        public async Task<List<ApplicationUser>> GetAllUsersAsync()
+        {
+            List<ApplicationUser> users = await this.dbContext.Users.ToListAsync();
+            return users;
+        }
+
         public async Task<string> GetFullNameByEmailAsync(string email)
         {
             ApplicationUser? user = await this.dbContext
