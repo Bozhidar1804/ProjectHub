@@ -17,7 +17,23 @@ namespace ProjectHub.Data.Models
 		public bool IsCompleted {  get; set; }
 		public bool IsDeleted { get; set; }
 
-		[Required]
+        // Computed property, dynamically calculating the milestone progress.
+        // Not stored in the database, EF treats it like a read-only property
+        // Avoids redundancy around the code
+        public double Progress
+        {
+            get
+            {
+                if (Tasks == null || !Tasks.Any())
+                {
+                    return 0;
+                }
+                int completedTasks = Tasks.Count(t => t.IsCompleted);
+                return (double)completedTasks / Tasks.Count * 100;
+            }
+        }
+
+        [Required]
 		public Guid ProjectId { get; set; }
 		public Project Project { get; set; } = null!;
 

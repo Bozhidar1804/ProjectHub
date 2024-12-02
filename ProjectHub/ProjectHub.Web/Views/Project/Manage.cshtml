@@ -3,37 +3,45 @@
 @{
     ViewData["Title"] = "Manage Project";
     int totalMilestones = Model.Milestones.Count;
+
+    int totalTasks = Model.Tasks.Count;
+    int completedTasks = Model.Tasks.Count(t => t.IsCompleted);
+
+    // Calculate progress percentage
+    double projectProgress = totalTasks > 0 ? (double)completedTasks / totalTasks * 100 : 0;
 }
 
 <div class="container mt-5">
     <!-- Project Header -->
     <div class="text-center mb-5">
-        <h2 class="display-4 text-primary">@Model.Name - Manage</h2>
-        <p class="lead text-muted">@Model.Description</p>
+        <h2 class="display-4 fw-bold text-primary">@Model.Name - Manage</h2>
+        <p class="lead text-muted fs-5">@Model.Description</p>
     </div>
 
-    <!-- Milestones Section -->
+    <!-- Project Progress Section -->
     <section class="mb-5">
-        <h4 class="text-info mb-4">
+        <h4 class="text-info fw-bold mb-4">
             <i class="bi bi-flag-fill"></i> Project Progress
         </h4>
 
+        <div class="progress mb-4 shadow-sm rounded-pill" style="height: 40px; overflow: hidden;">
+            <div class="progress-bar bg-gradient-success progress-bar-striped progress-bar-animated"
+                 role="progressbar"
+                 style="width: @projectProgress%;"
+                 aria-valuenow="@projectProgress"
+                 aria-valuemin="0"
+                 aria-valuemax="100">
+                <span class="text-dark fw-bold fs-5" style="position: absolute; width: 100%; text-align: center;">
+                    @Math.Round(projectProgress, 2)% Completed
+                </span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Milestones Section -->
+    <section class="mb-5">
         @if (Model.MaxMilestones.HasValue)
         {
-            int completedMilestones = Model.Milestones.Count(m => m.IsCompleted);
-            totalMilestones = Model.MaxMilestones.Value;
-
-            <div class="progress mb-4" style="height: 35px; border-radius: 10px;">
-                <div class="progress-bar bg-gradient-success progress-bar-striped progress-bar-animated"
-                     role="progressbar"
-                     style="width: @(completedMilestones * 100 / totalMilestones)%;"
-                     aria-valuenow="@completedMilestones"
-                     aria-valuemin="0"
-                     aria-valuemax="@totalMilestones">
-                    <strong class="text-dark">@completedMilestones / @totalMilestones Milestones Completed</strong>
-                </div>
-            </div>
-
             @if (Model.Milestones.Any())
             {
                 <div class="d-flex justify-content-between align-items-center mb-3">
@@ -51,15 +59,36 @@
                     @foreach (MilestoneViewModel milestone in Model.Milestones)
                     {
                         <div class="col">
-                            <div class="card shadow-sm border-0">
-                                <div class="card-body d-flex align-items-center justify-content-between">
-                                    <div>
-                                        <h5 class="card-title mb-1">@milestone.Name</h5>
-                                        <p class="card-text text-muted">Due: @milestone.Deadline</p>
+                            <div class="card shadow-lg border-0 rounded-4">
+                                <div class="card-body d-flex flex-column gap-3">
+                                    <!-- Title and Deadline -->
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div>
+                                            <h5 class="card-title fw-bold text-primary mb-1">@milestone.Name</h5>
+                                            <p class="card-text text-muted small">
+                                                <i class="bi bi-calendar-event"></i> Due: @milestone.Deadline
+                                            </p>
+                                        </div>
+                                        <span class="badge fs-6 rounded-pill px-3 py-2
+                            @(milestone.IsCompleted ? "bg-success text-white" : "bg-secondary text-white")">
+                                            <i class="bi @(milestone.IsCompleted ? "bi-check-circle" : "bi-hourglass-split")"></i>
+                                            @(milestone.IsCompleted ? "Completed" : "In Progress")
+                                        </span>
                                     </div>
-                                    <span class="badge fs-6 @(milestone.IsCompleted ? "bg-success" : "bg-secondary")">
-                                        @(milestone.IsCompleted ? "Completed" : "In Progress")
-                                    </span>
+
+                                    <!-- Progress Bar -->
+                                    <div class="progress rounded-pill" style="height: 30px; overflow: hidden;">
+                                        <div class="progress-bar bg-gradient-primary progress-bar-striped progress-bar-animated"
+                                             role="progressbar"
+                                             style="width: @milestone.Progress%;"
+                                             aria-valuenow="@milestone.Progress"
+                                             aria-valuemin="0"
+                                             aria-valuemax="100">
+                                            <span class="text-white fw-bold" style="position: absolute; width: 100%; text-align: center;">
+                                                @milestone.Progress% Complete
+                                            </span>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -114,7 +143,7 @@
         @if (Model.Tasks.Any())
         {
             <div class="row row-cols-1 row-cols-md-2 g-4">
-                @foreach (TaskViewModel task in Model.Tasks)
+                @foreach (TaskViewModel task in Model.Tasks.Where(t => !t.IsCompleted))
                 {
                     <div class="col">
                         <div class="card shadow border-0">
@@ -143,27 +172,30 @@
     </section>
 
     <!-- Members Section -->
-    <section>
-        <h4 class="text-info mb-4">
+    <section class="mb-5">
+        <h4 class="text-info fw-bold mb-4">
             <i class="bi bi-people-fill"></i> Project Members
         </h4>
 
         @if (Model.Members.Any())
         {
-            <ul class="list-group">
+            <ul class="list-group shadow-sm rounded">
                 @foreach (ProjectMemberViewModel member in Model.Members)
                 {
-                    <li class="list-group-item d-flex justify-content-between align-items-center">
-                        <span><strong>@member.UserName</strong></span>
-                        <span class="badge bg-info">@member.Role</span>
+                    <li class="list-group-item d-flex justify-content-between align-items-center py-3">
+                        <div>
+                            <h6 class="mb-0 fw-bold">@member.UserName</h6>
+                            <small class="text-muted">@member.CompletedTasks tasks completed</small>
+                        </div>
+                        <span class="badge bg-primary text-white fs-6 px-3 py-2">@member.Role</span>
                     </li>
                 }
             </ul>
         }
         else
         {
-            <div class="alert alert-warning" role="alert">
-                No members added to this project yet.
+            <div class="alert alert-warning text-center shadow-sm rounded" role="alert">
+                <i class="bi bi-info-circle"></i> No members added to this project yet.
             </div>
         }
     </section>

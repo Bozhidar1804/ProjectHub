@@ -82,7 +82,63 @@ namespace ProjectHub.Web.Controllers
         }
 
         [HttpGet]
-		public async Task<IActionResult> Delete(string Id)
+        public async Task<IActionResult> Details(string projectId)
+        {
+            Project project = await this.projectService.GetProjectByIdAsync(projectId);
+            bool isUserPartOfProject = (User.IsInRole(UserRoleName) || User.IsInRole(ModeratorRoleName)) && project.TeamMembers.Any(tm => tm.UserName == User.Identity?.Name);
+
+            ProjectDetailsViewModel projectViewModel = new ProjectDetailsViewModel
+            {
+                ProjectId = project.Id.ToString(),
+                Name = project.Name,
+                Description = project.Description,
+                StartDate = project.StartDate.ToString(DateFormat),
+                EndDate = project.EndDate.ToString(DateFormat),
+                Status = project.Status.ToString(),
+                CreatorName = project.Creator.UserName!,
+                TeamMemberCount = project.TeamMembers.Count,
+                MaxMilestones = project.MaxMilestones ?? 0,
+                Members = project.TeamMembers.Select(tm => new ProjectMemberViewModel
+                {
+                    UserId = tm.Id.ToString(),
+                    UserName = tm.UserName,
+                    Role = tm.Id == project.CreatorId ? "Creator" : "Member",
+                    CompletedTasks = project.Tasks.Count(t => t.AssignedToUserId == tm.Id && t.IsCompleted)
+                }).ToList()
+            };
+
+            if (isUserPartOfProject)
+            {
+                List<Milestone> milestonesForProject = await this.milestoneService.GetMilestonesByProjectIdAsync(projectId);
+                List<Data.Models.Task> tasksForProject = await this.taskService.GetTasksByProjectIdAsync(projectId);
+
+                projectViewModel.Milestones = milestonesForProject.Select(m => new MilestoneProjectDetailsViewModel
+                {
+                    Id = m.Id.ToString(),
+                    Name = m.Name,
+                    Deadline = m.Deadline.ToString(),
+                    IsCompleted = m.IsCompleted,
+                    Progress = m.Progress
+                }).ToList();
+
+                projectViewModel.Tasks = tasksForProject.Select(t => new TaskProjectDetailsViewModel
+                {
+                    Id = t.Id.ToString(),
+                    Title = t.Title,
+                    AssignedTo = t.AssignedToUser?.UserName ?? "Unassigned",
+                    MilestoneName = t.Milestone?.Name ?? "No Milestone",
+                    Priority = t.Priority.ToString(),
+                    IsCompleted = t.IsCompleted
+                }).ToList();
+            }
+
+            return View(projectViewModel);
+        }
+
+
+        [HttpGet]
+        [Authorize(Roles = ModeratorRoleName)]
+        public async Task<IActionResult> Delete(string Id)
 		{
 			Project project = await this.projectService.GetProjectByIdAsync(Id);
 
@@ -105,6 +161,7 @@ namespace ProjectHub.Web.Controllers
 		}
 
         [HttpPost]
+        [Authorize(Roles = ModeratorRoleName)]
         public async Task<IActionResult> DeleteConfirmed(string Id)
         {
             bool result = await this.projectService.SoftDeleteProjectAsync(Id);
@@ -153,14 +210,16 @@ namespace ProjectHub.Web.Controllers
                     {
                         UserId = tm.Id.ToString(),
                         UserName = tm.UserName!,
-                        Role = tm.Id == project.CreatorId ? "Creator" : "Member"
+                        Role = tm.Id == project.CreatorId ? "Creator" : "Member",
+                        CompletedTasks = tasks.Count(t => t.AssignedToUserId == tm.Id && t.IsCompleted)
                     }).ToList(),
                     Milestones = milestones.Select(m => new MilestoneViewModel
                     {
                         Id = m.Id.ToString(),
                         Name = m.Name,
                         Deadline = m.Deadline.ToString(DateFormat),
-                        IsCompleted = m.IsCompleted
+                        IsCompleted = m.IsCompleted,
+                        Progress = m.Progress
                     }).ToList(),
                     Tasks = tasks.Select(t => new TaskViewModel
                     {
@@ -169,6 +228,8 @@ namespace ProjectHub.Web.Controllers
                         Priority = t.Priority.ToString(),
                         AssignedTo = t.AssignedToUser?.UserName ?? "Unassigned",
                         MilestoneName = t.Milestone.Name,
+                        MilestoneId = t.MilestoneId.ToString(),
+                        IsCompleted = t.IsCompleted,
                         ActivityLogs = activityLogsByProject.Select(al => new ActivityLogViewModel
                         {
                             Id = al.Id.ToString(),
@@ -176,7 +237,7 @@ namespace ProjectHub.Web.Controllers
                             PerformedBy = al.User.UserName ?? "error",
                             Timestamp = al.Timestamp.ToString(DateFormat)
                         }).ToList()
-                    }).ToList(),
+                    }).ToList()
                 };
 
                 return View(projectViewModel);

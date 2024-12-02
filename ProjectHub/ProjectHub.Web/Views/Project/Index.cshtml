@@ -59,7 +59,7 @@
                                         <strong>End Date:</strong> <span class="text-danger">@project.EndDate</span>
                                     </p>
                                     <div class="text-center">
-                                        <a asp-action="Details" asp-controller="Project" asp-route-id="@project.Id" class="btn btn-outline-primary btn-sm">
+                                        <a asp-action="Details" asp-controller="Project" asp-route-projectId="@project.Id" class="btn btn-outline-primary btn-sm">
                                             <i class="bi bi-info-circle"></i> View Details
                                         </a>
                                         <span class="badge bg-secondary ms-2">You are part of this project</span>
@@ -104,7 +104,7 @@
                                         <strong>End Date:</strong> <span class="text-danger">@project.EndDate</span>
                                     </p>
                                     <div class="text-center">
-                                        <a asp-action="Details" asp-controller="Project" asp-route-id="@project.Id" class="btn btn-outline-primary btn-sm">
+                                        <a asp-action="Details" asp-controller="Project" asp-route-projectId="@project.Id" class="btn btn-outline-primary btn-sm">
                                             <i class="bi bi-info-circle"></i> View Details
                                         </a>
                                         @if (appliedProjects.Contains(project.Id.ToLower()))
