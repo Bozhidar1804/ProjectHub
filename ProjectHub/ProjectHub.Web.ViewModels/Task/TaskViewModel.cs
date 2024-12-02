@@ -8,6 +8,7 @@ namespace ProjectHub.Web.ViewModels.Task
         public string Title { get; set; } = null!;
         public string AssignedTo { get; set; } = null!;
         public string Priority { get; set; } = null!;
+        public string MilestoneName { get; set; } = null!;
         public List<ActivityLogViewModel> ActivityLogs { get; set; } = new List<ActivityLogViewModel>();
     }
 }

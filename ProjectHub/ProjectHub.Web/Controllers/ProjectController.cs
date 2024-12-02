@@ -168,6 +168,7 @@ namespace ProjectHub.Web.Controllers
                         Title = t.Title,
                         Priority = t.Priority.ToString(),
                         AssignedTo = t.AssignedToUser?.UserName ?? "Unassigned",
+                        MilestoneName = t.Milestone.Name,
                         ActivityLogs = activityLogsByProject.Select(al => new ActivityLogViewModel
                         {
                             Id = al.Id.ToString(),

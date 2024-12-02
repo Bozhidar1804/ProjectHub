@@ -3,6 +3,22 @@
   "WorkspaceRootPath": "C:\\Users\\bobo1\\OneDrive\\Desktop\\Repositories\\ProjectHub\\ProjectHub\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{4754A3DF-A500-443F-9915-A0F71C7A8DD0}|ProjectHub.Web\\ProjectHub.Web.csproj|c:\\users\\bobo1\\onedrive\\desktop\\repositories\\projecthub\\projecthub\\projecthub.web\\views\\project\\manage.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{4754A3DF-A500-443F-9915-A0F71C7A8DD0}|ProjectHub.Web\\ProjectHub.Web.csproj|solutionrelative:projecthub.web\\views\\project\\manage.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4754A3DF-A500-443F-9915-A0F71C7A8DD0}|ProjectHub.Web\\ProjectHub.Web.csproj|c:\\users\\bobo1\\onedrive\\desktop\\repositories\\projecthub\\projecthub\\projecthub.web\\controllers\\projectcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4754A3DF-A500-443F-9915-A0F71C7A8DD0}|ProjectHub.Web\\ProjectHub.Web.csproj|solutionrelative:projecthub.web\\controllers\\projectcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{62C762EA-70C3-4794-897F-01AB14561482}|ProjectHub.Web.ViewModels\\ProjectHub.Web.ViewModels.csproj|c:\\users\\bobo1\\onedrive\\desktop\\repositories\\projecthub\\projecthub\\projecthub.web.viewmodels\\task\\taskviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{62C762EA-70C3-4794-897F-01AB14561482}|ProjectHub.Web.ViewModels\\ProjectHub.Web.ViewModels.csproj|solutionrelative:projecthub.web.viewmodels\\task\\taskviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4754A3DF-A500-443F-9915-A0F71C7A8DD0}|ProjectHub.Web\\ProjectHub.Web.csproj|c:\\users\\bobo1\\onedrive\\desktop\\repositories\\projecthub\\projecthub\\projecthub.web\\controllers\\taskcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4754A3DF-A500-443F-9915-A0F71C7A8DD0}|ProjectHub.Web\\ProjectHub.Web.csproj|solutionrelative:projecthub.web\\controllers\\taskcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{62C762EA-70C3-4794-897F-01AB14561482}|ProjectHub.Web.ViewModels\\ProjectHub.Web.ViewModels.csproj|c:\\users\\bobo1\\onedrive\\desktop\\repositories\\projecthub\\projecthub\\projecthub.web.viewmodels\\user\\registerinputmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{62C762EA-70C3-4794-897F-01AB14561482}|ProjectHub.Web.ViewModels\\ProjectHub.Web.ViewModels.csproj|solutionrelative:projecthub.web.viewmodels\\user\\registerinputmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -51,10 +67,6 @@
       "RelativeMoniker": "D:0:0:{7ACBBCAC-7E01-4056-BF35-035272E73BE5}|ProjectHub.Data\\ProjectHub.Data.csproj|solutionrelative:projecthub.data\\projecthubdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{4754A3DF-A500-443F-9915-A0F71C7A8DD0}|ProjectHub.Web\\ProjectHub.Web.csproj|c:\\users\\bobo1\\onedrive\\desktop\\repositories\\projecthub\\projecthub\\projecthub.web\\controllers\\taskcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4754A3DF-A500-443F-9915-A0F71C7A8DD0}|ProjectHub.Web\\ProjectHub.Web.csproj|solutionrelative:projecthub.web\\controllers\\taskcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{014D43C9-A761-4025-A007-8A289D3F4016}|ProjectHub.Services.Data\\ProjectHub.Services.Data.csproj|c:\\users\\bobo1\\onedrive\\desktop\\repositories\\projecthub\\projecthub\\projecthub.services.data\\taskservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{014D43C9-A761-4025-A007-8A289D3F4016}|ProjectHub.Services.Data\\ProjectHub.Services.Data.csproj|solutionrelative:projecthub.services.data\\taskservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -99,10 +111,6 @@
       "RelativeMoniker": "D:0:0:{4754A3DF-A500-443F-9915-A0F71C7A8DD0}|ProjectHub.Web\\ProjectHub.Web.csproj|solutionrelative:projecthub.web\\views\\_viewimports.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{62C762EA-70C3-4794-897F-01AB14561482}|ProjectHub.Web.ViewModels\\ProjectHub.Web.ViewModels.csproj|c:\\users\\bobo1\\onedrive\\desktop\\repositories\\projecthub\\projecthub\\projecthub.web.viewmodels\\task\\taskviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{62C762EA-70C3-4794-897F-01AB14561482}|ProjectHub.Web.ViewModels\\ProjectHub.Web.ViewModels.csproj|solutionrelative:projecthub.web.viewmodels\\task\\taskviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{62C762EA-70C3-4794-897F-01AB14561482}|ProjectHub.Web.ViewModels\\ProjectHub.Web.ViewModels.csproj|c:\\users\\bobo1\\onedrive\\desktop\\repositories\\projecthub\\projecthub\\projecthub.web.viewmodels\\project\\projectmanageviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{62C762EA-70C3-4794-897F-01AB14561482}|ProjectHub.Web.ViewModels\\ProjectHub.Web.ViewModels.csproj|solutionrelative:projecthub.web.viewmodels\\project\\projectmanageviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -113,10 +121,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{4754A3DF-A500-443F-9915-A0F71C7A8DD0}|ProjectHub.Web\\ProjectHub.Web.csproj|c:\\users\\bobo1\\onedrive\\desktop\\repositories\\projecthub\\projecthub\\projecthub.web\\views\\task\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{4754A3DF-A500-443F-9915-A0F71C7A8DD0}|ProjectHub.Web\\ProjectHub.Web.csproj|solutionrelative:projecthub.web\\views\\task\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{4754A3DF-A500-443F-9915-A0F71C7A8DD0}|ProjectHub.Web\\ProjectHub.Web.csproj|c:\\users\\bobo1\\onedrive\\desktop\\repositories\\projecthub\\projecthub\\projecthub.web\\views\\project\\manage.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{4754A3DF-A500-443F-9915-A0F71C7A8DD0}|ProjectHub.Web\\ProjectHub.Web.csproj|solutionrelative:projecthub.web\\views\\project\\manage.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{014D43C9-A761-4025-A007-8A289D3F4016}|ProjectHub.Services.Data\\ProjectHub.Services.Data.csproj|c:\\users\\bobo1\\onedrive\\desktop\\repositories\\projecthub\\projecthub\\projecthub.services.data\\projectservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -133,10 +137,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{C52D9203-0C06-447E-945F-00E2A8975E32}|ProjectHub.Data.Models\\ProjectHub.Data.Models.csproj|c:\\users\\bobo1\\onedrive\\desktop\\repositories\\projecthub\\projecthub\\projecthub.data.models\\milestone.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C52D9203-0C06-447E-945F-00E2A8975E32}|ProjectHub.Data.Models\\ProjectHub.Data.Models.csproj|solutionrelative:projecthub.data.models\\milestone.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{4754A3DF-A500-443F-9915-A0F71C7A8DD0}|ProjectHub.Web\\ProjectHub.Web.csproj|c:\\users\\bobo1\\onedrive\\desktop\\repositories\\projecthub\\projecthub\\projecthub.web\\controllers\\projectcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4754A3DF-A500-443F-9915-A0F71C7A8DD0}|ProjectHub.Web\\ProjectHub.Web.csproj|solutionrelative:projecthub.web\\controllers\\projectcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{7ACBBCAC-7E01-4056-BF35-035272E73BE5}|ProjectHub.Data\\ProjectHub.Data.csproj|c:\\users\\bobo1\\onedrive\\desktop\\repositories\\projecthub\\projecthub\\projecthub.data\\configuration\\milestoneconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -425,17 +425,17 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": 6,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 3,
               "Title": "TaskController.cs",
               "DocumentMoniker": "C:\\Users\\bobo1\\OneDrive\\Desktop\\Repositories\\ProjectHub\\ProjectHub\\ProjectHub.Web\\Controllers\\TaskController.cs",
               "RelativeDocumentMoniker": "ProjectHub.Web\\Controllers\\TaskController.cs",
               "ToolTip": "C:\\Users\\bobo1\\OneDrive\\Desktop\\Repositories\\ProjectHub\\ProjectHub\\ProjectHub.Web\\Controllers\\TaskController.cs",
               "RelativeToolTip": "ProjectHub.Web\\Controllers\\TaskController.cs",
-              "ViewState": "AgIAAIgAAAAAAAAAAAAAAJcAAABNAAAAAAAAAA==",
+              "ViewState": "AgIAAIUAAAAAAAAAAAAAAIoAAABDAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-11-30T23:04:36.549Z",
               "IsPinned": true,
@@ -447,46 +447,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "ProjectCreateInputModel.cs",
-              "DocumentMoniker": "C:\\Users\\bobo1\\OneDrive\\Desktop\\Repositories\\ProjectHub\\ProjectHub\\ProjectHub.Web.ViewModels\\Project\\ProjectCreateInputModel.cs",
-              "RelativeDocumentMoniker": "ProjectHub.Web.ViewModels\\Project\\ProjectCreateInputModel.cs",
-              "ToolTip": "C:\\Users\\bobo1\\OneDrive\\Desktop\\Repositories\\ProjectHub\\ProjectHub\\ProjectHub.Web.ViewModels\\Project\\ProjectCreateInputModel.cs",
-              "RelativeToolTip": "ProjectHub.Web.ViewModels\\Project\\ProjectCreateInputModel.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAABCAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-19T20:36:15.024Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "TaskCreateInputModel.cs",
-              "DocumentMoniker": "C:\\Users\\bobo1\\OneDrive\\Desktop\\Repositories\\ProjectHub\\ProjectHub\\ProjectHub.Web.ViewModels\\Task\\TaskCreateInputModel.cs",
-              "RelativeDocumentMoniker": "ProjectHub.Web.ViewModels\\Task\\TaskCreateInputModel.cs",
-              "ToolTip": "C:\\Users\\bobo1\\OneDrive\\Desktop\\Repositories\\ProjectHub\\ProjectHub\\ProjectHub.Web.ViewModels\\Task\\TaskCreateInputModel.cs",
-              "RelativeToolTip": "ProjectHub.Web.ViewModels\\Task\\TaskCreateInputModel.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAyAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-30T23:08:47.763Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "LoginInputModel.cs",
-              "DocumentMoniker": "C:\\Users\\bobo1\\OneDrive\\Desktop\\Repositories\\ProjectHub\\ProjectHub\\ProjectHub.Web.ViewModels\\User\\LoginInputModel.cs",
-              "RelativeDocumentMoniker": "ProjectHub.Web.ViewModels\\User\\LoginInputModel.cs",
-              "ToolTip": "C:\\Users\\bobo1\\OneDrive\\Desktop\\Repositories\\ProjectHub\\ProjectHub\\ProjectHub.Web.ViewModels\\User\\LoginInputModel.cs",
-              "RelativeToolTip": "ProjectHub.Web.ViewModels\\User\\LoginInputModel.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAqwAgAAAAWAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-18T15:58:23.764Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 4,
               "Title": "RegisterInputModel.cs",
               "DocumentMoniker": "C:\\Users\\bobo1\\OneDrive\\Desktop\\Repositories\\ProjectHub\\ProjectHub\\ProjectHub.Web.ViewModels\\User\\RegisterInputModel.cs",
               "RelativeDocumentMoniker": "ProjectHub.Web.ViewModels\\User\\RegisterInputModel.cs",
@@ -494,12 +455,11 @@
               "RelativeToolTip": "ProjectHub.Web.ViewModels\\User\\RegisterInputModel.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAC3AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-16T21:59:09.129Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-16T21:59:09.129Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 8,
               "Title": "MilestoneService.cs",
               "DocumentMoniker": "C:\\Users\\bobo1\\OneDrive\\Desktop\\Repositories\\ProjectHub\\ProjectHub\\ProjectHub.Services.Data\\MilestoneService.cs",
               "RelativeDocumentMoniker": "ProjectHub.Services.Data\\MilestoneService.cs",
@@ -507,12 +467,86 @@
               "RelativeToolTip": "ProjectHub.Services.Data\\MilestoneService.cs",
               "ViewState": "AgIAAAsAAAAAAAAAAAAjwBMAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-27T22:32:50.228Z",
+              "WhenOpened": "2024-11-27T22:32:50.228Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ProjectController.cs",
+              "DocumentMoniker": "C:\\Users\\bobo1\\OneDrive\\Desktop\\Repositories\\ProjectHub\\ProjectHub\\ProjectHub.Web\\Controllers\\ProjectController.cs",
+              "RelativeDocumentMoniker": "ProjectHub.Web\\Controllers\\ProjectController.cs",
+              "ToolTip": "C:\\Users\\bobo1\\OneDrive\\Desktop\\Repositories\\ProjectHub\\ProjectHub\\ProjectHub.Web\\Controllers\\ProjectController.cs",
+              "RelativeToolTip": "ProjectHub.Web\\Controllers\\ProjectController.cs",
+              "ViewState": "AgIAAJsAAAAAAAAAAAAAwKoAAAA5AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-16T20:41:01.55Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "TaskViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\bobo1\\OneDrive\\Desktop\\Repositories\\ProjectHub\\ProjectHub\\ProjectHub.Web.ViewModels\\Task\\TaskViewModel.cs",
+              "RelativeDocumentMoniker": "ProjectHub.Web.ViewModels\\Task\\TaskViewModel.cs",
+              "ToolTip": "C:\\Users\\bobo1\\OneDrive\\Desktop\\Repositories\\ProjectHub\\ProjectHub\\ProjectHub.Web.ViewModels\\Task\\TaskViewModel.cs",
+              "RelativeToolTip": "ProjectHub.Web.ViewModels\\Task\\TaskViewModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAA6AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-01T20:15:37.494Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Manage.cshtml",
+              "DocumentMoniker": "C:\\Users\\bobo1\\OneDrive\\Desktop\\Repositories\\ProjectHub\\ProjectHub\\ProjectHub.Web\\Views\\Project\\Manage.cshtml",
+              "RelativeDocumentMoniker": "ProjectHub.Web\\Views\\Project\\Manage.cshtml",
+              "ToolTip": "C:\\Users\\bobo1\\OneDrive\\Desktop\\Repositories\\ProjectHub\\ProjectHub\\ProjectHub.Web\\Views\\Project\\Manage.cshtml",
+              "RelativeToolTip": "ProjectHub.Web\\Views\\Project\\Manage.cshtml",
+              "ViewState": "AgIAAHgAAAAAAAAAAAAAAH8AAABKAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-11-27T22:30:16.594Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 5,
+              "Title": "LoginInputModel.cs",
+              "DocumentMoniker": "C:\\Users\\bobo1\\OneDrive\\Desktop\\Repositories\\ProjectHub\\ProjectHub\\ProjectHub.Web.ViewModels\\User\\LoginInputModel.cs",
+              "RelativeDocumentMoniker": "ProjectHub.Web.ViewModels\\User\\LoginInputModel.cs",
+              "ToolTip": "C:\\Users\\bobo1\\OneDrive\\Desktop\\Repositories\\ProjectHub\\ProjectHub\\ProjectHub.Web.ViewModels\\User\\LoginInputModel.cs",
+              "RelativeToolTip": "ProjectHub.Web.ViewModels\\User\\LoginInputModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAqwAgAAAAWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-18T15:58:23.764Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "TaskCreateInputModel.cs",
+              "DocumentMoniker": "C:\\Users\\bobo1\\OneDrive\\Desktop\\Repositories\\ProjectHub\\ProjectHub\\ProjectHub.Web.ViewModels\\Task\\TaskCreateInputModel.cs",
+              "RelativeDocumentMoniker": "ProjectHub.Web.ViewModels\\Task\\TaskCreateInputModel.cs",
+              "ToolTip": "C:\\Users\\bobo1\\OneDrive\\Desktop\\Repositories\\ProjectHub\\ProjectHub\\ProjectHub.Web.ViewModels\\Task\\TaskCreateInputModel.cs",
+              "RelativeToolTip": "ProjectHub.Web.ViewModels\\Task\\TaskCreateInputModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAyAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-30T23:08:47.763Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "ProjectCreateInputModel.cs",
+              "DocumentMoniker": "C:\\Users\\bobo1\\OneDrive\\Desktop\\Repositories\\ProjectHub\\ProjectHub\\ProjectHub.Web.ViewModels\\Project\\ProjectCreateInputModel.cs",
+              "RelativeDocumentMoniker": "ProjectHub.Web.ViewModels\\Project\\ProjectCreateInputModel.cs",
+              "ToolTip": "C:\\Users\\bobo1\\OneDrive\\Desktop\\Repositories\\ProjectHub\\ProjectHub\\ProjectHub.Web.ViewModels\\Project\\ProjectCreateInputModel.cs",
+              "RelativeToolTip": "ProjectHub.Web.ViewModels\\Project\\ProjectCreateInputModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAABCAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-19T20:36:15.024Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
               "Title": "MilestoneCreateInputModel.cs",
               "DocumentMoniker": "C:\\Users\\bobo1\\OneDrive\\Desktop\\Repositories\\ProjectHub\\ProjectHub\\ProjectHub.Web.ViewModels\\Milestone\\MilestoneCreateInputModel.cs",
               "RelativeDocumentMoniker": "ProjectHub.Web.ViewModels\\Milestone\\MilestoneCreateInputModel.cs",
@@ -520,12 +554,11 @@
               "RelativeToolTip": "ProjectHub.Web.ViewModels\\Milestone\\MilestoneCreateInputModel.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAqAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-30T22:26:02.934Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-30T22:26:02.934Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 10,
               "Title": "CandidatureCreateInputModel.cs",
               "DocumentMoniker": "C:\\Users\\bobo1\\OneDrive\\Desktop\\Repositories\\ProjectHub\\ProjectHub\\ProjectHub.Web.ViewModels\\Candidature\\CandidatureCreateInputModel.cs",
               "RelativeDocumentMoniker": "ProjectHub.Web.ViewModels\\Candidature\\CandidatureCreateInputModel.cs",
@@ -533,12 +566,11 @@
               "RelativeToolTip": "ProjectHub.Web.ViewModels\\Candidature\\CandidatureCreateInputModel.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-01T23:29:00.7Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-01T23:29:00.7Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 11,
               "Title": "CandidatureService.cs",
               "DocumentMoniker": "C:\\Users\\bobo1\\OneDrive\\Desktop\\Repositories\\ProjectHub\\ProjectHub\\ProjectHub.Services.Data\\CandidatureService.cs",
               "RelativeDocumentMoniker": "ProjectHub.Services.Data\\CandidatureService.cs",
@@ -546,12 +578,11 @@
               "RelativeToolTip": "ProjectHub.Services.Data\\CandidatureService.cs",
               "ViewState": "AgIAAAUAAAAAAAAAAADgvwwAAABGAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-20T22:52:29.56Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-20T22:52:29.56Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 12,
               "Title": "CandidatureController.cs",
               "DocumentMoniker": "C:\\Users\\bobo1\\OneDrive\\Desktop\\Repositories\\ProjectHub\\ProjectHub\\ProjectHub.Web\\Controllers\\CandidatureController.cs",
               "RelativeDocumentMoniker": "ProjectHub.Web\\Controllers\\CandidatureController.cs",
@@ -564,7 +595,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 13,
               "Title": "Create.cshtml",
               "DocumentMoniker": "C:\\Users\\bobo1\\OneDrive\\Desktop\\Repositories\\ProjectHub\\ProjectHub\\ProjectHub.Web\\Views\\Candidature\\Create.cshtml",
               "RelativeDocumentMoniker": "ProjectHub.Web\\Views\\Candidature\\Create.cshtml",
@@ -572,12 +603,11 @@
               "RelativeToolTip": "ProjectHub.Web\\Views\\Candidature\\Create.cshtml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAiAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-11-20T22:49:36.47Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-20T22:49:36.47Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 14,
               "Title": "ICandidatureService.cs",
               "DocumentMoniker": "C:\\Users\\bobo1\\OneDrive\\Desktop\\Repositories\\ProjectHub\\ProjectHub\\ProjectHub.Services.Data\\Interfaces\\ICandidatureService.cs",
               "RelativeDocumentMoniker": "ProjectHub.Services.Data\\Interfaces\\ICandidatureService.cs",
@@ -585,12 +615,11 @@
               "RelativeToolTip": "ProjectHub.Services.Data\\Interfaces\\ICandidatureService.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAqAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-20T22:52:19.619Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-20T22:52:19.619Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 18,
               "Title": "ClaimsPrincipalExtensions.cs",
               "DocumentMoniker": "C:\\Users\\bobo1\\OneDrive\\Desktop\\Repositories\\ProjectHub\\ProjectHub\\ProjectHub.Web.Infrastructure\\Extensions\\ClaimsPrincipalExtensions.cs",
               "RelativeDocumentMoniker": "ProjectHub.Web.Infrastructure\\Extensions\\ClaimsPrincipalExtensions.cs",
@@ -598,12 +627,11 @@
               "RelativeToolTip": "ProjectHub.Web.Infrastructure\\Extensions\\ClaimsPrincipalExtensions.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-18T20:56:42.725Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-18T20:56:42.725Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 17,
               "Title": "BaseService.cs",
               "DocumentMoniker": "C:\\Users\\bobo1\\OneDrive\\Desktop\\Repositories\\ProjectHub\\ProjectHub\\ProjectHub.Services.Data\\BaseService.cs",
               "RelativeDocumentMoniker": "ProjectHub.Services.Data\\BaseService.cs",
@@ -611,12 +639,11 @@
               "RelativeToolTip": "ProjectHub.Services.Data\\BaseService.cs",
               "ViewState": "AgIAAAoAAAAAAAAAAAD4vxQAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-19T21:18:40.268Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-19T21:18:40.268Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 19,
+              "DocumentIndex": 22,
               "Title": "_Layout.cshtml",
               "DocumentMoniker": "C:\\Users\\bobo1\\OneDrive\\Desktop\\Repositories\\ProjectHub\\ProjectHub\\ProjectHub.Web\\Views\\Shared\\_Layout.cshtml",
               "RelativeDocumentMoniker": "ProjectHub.Web\\Views\\Shared\\_Layout.cshtml",
@@ -624,12 +651,11 @@
               "RelativeToolTip": "ProjectHub.Web\\Views\\Shared\\_Layout.cshtml",
               "ViewState": "AgIAAFgAAAAAAAAAAAAmwGgAAABUAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-11-16T20:19:21.489Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-16T20:19:21.489Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
+              "DocumentIndex": 21,
               "Title": "Index.cshtml",
               "DocumentMoniker": "C:\\Users\\bobo1\\OneDrive\\Desktop\\Repositories\\ProjectHub\\ProjectHub\\ProjectHub.Web\\Views\\Task\\Index.cshtml",
               "RelativeDocumentMoniker": "ProjectHub.Web\\Views\\Task\\Index.cshtml",
@@ -637,12 +663,11 @@
               "RelativeToolTip": "ProjectHub.Web\\Views\\Task\\Index.cshtml",
               "ViewState": "AgIAACYAAAAAAAAAAAAmwDQAAABNAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-12-01T20:23:48.182Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-01T20:23:48.182Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 19,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\bobo1\\OneDrive\\Desktop\\Repositories\\ProjectHub\\ProjectHub\\ProjectHub.Web\\Program.cs",
               "RelativeDocumentMoniker": "ProjectHub.Web\\Program.cs",
@@ -650,12 +675,11 @@
               "RelativeToolTip": "ProjectHub.Web\\Program.cs",
               "ViewState": "AgIAAAsAAAAAAAAAAAD4vxUAAABKAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-06T20:09:07.52Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-06T20:09:07.52Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 15,
               "Title": "ProjectHubDbContext.cs",
               "DocumentMoniker": "C:\\Users\\bobo1\\OneDrive\\Desktop\\Repositories\\ProjectHub\\ProjectHub\\ProjectHub.Data\\ProjectHubDbContext.cs",
               "RelativeDocumentMoniker": "ProjectHub.Data\\ProjectHubDbContext.cs",
@@ -663,12 +687,11 @@
               "RelativeToolTip": "ProjectHub.Data\\ProjectHubDbContext.cs",
               "ViewState": "AgIAABEAAAAAAAAAAADgvxoAAAA2AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-27T21:51:27.509Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-27T21:51:27.509Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 16,
               "Title": "TaskService.cs",
               "DocumentMoniker": "C:\\Users\\bobo1\\OneDrive\\Desktop\\Repositories\\ProjectHub\\ProjectHub\\ProjectHub.Services.Data\\TaskService.cs",
               "RelativeDocumentMoniker": "ProjectHub.Services.Data\\TaskService.cs",
@@ -676,12 +699,11 @@
               "RelativeToolTip": "ProjectHub.Services.Data\\TaskService.cs",
               "ViewState": "AgIAAJ4AAAAAAAAAAAAtwLEAAAAMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-27T22:37:36.702Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-27T22:37:36.702Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 20,
               "Title": "Task.cs",
               "DocumentMoniker": "C:\\Users\\bobo1\\OneDrive\\Desktop\\Repositories\\ProjectHub\\ProjectHub\\ProjectHub.Data.Models\\Task.cs",
               "RelativeDocumentMoniker": "ProjectHub.Data.Models\\Task.cs",
@@ -689,12 +711,11 @@
               "RelativeToolTip": "ProjectHub.Data.Models\\Task.cs",
               "ViewState": "AgIAAA8AAAAAAAAAAAA5wBMAAAAyAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-01T20:33:37.114Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-01T20:33:37.114Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 20,
+              "DocumentIndex": 23,
               "Title": "ITaskService.cs",
               "DocumentMoniker": "C:\\Users\\bobo1\\OneDrive\\Desktop\\Repositories\\ProjectHub\\ProjectHub\\ProjectHub.Services.Data\\Interfaces\\ITaskService.cs",
               "RelativeDocumentMoniker": "ProjectHub.Services.Data\\Interfaces\\ITaskService.cs",
@@ -702,12 +723,11 @@
               "RelativeToolTip": "ProjectHub.Services.Data\\Interfaces\\ITaskService.cs",
               "ViewState": "AgIAAAYAAAAAAAAAAAA2wA0AAABXAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-27T22:37:08.053Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-27T22:37:08.053Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 21,
+              "DocumentIndex": 24,
               "Title": "TaskCompletedViewModel.cs",
               "DocumentMoniker": "C:\\Users\\bobo1\\OneDrive\\Desktop\\Repositories\\ProjectHub\\ProjectHub\\ProjectHub.Web.ViewModels\\Task\\TaskCompletedViewModel.cs",
               "RelativeDocumentMoniker": "ProjectHub.Web.ViewModels\\Task\\TaskCompletedViewModel.cs",
@@ -715,12 +735,11 @@
               "RelativeToolTip": "ProjectHub.Web.ViewModels\\Task\\TaskCompletedViewModel.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAA1AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-01T22:55:24.555Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-01T22:55:24.555Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 22,
+              "DocumentIndex": 25,
               "Title": "DisplayCompletedTasks.cshtml",
               "DocumentMoniker": "C:\\Users\\bobo1\\OneDrive\\Desktop\\Repositories\\ProjectHub\\ProjectHub\\ProjectHub.Web\\Views\\Task\\DisplayCompletedTasks.cshtml",
               "RelativeDocumentMoniker": "ProjectHub.Web\\Views\\Task\\DisplayCompletedTasks.cshtml",
@@ -728,12 +747,11 @@
               "RelativeToolTip": "ProjectHub.Web\\Views\\Task\\DisplayCompletedTasks.cshtml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAACoAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-12-01T22:59:59.841Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-01T22:59:59.841Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 23,
+              "DocumentIndex": 26,
               "Title": "_ViewImports.cshtml",
               "DocumentMoniker": "C:\\Users\\bobo1\\OneDrive\\Desktop\\Repositories\\ProjectHub\\ProjectHub\\ProjectHub.Web\\Views\\_ViewImports.cshtml",
               "RelativeDocumentMoniker": "ProjectHub.Web\\Views\\_ViewImports.cshtml",
@@ -741,25 +759,11 @@
               "RelativeToolTip": "ProjectHub.Web\\Views\\_ViewImports.cshtml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAmAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-11-18T19:16:04.997Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-18T19:16:04.997Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 24,
-              "Title": "TaskViewModel.cs",
-              "DocumentMoniker": "C:\\Users\\bobo1\\OneDrive\\Desktop\\Repositories\\ProjectHub\\ProjectHub\\ProjectHub.Web.ViewModels\\Task\\TaskViewModel.cs",
-              "RelativeDocumentMoniker": "ProjectHub.Web.ViewModels\\Task\\TaskViewModel.cs",
-              "ToolTip": "C:\\Users\\bobo1\\OneDrive\\Desktop\\Repositories\\ProjectHub\\ProjectHub\\ProjectHub.Web.ViewModels\\Task\\TaskViewModel.cs",
-              "RelativeToolTip": "ProjectHub.Web.ViewModels\\Task\\TaskViewModel.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAsAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-01T20:15:37.494Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 25,
+              "DocumentIndex": 27,
               "Title": "ProjectManageViewModel.cs",
               "DocumentMoniker": "C:\\Users\\bobo1\\OneDrive\\Desktop\\Repositories\\ProjectHub\\ProjectHub\\ProjectHub.Web.ViewModels\\Project\\ProjectManageViewModel.cs",
               "RelativeDocumentMoniker": "ProjectHub.Web.ViewModels\\Project\\ProjectManageViewModel.cs",
@@ -767,12 +771,11 @@
               "RelativeToolTip": "ProjectHub.Web.ViewModels\\Project\\ProjectManageViewModel.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-27T21:44:38.696Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-27T21:44:38.696Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 26,
+              "DocumentIndex": 28,
               "Title": "TaskIndexViewModel.cs",
               "DocumentMoniker": "C:\\Users\\bobo1\\OneDrive\\Desktop\\Repositories\\ProjectHub\\ProjectHub\\ProjectHub.Web.ViewModels\\Task\\TaskIndexViewModel.cs",
               "RelativeDocumentMoniker": "ProjectHub.Web.ViewModels\\Task\\TaskIndexViewModel.cs",
@@ -780,25 +783,11 @@
               "RelativeToolTip": "ProjectHub.Web.ViewModels\\Task\\TaskIndexViewModel.cs",
               "ViewState": "AgIAAAkAAAAAAAAAAAAAABIAAAAhAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-01T20:18:27.149Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-01T20:18:27.149Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 28,
-              "Title": "Manage.cshtml",
-              "DocumentMoniker": "C:\\Users\\bobo1\\OneDrive\\Desktop\\Repositories\\ProjectHub\\ProjectHub\\ProjectHub.Web\\Views\\Project\\Manage.cshtml",
-              "RelativeDocumentMoniker": "ProjectHub.Web\\Views\\Project\\Manage.cshtml",
-              "ToolTip": "C:\\Users\\bobo1\\OneDrive\\Desktop\\Repositories\\ProjectHub\\ProjectHub\\ProjectHub.Web\\Views\\Project\\Manage.cshtml",
-              "RelativeToolTip": "ProjectHub.Web\\Views\\Project\\Manage.cshtml",
-              "ViewState": "AgIAACEAAAAAAAAAAAAAAHQAAAA8AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-11-27T22:30:16.594Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 29,
+              "DocumentIndex": 30,
               "Title": "ProjectService.cs",
               "DocumentMoniker": "C:\\Users\\bobo1\\OneDrive\\Desktop\\Repositories\\ProjectHub\\ProjectHub\\ProjectHub.Services.Data\\ProjectService.cs",
               "RelativeDocumentMoniker": "ProjectHub.Services.Data\\ProjectService.cs",
@@ -806,12 +795,11 @@
               "RelativeToolTip": "ProjectHub.Services.Data\\ProjectService.cs",
               "ViewState": "AgIAAGUAAAAAAAAAAAAIwHMAAAArAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-19T20:21:33.398Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-19T20:21:33.398Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 27,
+              "DocumentIndex": 29,
               "Title": "Create.cshtml",
               "DocumentMoniker": "C:\\Users\\bobo1\\OneDrive\\Desktop\\Repositories\\ProjectHub\\ProjectHub\\ProjectHub.Web\\Views\\Task\\Create.cshtml",
               "RelativeDocumentMoniker": "ProjectHub.Web\\Views\\Task\\Create.cshtml",
@@ -819,12 +807,11 @@
               "RelativeToolTip": "ProjectHub.Web\\Views\\Task\\Create.cshtml",
               "ViewState": "AgIAACMAAAAAAAAAAADwvy0AAAARAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-11-30T23:34:47.216Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-30T23:34:47.216Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 31,
+              "DocumentIndex": 32,
               "Title": "IMilestoneService.cs",
               "DocumentMoniker": "C:\\Users\\bobo1\\OneDrive\\Desktop\\Repositories\\ProjectHub\\ProjectHub\\ProjectHub.Services.Data\\Interfaces\\IMilestoneService.cs",
               "RelativeDocumentMoniker": "ProjectHub.Services.Data\\Interfaces\\IMilestoneService.cs",
@@ -832,12 +819,11 @@
               "RelativeToolTip": "ProjectHub.Services.Data\\Interfaces\\IMilestoneService.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAASAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-27T22:32:40.575Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-27T22:32:40.575Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 30,
+              "DocumentIndex": 31,
               "Title": "MilestoneController.cs",
               "DocumentMoniker": "C:\\Users\\bobo1\\OneDrive\\Desktop\\Repositories\\ProjectHub\\ProjectHub\\ProjectHub.Web\\Controllers\\MilestoneController.cs",
               "RelativeDocumentMoniker": "ProjectHub.Web\\Controllers\\MilestoneController.cs",
@@ -845,12 +831,11 @@
               "RelativeToolTip": "ProjectHub.Web\\Controllers\\MilestoneController.cs",
               "ViewState": "AgIAACYAAAAAAAAAAAAwwDYAAABDAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-30T22:16:38.224Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-30T22:16:38.224Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 32,
+              "DocumentIndex": 33,
               "Title": "Milestone.cs",
               "DocumentMoniker": "C:\\Users\\bobo1\\OneDrive\\Desktop\\Repositories\\ProjectHub\\ProjectHub\\ProjectHub.Data.Models\\Milestone.cs",
               "RelativeDocumentMoniker": "ProjectHub.Data.Models\\Milestone.cs",
@@ -858,8 +843,7 @@
               "RelativeToolTip": "ProjectHub.Data.Models\\Milestone.cs",
               "ViewState": "AgIAAAcAAAAAAAAAAAApwBUAAAAvAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-04T18:25:54.448Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-04T18:25:54.448Z"
             },
             {
               "$type": "Document",
@@ -875,19 +859,6 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 33,
-              "Title": "ProjectController.cs",
-              "DocumentMoniker": "C:\\Users\\bobo1\\OneDrive\\Desktop\\Repositories\\ProjectHub\\ProjectHub\\ProjectHub.Web\\Controllers\\ProjectController.cs",
-              "RelativeDocumentMoniker": "ProjectHub.Web\\Controllers\\ProjectController.cs",
-              "ToolTip": "C:\\Users\\bobo1\\OneDrive\\Desktop\\Repositories\\ProjectHub\\ProjectHub\\ProjectHub.Web\\Controllers\\ProjectController.cs",
-              "RelativeToolTip": "ProjectHub.Web\\Controllers\\ProjectController.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAALYAAAAdAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-16T20:41:01.55Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 34,
               "Title": "MilestoneConfiguration.cs",
               "DocumentMoniker": "C:\\Users\\bobo1\\OneDrive\\Desktop\\Repositories\\ProjectHub\\ProjectHub\\ProjectHub.Data\\Configuration\\MilestoneConfiguration.cs",
@@ -896,8 +867,7 @@
               "RelativeToolTip": "ProjectHub.Data\\Configuration\\MilestoneConfiguration.cs",
               "ViewState": "AgIAAAYAAAAAAAAAAAAAABYAAAAzAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-01T20:41:57.81Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-01T20:41:57.81Z"
             },
             {
               "$type": "Document",
@@ -909,8 +879,7 @@
               "RelativeToolTip": "ProjectHub.Data\\Configuration\\TaskConfiguration.cs",
               "ViewState": "AgIAAA0AAAAAAAAAAAAgwCIAAAAxAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-16T22:01:28.098Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-16T22:01:28.098Z"
             },
             {
               "$type": "Document",
@@ -1030,8 +999,7 @@
               "RelativeToolTip": "ProjectHub.Web\\Views\\Project\\Create.cshtml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAB8AAAAbAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-11-20T16:50:05.906Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-20T16:50:05.906Z"
             },
             {
               "$type": "Document",
@@ -1043,8 +1011,7 @@
               "RelativeToolTip": "ProjectHub.Web\\Views\\Milestone\\Create.cshtml",
               "ViewState": "AgIAAAYAAAAAAAAAAAAAABkAAABLAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-11-30T22:29:48.02Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-30T22:29:48.02Z"
             },
             {
               "$type": "Document",
@@ -1068,8 +1035,7 @@
               "RelativeToolTip": "ProjectHub.Services.Data\\Interfaces\\IProjectService.cs",
               "ViewState": "AgIAAAEAAAAAAAAAAAAkwAsAAAA8AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-19T20:20:34.862Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-19T20:20:34.862Z"
             },
             {
               "$type": "Document",
@@ -1081,8 +1047,7 @@
               "RelativeToolTip": "ProjectHub.Web\\Controllers\\UserController.cs",
               "ViewState": "AgIAAFUAAAAAAAAAAIA7wF4AAAAMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-20T23:43:19.817Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-20T23:43:19.817Z"
             },
             {
               "$type": "Document",
@@ -1658,8 +1623,7 @@
               "RelativeToolTip": "ProjectHub.Web\\Views\\User\\Register.cshtml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-11-16T21:58:15.395Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-16T21:58:15.395Z"
             },
             {
               "$type": "Document",
@@ -1671,8 +1635,7 @@
               "RelativeToolTip": "ProjectHub.Web\\Views\\User\\Login.cshtml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAACBAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-11-18T15:57:44.588Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-18T15:57:44.588Z"
             },
             {
               "$type": "Document",

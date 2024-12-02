@@ -124,6 +124,10 @@
                             </div>
                             <div class="card-body">
                                 <p class="mb-0"><strong>Priority:</strong> @task.Priority</p>
+                                <p class="mb-0">
+                                    <strong>Associated Milestone:</strong>
+                                    @(string.IsNullOrEmpty(task.MilestoneName) ? "No Milestone" : task.MilestoneName)
+                                </p>
                             </div>
                         </div>
                     </div>

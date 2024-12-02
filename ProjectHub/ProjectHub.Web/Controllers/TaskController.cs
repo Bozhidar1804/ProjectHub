@@ -136,7 +136,7 @@ namespace ProjectHub.Web.Controllers
                 return BadRequest();
             }
 
-            return RedirectToAction(nameof(DisplayCompletedTasks), new { userId = task.AssignedToUserId });
+            return RedirectToAction(nameof(DisplayCompletedTasks));
         }
 
         [HttpGet]
