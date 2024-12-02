@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 using ProjectHub.Data.Models;
-
+using static ProjectHub.Common.EntityValidationConstants.Comment;
 
 namespace ProjectHub.Data.Configuration
 {
@@ -14,13 +14,30 @@ namespace ProjectHub.Data.Configuration
                 .HasKey(c => c.Id);
 
             builder
+                .Property(c => c.Upvotes)
+                .IsRequired()
+                .HasDefaultValue(CommentVotesDefaultValue);
+
+            builder
+                .Property(c => c.Downvotes)
+                .IsRequired()
+                .HasDefaultValue(CommentVotesDefaultValue);
+
+            builder
                 .Property(c => c.TaskId)
                 .IsRequired();
 
             builder
                 .HasOne(c => c.Task)
                 .WithMany(t => t.Comments)
-                .HasForeignKey(c => c.TaskId);
+                .HasForeignKey(c => c.TaskId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            builder
+                .HasOne(c => c.PostedByUser)
+                .WithMany(u => u.Comments)
+                .HasForeignKey(c => c.PostedByUserId)
+                .OnDelete(DeleteBehavior.Restrict);
 
             builder
                 .Property(m => m.IsDeleted)

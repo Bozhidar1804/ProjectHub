@@ -14,11 +14,18 @@ namespace ProjectHub.Data.Models
 		public string Content { get; set; } = null!;
 
 		public DateTime CreatedOn { get; set; }
-		public bool IsDeleted { get; set; }
+        public int Upvotes { get; set; }
+        public int Downvotes { get; set; }
+        public bool IsDeleted { get; set; }
 
 		[Required]
 		public Guid TaskId { get; set; }
 		[ForeignKey(nameof(TaskId))]
 		public Task Task { get; set; } = null!;
-	}
+
+        [Required]
+        public Guid PostedByUserId { get; set; }
+        [ForeignKey(nameof(PostedByUserId))]
+        public ApplicationUser PostedByUser { get; set; } = null!;
+    }
 }

@@ -47,6 +47,7 @@
 		{
 			public const int CommentContentMaxLength = 300;
 			public const int CommentContentMinLength = 5;
+			public const int CommentVotesDefaultValue = 0;
 		}
 
 		public static class ActivityLog

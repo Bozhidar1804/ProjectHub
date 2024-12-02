@@ -1,7 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using ProjectHub.Data.Models.Enums;
-using static ProjectHub.Common.EntityValidationConstants.ActivityLog;
 
 namespace ProjectHub.Data.Models
 {
@@ -22,6 +21,5 @@ namespace ProjectHub.Data.Models
         public Guid UserId { get; set; }
         [ForeignKey(nameof(UserId))]
         public ApplicationUser User { get; set; } = null!;
-
     }
 }

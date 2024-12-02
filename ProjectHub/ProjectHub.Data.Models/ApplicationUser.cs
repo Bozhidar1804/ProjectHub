@@ -23,5 +23,6 @@ namespace ProjectHub.Data.Models
         public ICollection<Project> Projects { get; set; } = new List<Project>();
 		public ICollection<Task> Tasks { get; set; } = new List<Task>();
         public ICollection<ActivityLog> ActivityLogs { get; set; } = new List<ActivityLog>();
+        public ICollection<Comment> Comments { get; set; } = new HashSet<Comment>();
     }
 }
