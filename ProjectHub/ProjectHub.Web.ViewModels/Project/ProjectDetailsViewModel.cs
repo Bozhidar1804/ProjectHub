@@ -1,4 +1,5 @@
-﻿using ProjectHub.Web.ViewModels.Milestone;
+﻿using ProjectHub.Data.Models.Enums;
+using ProjectHub.Web.ViewModels.Milestone;
 using ProjectHub.Web.ViewModels.Task;
 using System;
 using System.Collections.Generic;
@@ -15,7 +16,7 @@ namespace ProjectHub.Web.ViewModels.Project
         public string Description { get; set; } = null!;
         public string StartDate { get; set; } = null!;
         public string EndDate { get; set; } = null!;
-        public string Status { get; set; } = null!;
+        public ProjectStatus Status { get; set; }
         public string CreatorName { get; set; } = null!;
         public int TeamMemberCount { get; set; }
         public int MaxMilestones { get; set; }

@@ -94,7 +94,7 @@ namespace ProjectHub.Web.Controllers
                 Description = project.Description,
                 StartDate = project.StartDate.ToString(DateFormat),
                 EndDate = project.EndDate.ToString(DateFormat),
-                Status = project.Status.ToString(),
+                Status = project.Status,
                 CreatorName = project.Creator.UserName!,
                 TeamMemberCount = project.TeamMembers.Count,
                 MaxMilestones = project.MaxMilestones ?? 0,

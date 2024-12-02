@@ -1,35 +1,74 @@
 ﻿@model ProjectDetailsViewModel
 
+@{
+    int totalTasks = Model.Tasks.Count;
+    int completedTasks = Model.Tasks.Count(t => t.IsCompleted);
+
+    // Calculate progress percentage
+    double projectProgress = totalTasks > 0 ? (double)completedTasks / totalTasks * 100 : 0;
+}
+
 <div class="container mt-5">
     <!-- Project Header -->
     <div class="text-center mb-5">
-        <h2 class="display-4 text-primary">@Model.Name - Details</h2>
+        <h2 class="display-4 text-primary fw-bold">@Model.Name - Details</h2>
         <p class="lead text-muted">@Model.Description</p>
     </div>
 
+    @if (Model.Milestones.Any() && Model.Tasks.Any()) 
+    {
+        <!-- Project Progress Section -->
+        <section class="mb-5">
+            <h4 class="text-info fw-bold mb-4">
+                <i class="bi bi-flag-fill"></i> Project Progress
+            </h4>
+
+            <div class="progress mb-4 shadow-lg rounded-3" style="height: 50px; overflow: hidden;">
+                <div class="progress-bar bg-gradient-primary progress-bar-striped progress-bar-animated"
+                     role="progressbar"
+                     style="width: @projectProgress%;"
+                     aria-valuenow="@projectProgress"
+                     aria-valuemin="0"
+                     aria-valuemax="100">
+                    <span class="text-dark fw-bold fs-5" style="position: absolute; width: 100%; text-align: center;">
+                        @Math.Round(projectProgress, 2)% Completed
+                    </span>
+                </div>
+            </div>
+        </section>
+    }
+
     <!-- Project Info Section -->
     <section class="mb-5">
-        <h4 class="text-info mb-4">Project Information</h4>
-        <ul class="list-group">
-            <li class="list-group-item">Status: @Model.Status</li>
-            <li class="list-group-item">Creator: @Model.CreatorName</li>
-            <li class="list-group-item">Team Members: @Model.TeamMemberCount</li>
-            <li class="list-group-item">Total Milestones: @Model.MaxMilestones</li>
+        <h4 class="text-info fw-bold mb-4">Project Information</h4>
+        <ul class="list-group shadow-sm rounded">
+            <li class="list-group-item d-flex justify-content-between">
+                <strong>Status:</strong> <span class="text-secondary">@Model.Status.GetDisplayName()</span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between">
+                <strong>Creator:</strong> <span class="text-secondary">@Model.CreatorName</span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between">
+                <strong>Team Members:</strong> <span class="text-secondary">@Model.TeamMemberCount</span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between">
+                <strong>Total Milestones:</strong> <span class="text-secondary">@Model.MaxMilestones</span>
+            </li>
         </ul>
     </section>
 
     @if (Model.Members.Any())
     {
         <!-- Members Section -->
-        <section>
-            <h4 class="text-info mb-4">Project Members</h4>
-            <ul class="list-group">
+        <section class="mb-5">
+            <h4 class="text-info fw-bold mb-4">Project Members</h4>
+            <ul class="list-group shadow-sm rounded">
                 @foreach (var member in Model.Members)
                 {
                     <li class="list-group-item d-flex justify-content-between align-items-center">
                         <span><strong>@member.UserName</strong></span>
-                        <span class="badge bg-info">@member.Role</span>
-                        <span class="badge bg-success">@member.CompletedTasks Tasks Completed</span>
+                        <span class="badge bg-primary text-white">@member.Role</span>
+                        <span class="badge bg-success text-white">@member.CompletedTasks Tasks Completed</span>
                     </li>
                 }
             </ul>
@@ -39,15 +78,15 @@
     @if (Model.Milestones.Any())
     {
         <!-- Milestones Section -->
-        <section>
-            <h4 class="text-info mb-4">Project Milestones</h4>
-            <ul class="list-group">
+        <section class="mb-5">
+            <h4 class="text-info fw-bold mb-4">Project Milestones</h4>
+            <ul class="list-group shadow-sm rounded">
                 @foreach (var milestone in Model.Milestones)
                 {
                     <li class="list-group-item d-flex justify-content-between align-items-center">
                         <span><strong>@milestone.Name</strong></span>
-                        <span class="badge bg-primary">Progress: @milestone.Progress%</span>
-                        <span class="badge bg-info">Deadline: @milestone.Deadline</span>
+                        <span class="badge bg-warning text-dark">Progress: @milestone.Progress%</span>
+                        <span class="badge bg-info text-white">Deadline: @milestone.Deadline</span>
                     </li>
                 }
             </ul>
@@ -57,18 +96,18 @@
     @if (Model.Tasks.Any())
     {
         <!-- Tasks Section -->
-        <section>
-            <h4 class="text-info mb-4">Assigned Tasks</h4>
-            <ul class="list-group">
+        <section class="mb-5">
+            <h4 class="text-info fw-bold mb-4">Assigned Tasks</h4>
+            <ul class="list-group shadow-sm rounded">
                 @foreach (var task in Model.Tasks)
                 {
-                    <li class="list-group-item">
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
                         <span><strong>@task.Title</strong></span>
-                        <span class="badge bg-primary">@task.MilestoneName</span>
-                        <span class="badge bg-secondary">@task.Priority</span>
-                        <span class="badge bg-success">@task.AssignedTo</span>
-                        <span class="badge @(task.IsCompleted ? "bg-success" : "bg-danger")">
-                            @task.IsCompleted ? "Completed" : "Pending"
+                        <span class="badge bg-primary text-white">@task.MilestoneName</span>
+                        <span class="badge bg-secondary text-white">@task.Priority</span>
+                        <span class="badge bg-success text-white">@task.AssignedTo</span>
+                        <span class="badge @(task.IsCompleted ? "bg-success" : "bg-danger") text-white">
+                            @(task.IsCompleted ? "Completed" : "Pending")
                         </span>
                     </li>
                 }
@@ -76,3 +115,4 @@
         </section>
     }
 </div>
+
