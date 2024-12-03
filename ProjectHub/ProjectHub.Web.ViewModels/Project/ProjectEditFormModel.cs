@@ -1,30 +1,28 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using ProjectHub.Web.ViewModels.Task;
+using System.ComponentModel.DataAnnotations;
 
 using static ProjectHub.Common.EntityValidationConstants.Project;
-using static ProjectHub.Common.GeneralApplicationConstants;
 using static ProjectHub.Common.NotificationMessagesConstants;
 
 namespace ProjectHub.Web.ViewModels.Project
 {
-    public class ProjectCreateInputModel
+    public class ProjectEditFormModel
     {
-        public ProjectCreateInputModel()
-        {
-            this.StartDate = DateTime.UtcNow.ToString(DateFormat);
-        }
+        [Required]
+        public string ProjectId { get; set; } = null!;
 
         [Required]
         [StringLength(ProjectNameMaxLength, MinimumLength = ProjectNameMinLength, ErrorMessage = GeneralErrorMessage)]
         public string Name { get; set; } = null!;
 
         [Required]
-        [StringLength(ProjectDescriptionMaxLength, ErrorMessage = "{0} cannot exceed {1} characters.")]
+        [StringLength(ProjectDescriptionMaxLength, MinimumLength = ProjectDescriptionMinLength, ErrorMessage = GeneralErrorMessage)]
         public string Description { get; set; } = null!;
 
         [Required]
-        public string StartDate { get; set; } = null!;
-
-        [Required]
         public string EndDate { get; set; } = null!;
+        public int? MaxMilestones { get; set; }
+
+        public List<TaskEditFormModel> Tasks { get; set; } = new List<TaskEditFormModel>();
     }
 }

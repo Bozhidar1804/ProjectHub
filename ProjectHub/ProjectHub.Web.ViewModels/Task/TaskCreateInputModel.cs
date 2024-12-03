@@ -3,13 +3,14 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 
 using ProjectHub.Data.Models.Enums;
 using static ProjectHub.Common.EntityValidationConstants.Task;
+using static ProjectHub.Common.NotificationMessagesConstants;
 
 namespace ProjectHub.Web.ViewModels.Task
 {
     public class TaskCreateInputModel
     {
         [Required]
-        [StringLength(TaskTitleMaxLength, MinimumLength = TaskTitleMinLength)]
+        [StringLength(TaskTitleMaxLength, MinimumLength = TaskTitleMinLength, ErrorMessage = GeneralErrorMessage)]
         public string Title { get; set; } = null!;
 
         [Required]

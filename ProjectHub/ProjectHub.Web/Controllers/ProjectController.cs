@@ -11,6 +11,8 @@ using static ProjectHub.Web.Infrastructure.Extensions.ClaimsPrincipalExtensions;
 using static ProjectHub.Common.GeneralApplicationConstants;
 using ProjectHub.Web.ViewModels.Milestone;
 using ProjectHub.Web.ViewModels.Task;
+using ProjectHub.Services.Data;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace ProjectHub.Web.Controllers
 {
@@ -133,6 +135,43 @@ namespace ProjectHub.Web.Controllers
             }
 
             return View(projectViewModel);
+        }
+
+        [HttpGet]
+        [Authorize(Roles = ModeratorRoleName)]
+        public async Task<IActionResult> Edit(string projectId)
+        {
+            Project project = await this.projectService.GetProjectByIdAsync(projectId);
+
+            if (project == null)
+            {
+                return NotFound();
+            }
+
+            List<ApplicationUser> teamMembers = project.TeamMembers.ToList();
+            var tasks = await this.taskService.GetTasksByProjectIdAsync(projectId);
+
+            ProjectEditFormModel model = new ProjectEditFormModel()
+            {
+                ProjectId = project.Id.ToString(),
+                Name = project.Name,
+                Description = project.Description,
+                EndDate = project.EndDate.ToString(DateFormat),
+                MaxMilestones = project.MaxMilestones,
+                Tasks = tasks.Select(t => new TaskEditFormModel
+                {
+                    TaskId = t.Id.ToString(),
+                    Title = t.Title,
+                    AssignedToUserId = t.AssignedToUserId.ToString() ?? string.Empty,
+                    AvailableUsers = teamMembers.Select(tm => new SelectListItem
+                    {
+                        Value = tm.Id.ToString(),
+                        Text = tm.UserName
+                    }).ToList()
+                }).ToList()
+            };
+
+            return View(model);
         }
 
 

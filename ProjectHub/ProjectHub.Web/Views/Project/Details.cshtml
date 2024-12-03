@@ -75,6 +75,19 @@
         </section>
     }
 
+    @{
+        if (!Model.Members.Any(m => m.UserId == this.User.GetUserId()))
+        {
+            <div class="d-flex justify-content-center mt-4">
+                <a asp-action="Create" asp-controller="Candidature" asp-route-projectId="@Model.ProjectId"
+                   class="btn btn-success text-white fw-bold px-4 py-2 shadow-sm d-flex align-items-center justify-content-center"
+                   style="border-radius: 25px; text-transform: uppercase; font-size: 1rem;">
+                    <i class="bi bi-pencil-square me-2"></i> Apply
+                </a>
+            </div>
+        }
+    }
+
     @if (Model.Milestones.Any())
     {
         <!-- Milestones Section -->

@@ -1,0 +1,84 @@
+﻿@model ProjectEditFormModel
+
+@{
+    ViewData["Title"] = "Edit Project";
+}
+
+<div class="container mt-5">
+    <h1 class="text-primary">Edit Project</h1>
+
+    <form asp-action="Edit" method="post">
+        <input type="hidden" asp-for="ProjectId" />
+
+        <!-- Project Details -->
+        <div class="mb-4">
+            <label asp-for="Name" class="form-label">Project Name</label>
+            <input asp-for="Name" class="form-control" />
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+
+        <div class="mb-4">
+            <label asp-for="Description" class="form-label">Description</label>
+            <textarea asp-for="Description" class="form-control"></textarea>
+            <span asp-validation-for="Description" class="text-danger"></span>
+        </div>
+
+        <div class="mb-4">
+            <label asp-for="EndDate" class="form-label">End Date</label>
+            <input asp-for="EndDate" class="form-control"
+                   value="@(Model?.EndDate ?? string.Empty)"
+                   placeholder="dd/MM/yyyy" />
+            <span asp-validation-for="EndDate" class="text-danger"></span>
+        </div>
+
+        <div class="mb-4">
+            <label asp-for="MaxMilestones" class="form-label">Maximum Milestones</label>
+            <input asp-for="MaxMilestones" class="form-control" type="number" />
+            <span asp-validation-for="MaxMilestones" class="text-danger"></span>
+        </div>
+
+        <!-- Tasks Section -->
+        <h3 class="text-info">Reassign Tasks</h3>
+        @if (Model.Tasks.Any())
+        {
+            <div class="accordion" id="tasksAccordion">
+                @foreach (var task in Model.Tasks)
+                {
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="task-@task.TaskId">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-@task.TaskId" aria-expanded="false" aria-controls="collapse-@task.TaskId">
+                                @task.Title
+                            </button>
+                        </h2>
+                        <div id="collapse-@task.TaskId" class="accordion-collapse collapse" aria-labelledby="task-@task.TaskId" data-bs-parent="#tasksAccordion">
+                            <div class="accordion-body">
+                                <div class="mb-3">
+                                    <label class="form-label">Assigned To</label>
+                                    <select asp-for="Tasks[@Model.Tasks.IndexOf(task)].AssignedToUserId" class="form-select">
+                                        <option value="">Unassign</option>
+                                        @foreach (var user in task.AvailableUsers)
+                                        {
+                                            var isSelected = user.Value == task.AssignedToUserId ? "selected" : "";
+                                            <option value="@user.Value" isSelected>@user.Text</option>
+                                        }
+                                    </select>
+                                    <input type="hidden" asp-for="Tasks[@Model.Tasks.IndexOf(task)].TaskId" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        }
+        else
+        {
+            <p>No tasks available for reassignment.</p>
+        }
+
+        <!-- Submit Button -->
+        <div class="mt-4">
+            <button type="submit" class="btn btn-primary">Save Changes</button>
+            <a asp-action="Details" asp-route-projectId="@Model.ProjectId" class="btn btn-secondary">Cancel</a>
+        </div>
+    </form>
+</div>
