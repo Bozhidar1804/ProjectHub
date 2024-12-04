@@ -202,5 +202,23 @@ namespace ProjectHub.Services.Data
 
             return tasksToReturn;
         }
+
+        public async Task<string> GetTaskTitleAsync(string taskId)
+        {
+            Guid taskGuid = Guid.Empty;
+            bool isTaskGuidValid = IsGuidValid(taskId, ref taskGuid);
+
+            string task = await this.dbContext.Tasks
+                .Where(t => t.Id == taskGuid && !t.IsDeleted)
+                .Select(t => t.Title)
+                .FirstOrDefaultAsync();
+
+            if (task == null)
+            {
+                throw new ArgumentException("Task not found.");
+            }
+
+            return task;
+        }
     }
 }

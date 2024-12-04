@@ -55,10 +55,22 @@
                                                 </button>
                                             </form>
 
+                                            <a asp-action="AddComment" asp-controller="Comment" asp-route-taskId="@task.Id"
+                                               class="btn btn-outline-info btn-sm mt-2 shadow-sm d-flex align-items-center justify-content-center"
+                                               style="border-radius: 8px; font-size: 0.875rem; text-transform: capitalize;">
+                                                <i class="bi bi-chat-dots me-1"></i> Add Comment
+                                            </a>
+
+                                            <a asp-action="Index" asp-controller="Comment" asp-route-taskId="@task.Id"
+                                               class="btn btn-outline-secondary btn-sm mt-2 ms-2 shadow-sm d-flex align-items-center justify-content-center"
+                                               style="border-radius: 8px; font-size: 0.875rem; text-transform: capitalize;">
+                                                <i class="bi bi-chat-left-dots me-1"></i> View Comments
+                                            </a>
                                         </div>
                                     </div>
                                 }
                             </div>
+
                         </div>
                     }
                 </div>

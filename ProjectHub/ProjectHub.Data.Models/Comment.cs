@@ -13,7 +13,7 @@ namespace ProjectHub.Data.Models
 		[MaxLength(CommentContentMaxLength)]
 		public string Content { get; set; } = null!;
 
-		public DateTime CreatedOn { get; set; }
+		public DateTime CreatedOn { get; set; } = DateTime.UtcNow;
         public int Upvotes { get; set; }
         public int Downvotes { get; set; }
         public bool IsDeleted { get; set; }

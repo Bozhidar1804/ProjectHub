@@ -18,8 +18,8 @@ namespace ProjectHub.Data.Models
 		[MaxLength(ProjectDescriptionMaxLength)]
 		public string Description { get; set; } = null!;
 		public int? MaxMilestones { get; set; }
-		public DateTime StartDate { get; set; }
-		public DateTime EndDate { get; set; }
+		public DateTime StartDate { get; set; } = DateTime.UtcNow;
+        public DateTime EndDate { get; set; }
 		public ProjectStatus Status { get; set; }
 		public bool IsDeleted { get; set; }
 

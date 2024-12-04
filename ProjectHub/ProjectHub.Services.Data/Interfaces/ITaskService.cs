@@ -14,5 +14,6 @@ namespace ProjectHub.Services.Data.Interfaces
         Task<bool> CompleteTaskAsync(ProjectHub.Data.Models.Task task);
         Task<List<TaskCompletedViewModel>> GetCompletedTasksByUserAsync(string userId);
         Task<List<TaskEditFormModel>> RePopulateTasksWithAvailableUsersAsync(ProjectEditFormModel model);
+        Task<string> GetTaskTitleAsync(string taskId);
     }
 }

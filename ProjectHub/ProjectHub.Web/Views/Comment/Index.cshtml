@@ -1,0 +1,54 @@
+﻿@model TaskCommentsViewModel
+
+<div class="card mt-4 shadow-lg border-0 rounded">
+    <div class="card-header bg-info text-white">
+        <h5 class="mb-0"><i class="bi bi-chat-left-dots"></i> Comments for @Model.TaskTitle task</h5>
+    </div>
+
+    <div class="card-body">
+        @if (Model.Comments.Any())
+        {
+            <ul class="list-group">
+                @foreach (var comment in Model.Comments)
+                {
+                    <li class="list-group-item d-flex flex-column mb-3 border border-0 rounded shadow-sm position-relative">
+                        <div class="mb-2">
+                            <strong>@comment.AuthorName</strong>
+                            <small class="text-muted ms-2">Posted on: @comment.CreatedOn</small>
+                        </div>
+                        <div class="mb-3">
+                            <p>@comment.Content</p>
+                        </div>
+                        <div class="d-flex justify-content-start align-items-center">
+                            <span class="badge bg-success me-2" title="Upvotes">
+                                <i class="bi bi-arrow-up-circle"></i> @comment.Upvotes
+                            </span>
+                            <span class="badge bg-danger" title="Downvotes">
+                                <i class="bi bi-arrow-down-circle"></i> @comment.Downvotes
+                            </span>
+                        </div>
+
+                        <div class="position-absolute bottom-0 end-0 p-2">
+                            <form asp-action="Upvote" asp-controller="Comment" method="post" class="d-inline">
+                                <input type="hidden" name="commentId" value="@comment.CommentId" />
+                                <button type="submit" class="btn btn-outline-success btn-sm me-1">
+                                    <i class="bi bi-arrow-up-circle"></i> Upvote
+                                </button>
+                            </form>
+                            <form asp-action="Downvote" asp-controller="Comment" method="post" class="d-inline">
+                                <input type="hidden" name="commentId" value="@comment.CommentId" />
+                                <button type="submit" class="btn btn-outline-danger btn-sm">
+                                    <i class="bi bi-arrow-down-circle"></i> Downvote
+                                </button>
+                            </form>
+                        </div>
+                    </li>
+                }
+            </ul>
+        }
+        else
+        {
+            <p class="text-center text-muted">No comments yet. Be the first to add one!</p>
+        }
+    </div>
+</div>

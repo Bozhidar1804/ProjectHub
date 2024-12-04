@@ -111,15 +111,46 @@
         <!-- Tasks Section -->
         <section class="mb-5">
             <h4 class="text-info fw-bold mb-4">Assigned Tasks</h4>
+
+            <!-- Header Line for the Spans -->
+            <div class="row mb-3 text-muted">
+                <div class="col-12 col-md-6 col-lg-3"><strong>Task</strong></div>
+                <div class="col-12 col-md-2 col-lg-2"><strong>Milestone</strong></div>
+                <div class="col-12 col-md-2 col-lg-2"><strong>Priority</strong></div>
+                <div class="col-12 col-md-2 col-lg-2"><strong>Assigned To</strong></div>
+                <div class="col-12 col-md-2 col-lg-2"><strong>Status</strong></div>
+            </div>
+
             <ul class="list-group shadow-sm rounded">
                 @foreach (var task in Model.Tasks)
                 {
                     <li class="list-group-item d-flex justify-content-between align-items-center">
-                        <span><strong>@task.Title</strong></span>
-                        <span class="badge bg-primary text-white">@task.MilestoneName</span>
-                        <span class="badge bg-secondary text-white">@task.Priority</span>
-                        <span class="badge bg-success text-white">@task.AssignedTo</span>
-                        <span class="badge @(task.IsCompleted ? "bg-success" : "bg-danger") text-white">
+                        <div class="col-12 col-md-6 col-lg-3">
+                            <span><strong>@task.Title</strong></span>
+                            <div class="mt-2">
+                                @if (!task.IsCompleted)
+                                {
+                                    <a asp-action="AddComment"
+                                       asp-controller="Comment"
+                                       asp-route-taskId="@task.Id"
+                                       class="btn btn-outline-secondary btn-sm">
+                                        <i class="bi bi-chat-dots"></i> Add Comment
+                                    </a>
+                                }
+
+                                <a asp-action="Index"
+                                   asp-controller="Comment"
+                                   asp-route-taskId="@task.Id"
+                                   class="btn btn-outline-info btn-sm ml-2">
+                                    <i class="bi bi-eye"></i> View Comments
+                                </a>
+                            </div>
+                        </div>
+
+                        <span class="badge bg-primary text-white col-12 col-md-2 col-lg-2">@task.MilestoneName</span>
+                        <span class="badge bg-secondary text-white col-12 col-md-2 col-lg-2">@task.Priority</span>
+                        <span class="badge bg-success text-white col-12 col-md-2 col-lg-2">@task.AssignedTo</span>
+                        <span class="badge @(task.IsCompleted ? "bg-success" : "bg-danger") text-white col-12 col-md-2 col-lg-2">
                             @(task.IsCompleted ? "Completed" : "Pending")
                         </span>
                     </li>
@@ -127,5 +158,7 @@
             </ul>
         </section>
     }
+
+
 </div>
 
