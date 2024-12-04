@@ -6,7 +6,8 @@ using ProjectHub.Services.Data.Interfaces;
 using ProjectHub.Web.ViewModels.Task;
 using ProjectHub.Data.Models;
 using static ProjectHub.Common.GeneralApplicationConstants;
-using System.Linq;
+using ProjectHub.Web.ViewModels.Project;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace ProjectHub.Services.Data
 {
@@ -176,6 +177,30 @@ namespace ProjectHub.Services.Data
                 .ToListAsync();
 
             return completedTasks;
+        }
+
+        public async Task<List<TaskEditFormModel>> RePopulateTasksWithAvailableUsersAsync(ProjectEditFormModel model)
+        {
+            Guid projectGuid = Guid.Empty;
+            bool isProjectGuidValid = IsGuidValid(model.ProjectId, ref projectGuid);
+
+            Project project = await this.dbContext.Projects.FirstOrDefaultAsync(p => p.Id == projectGuid && !p.IsDeleted);
+            List<ApplicationUser> teamMembers = project.TeamMembers.ToList();
+            var tasks = await this.GetTasksByProjectIdAsync(model.ProjectId);
+
+            List<TaskEditFormModel> tasksToReturn = tasks.Select(t => new TaskEditFormModel
+            {
+                TaskId = t.Id.ToString(),
+                Title = t.Title,
+                AssignedToUserId = t.AssignedToUserId.ToString() ?? string.Empty,
+                AvailableUsers = teamMembers.Select(tm => new SelectListItem
+                {
+                    Value = tm.Id.ToString(),
+                    Text = tm.UserName
+                }).ToList()
+            }).ToList();
+
+            return tasksToReturn;
         }
     }
 }

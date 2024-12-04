@@ -1,4 +1,5 @@
-﻿using ProjectHub.Web.ViewModels.Task;
+﻿using ProjectHub.Web.ViewModels.Project;
+using ProjectHub.Web.ViewModels.Task;
 
 namespace ProjectHub.Services.Data.Interfaces
 {
@@ -12,5 +13,6 @@ namespace ProjectHub.Services.Data.Interfaces
 
         Task<bool> CompleteTaskAsync(ProjectHub.Data.Models.Task task);
         Task<List<TaskCompletedViewModel>> GetCompletedTasksByUserAsync(string userId);
+        Task<List<TaskEditFormModel>> RePopulateTasksWithAvailableUsersAsync(ProjectEditFormModel model);
     }
 }

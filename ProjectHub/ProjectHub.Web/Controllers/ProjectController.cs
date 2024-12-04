@@ -11,7 +11,6 @@ using static ProjectHub.Web.Infrastructure.Extensions.ClaimsPrincipalExtensions;
 using static ProjectHub.Common.GeneralApplicationConstants;
 using ProjectHub.Web.ViewModels.Milestone;
 using ProjectHub.Web.ViewModels.Task;
-using ProjectHub.Services.Data;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace ProjectHub.Web.Controllers
@@ -172,6 +171,38 @@ namespace ProjectHub.Web.Controllers
             };
 
             return View(model);
+        }
+
+        [HttpPost]
+        [Authorize(Roles = ModeratorRoleName)]
+        public async Task<IActionResult> Edit(ProjectEditFormModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                // Re-populate tasks with available users if the model state is invalid
+                model.Tasks = await this.taskService.RePopulateTasksWithAvailableUsersAsync(model);
+
+                return View(model);
+            }
+
+            try
+            {
+                bool isProjectEdited = await this.projectService.EditProjectAsync(model);
+
+                if (!isProjectEdited)
+                {
+                    ModelState.AddModelError(string.Empty, "An error occurred while editing the project.");
+                    model.Tasks = await this.taskService.RePopulateTasksWithAvailableUsersAsync(model);
+                    return View(model);
+                }
+
+                return RedirectToAction(nameof(Details), new { projectId = model.ProjectId });
+
+            } catch(Exception ex)
+            {
+                ModelState.AddModelError(string.Empty, "An error occurred while updating the project.");
+                return View(model);
+            }
         }
 
 

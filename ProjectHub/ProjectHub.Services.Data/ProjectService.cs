@@ -209,5 +209,50 @@ namespace ProjectHub.Services.Data
 
             return true;
         }
+
+        public async Task<bool> EditProjectAsync(ProjectEditFormModel model)
+        {
+            Project projectToUpdate = await this.GetProjectByIdAsync(model.ProjectId);
+            if (projectToUpdate == null)
+            {
+                return false;
+            }
+
+            bool isEndDateValid = DateTime.TryParseExact(model.EndDate, DateFormat, CultureInfo.InvariantCulture, DateTimeStyles.None,
+                out DateTime endDate);
+
+            if (!isEndDateValid)
+            {
+                return false;
+            }
+
+            projectToUpdate.Name = model.Name;
+            projectToUpdate.Description = model.Description;
+            projectToUpdate.EndDate = endDate;
+            projectToUpdate.MaxMilestones = model.MaxMilestones;
+
+            foreach (var taskModel in model.Tasks)
+            {
+                Guid taskGuid = Guid.Empty;
+                bool isTaskGuidValid = IsGuidValid(taskModel.TaskId, ref taskGuid);
+
+                ProjectHub.Data.Models.Task taskToUpdate = await this.dbContext.Tasks
+                    .FirstOrDefaultAsync(t => t.Id == taskGuid && !t.IsDeleted);
+
+                if (taskToUpdate == null)
+                {
+                    return false;
+                }
+
+                Guid userGuid = Guid.Empty;
+                bool isUserGuidValid = IsGuidValid(taskModel.AssignedToUserId, ref userGuid);
+
+                taskToUpdate.Title = taskModel.Title;
+                taskToUpdate.AssignedToUserId = userGuid;
+            }
+
+            await this.dbContext.SaveChangesAsync();
+            return true;
+        }
     }
 }

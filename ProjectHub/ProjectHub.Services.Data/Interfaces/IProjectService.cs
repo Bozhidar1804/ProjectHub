@@ -12,5 +12,6 @@ namespace ProjectHub.Services.Data.Interfaces
         Task<bool> SoftDeleteProjectAsync(string projectId);
         System.Threading.Tasks.Task UpdateProjectAsync(Project project);
         Task<bool> SetMaxMilestonesAsync(string projectId, int maxMilestones);
+        Task<bool> EditProjectAsync(ProjectEditFormModel model);
     }
 }
