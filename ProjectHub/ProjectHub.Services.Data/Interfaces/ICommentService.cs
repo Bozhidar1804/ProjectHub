@@ -7,5 +7,8 @@ namespace ProjectHub.Services.Data.Interfaces
     {
         Task<bool> AddCommentAsync(AddCommentFormModel model, string userId);
         Task<List<Comment>> GetCommentsByTaskIdAsync(string taskId);
+
+        System.Threading.Tasks.Task UpvoteCommentAsync(string commentId);
+        System.Threading.Tasks.Task DownvoteCommentAsync(string commentId);
     }
 }

@@ -8,6 +8,7 @@ using ProjectHub.Web.ViewModels.Comment;
 using ProjectHub.Web.Infrastructure.Extensions;
 using ProjectHub.Web.ViewModels.Task;
 using static ProjectHub.Common.GeneralApplicationConstants;
+using ProjectHub.Services.Data;
 
 namespace ProjectHub.Web.Controllers
 {
@@ -104,5 +105,30 @@ namespace ProjectHub.Web.Controllers
 				return View(model);
 			}
 		}
-	}
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Upvote(string commentId, string taskId)
+        {
+            if (!string.IsNullOrEmpty(taskId))
+            {
+                await this.commentService.UpvoteCommentAsync(commentId);
+            }
+
+            return RedirectToAction(nameof(Index), new { taskId = taskId });
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Downvote(string commentId, string taskId)
+        {
+            if (!string.IsNullOrEmpty(taskId))
+            {
+                await this.commentService.DownvoteCommentAsync(commentId);
+            }
+
+            return RedirectToAction(nameof(Index), new { taskId = taskId });
+        }
+
+    }
 }

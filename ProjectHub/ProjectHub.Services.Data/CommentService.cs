@@ -52,5 +52,33 @@ namespace ProjectHub.Services.Data
 
 			return commentsToReturn;
         }
+
+        public async System.Threading.Tasks.Task UpvoteCommentAsync(string commentId)
+        {
+            Guid commentGuid = Guid.Empty;
+            bool isCommentGuidValid = IsGuidValid(commentId, ref commentGuid);
+
+			Comment commentToUpdate = await this.dbContext.Comments.FirstOrDefaultAsync(c => c.Id == commentGuid);
+
+			if (commentToUpdate != null)
+			{
+                commentToUpdate.Upvotes++;
+                await this.dbContext.SaveChangesAsync();
+            }
+        }
+
+        public async System.Threading.Tasks.Task DownvoteCommentAsync(string commentId)
+        {
+            Guid commentGuid = Guid.Empty;
+            bool isCommentGuidValid = IsGuidValid(commentId, ref commentGuid);
+
+            Comment commentToUpdate = await this.dbContext.Comments.FirstOrDefaultAsync(c => c.Id == commentGuid);
+
+            if (commentToUpdate != null)
+            {
+                commentToUpdate.Downvotes++;
+                await this.dbContext.SaveChangesAsync();
+            }
+        }
     }
 }
