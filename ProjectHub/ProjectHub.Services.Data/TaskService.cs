@@ -20,14 +20,14 @@ namespace ProjectHub.Services.Data
             this.dbContext = dbContext;
         }
 
-        public async Task<bool> CreateTaskAsync(TaskCreateInputModel model)
+        public async Task<TaskCreateResult> CreateTaskAsync(TaskCreateInputModel model)
         {
             Guid projectGuid = Guid.Empty;
             bool isProjectGuidValid = IsGuidValid(model.ProjectId, ref projectGuid);
 
             if (!isProjectGuidValid)
             {
-                return false;   
+                return new TaskCreateResult { Success = false, ErrorMessage = "Invalid Project ID." };
             }
 
             Guid userGuid = Guid.Empty;
@@ -35,7 +35,7 @@ namespace ProjectHub.Services.Data
 
             if (!isUserGuidValid)
             {
-                return false;
+                return new TaskCreateResult { Success = false, ErrorMessage = "Invalid User ID." };
             }
 
             Guid milestoneGuid = Guid.Empty;
@@ -43,7 +43,7 @@ namespace ProjectHub.Services.Data
 
             if (!isMilestoneGuidValid)
             {
-                return false;
+                return new TaskCreateResult { Success = false, ErrorMessage = "Invalid Milestone ID." };
             }
 
             bool isDueDateFormatValid = DateTime.TryParseExact(model.DueDate, DateFormat, CultureInfo.InvariantCulture, DateTimeStyles.None,
@@ -51,7 +51,7 @@ namespace ProjectHub.Services.Data
 
             if (!isDueDateFormatValid)
             {
-                return false;
+                return new TaskCreateResult { Success = false, ErrorMessage = "Invalid Due Date format." };
             }
 
             Project? project = await this.dbContext.Projects
@@ -60,12 +60,12 @@ namespace ProjectHub.Services.Data
 
             if (project == null)
             {
-                return false;
+                return new TaskCreateResult { Success = false, ErrorMessage = "Project not found." };
             }
 
             if (dueDate < project.StartDate || dueDate > project.EndDate)
             {
-                return false;
+                return new TaskCreateResult { Success = false, ErrorMessage = "Due Date is out of project bounds." };
             }
 
             ProjectHub.Data.Models.Task task = new ProjectHub.Data.Models.Task()
@@ -82,7 +82,7 @@ namespace ProjectHub.Services.Data
             await this.dbContext.Tasks.AddAsync(task);
             await this.dbContext.SaveChangesAsync();
 
-            return true;
+            return new TaskCreateResult { Success = true, TaskId = task.Id.ToString() };
         }
 
         public async Task<ProjectHub.Data.Models.Task> GetTaskByIdAsync(string taskId)

@@ -6,16 +6,19 @@ using ProjectHub.Data.Models;
 using ProjectHub.Services.Data.Interfaces;
 using ProjectHub.Web.ViewModels.Project;
 using static ProjectHub.Common.GeneralApplicationConstants;
+using ProjectHub.Data.Models.Enums;
 
 namespace ProjectHub.Services.Data
 {
     public class ProjectService : BaseService, IProjectService
     {
         private readonly ProjectHubDbContext dbContext;
+        private readonly IActivityLogService activityLogService;
 
-        public ProjectService(ProjectHubDbContext dbContext)
+        public ProjectService(ProjectHubDbContext dbContext, IActivityLogService activityLogService)
         {
             this.dbContext = dbContext;
+            this.activityLogService = activityLogService;
         }
 
         public async Task<IEnumerable<ProjectIndexViewModel>> GetAllProjectsAsync()
@@ -246,6 +249,17 @@ namespace ProjectHub.Services.Data
 
                 Guid userGuid = Guid.Empty;
                 bool isUserGuidValid = IsGuidValid(taskModel.AssignedToUserId, ref userGuid);
+
+                if (!isUserGuidValid)
+                {
+                    return false;
+                }
+
+                if (taskToUpdate.AssignedToUserId != userGuid)
+                {
+                    // Injecting other services in ProjectService, breaking its Single Responsibility Principle, bad implementation
+                    await this.activityLogService.LogActionAsync(TaskAction.ReAssigned, taskToUpdate.Id.ToString(), taskModel.AssignedToUserId);
+                }
 
                 taskToUpdate.Title = taskModel.Title;
                 taskToUpdate.AssignedToUserId = userGuid;

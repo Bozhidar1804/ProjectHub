@@ -1,0 +1,39 @@
+﻿@model List<ActivityLogViewModel>
+
+<div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2 class="text-info"><i class="bi bi-file-earmark-text"></i> Activity Logs</h2>
+    </div>
+
+    <div class="card shadow-sm">
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-striped table-hover table-bordered">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>Task</th>
+                            <th>Action</th>
+                            <th>User</th>
+                            <th>Timestamp</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var log in Model)
+                        {
+                            <tr>
+                                <td><strong>@log.TaskTitle</strong></td>
+                                <td>@log.Action.GetDisplayName()</td>
+                                <td>@log.UserName</td>
+                                <td>@log.Timestamp</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <a asp-controller="Home" asp-action="Index" class="btn btn-outline-info btn-sm">
+            <i class="bi bi-house-door"></i> Back to Dashboard
+        </a>
+    </div>
+</div>

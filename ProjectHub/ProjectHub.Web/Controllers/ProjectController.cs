@@ -6,7 +6,6 @@ using ProjectHub.Data.Models;
 using ProjectHub.Services.Data.Interfaces;
 using ProjectHub.Web.Infrastructure.Extensions;
 using ProjectHub.Web.ViewModels.Project;
-using ProjectHub.Web.ViewModels.ActivityLog;
 using static ProjectHub.Web.Infrastructure.Extensions.ClaimsPrincipalExtensions;
 using static ProjectHub.Common.GeneralApplicationConstants;
 using ProjectHub.Web.ViewModels.Milestone;
@@ -268,8 +267,6 @@ namespace ProjectHub.Web.Controllers
                     tasks = new List<Data.Models.Task>(); // Empty list if no tasks found
                 }
 
-                List<ActivityLog> activityLogsByProject = await this.activityLogService.GetActivityLogsByProjectIdAsync(projectId);
-
                 ProjectManageViewModel projectViewModel = new ProjectManageViewModel()
                 {
                     ProjectId = projectId,
@@ -300,13 +297,6 @@ namespace ProjectHub.Web.Controllers
                         MilestoneName = t.Milestone.Name,
                         MilestoneId = t.MilestoneId.ToString(),
                         IsCompleted = t.IsCompleted,
-                        ActivityLogs = activityLogsByProject.Select(al => new ActivityLogViewModel
-                        {
-                            Id = al.Id.ToString(),
-                            Action = al.Action.ToString(),
-                            PerformedBy = al.User.UserName ?? "error",
-                            Timestamp = al.Timestamp.ToString(DateFormat)
-                        }).ToList()
                     }).ToList()
                 };
 

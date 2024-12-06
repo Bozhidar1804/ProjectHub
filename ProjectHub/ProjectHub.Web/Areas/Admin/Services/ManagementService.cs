@@ -203,5 +203,25 @@ namespace ProjectHub.Web.Areas.Admin.Services
 
             return model;
         }
+
+        public async Task<List<ActivityLogViewModel>> GetAllActivityLogsAsync()
+        {
+            List<ActivityLog> activityLogs = await this.dbContext.ActivityLogs
+                    .Where(log => !log.IsDeleted)
+                    .Include(t => t.Task)
+                    .Include(t => t.User)
+                    .OrderByDescending(log => log.Timestamp)
+                    .ToListAsync();
+
+            List<ActivityLogViewModel> activityLogViewModels = activityLogs.Select(log => new ActivityLogViewModel
+            {
+                TaskTitle = log.Task.Title,
+                Action = log.Action,
+                UserName = log.User.FullName,
+                Timestamp = log.Timestamp.ToString("g")
+            }).ToList();
+
+            return activityLogViewModels;
+        }
     }
 }

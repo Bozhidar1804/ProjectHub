@@ -10,5 +10,6 @@ namespace ProjectHub.Web.Areas.Admin.Services.Interfaces
         Task SoftDeleteProjectAsync(string projectId);
         Task RestoreProjectAsync(string projectId);
         Task<StatisticsViewModel> GetStatisticsAsync();
+        Task<List<ActivityLogViewModel>> GetAllActivityLogsAsync();
     }
 }

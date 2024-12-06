@@ -8,6 +8,7 @@ using ProjectHub.Web.ViewModels.Comment;
 using ProjectHub.Web.Infrastructure.Extensions;
 using ProjectHub.Web.ViewModels.Task;
 using static ProjectHub.Common.GeneralApplicationConstants;
+using ProjectHub.Data.Models.Enums;
 
 namespace ProjectHub.Web.Controllers
 {
@@ -19,14 +20,16 @@ namespace ProjectHub.Web.Controllers
         private readonly ITaskService taskService;
 		private readonly ICommentService commentService;
         private readonly IVoteService voteService;
+        private readonly IActivityLogService activityLogService;
 
-		public CommentController(UserManager<ApplicationUser> userManager, IProjectService projectService, ITaskService taskService, ICommentService commentService, IVoteService voteService)
+		public CommentController(UserManager<ApplicationUser> userManager, IProjectService projectService, ITaskService taskService, ICommentService commentService, IVoteService voteService, IActivityLogService activityLogService)
         {
             this.userManager = userManager;
             this.projectService = projectService;
             this.taskService = taskService;
             this.commentService = commentService;
             this.voteService = voteService;
+            this.activityLogService = activityLogService;
         }
 
         [HttpGet]
@@ -90,15 +93,17 @@ namespace ProjectHub.Web.Controllers
 			{
                 string userId = this.User.GetUserId();
 
-                bool isCommentAdded = await this.commentService.AddCommentAsync(model, userId);
+                AddCommentResult addCommentResult = await this.commentService.AddCommentAsync(model, userId);
 
-				if (!isCommentAdded)
+				if (!addCommentResult.Success)
 				{
 					ModelState.AddModelError(string.Empty, "An error occurred while adding the comment.");
 					return View(model);
 				}
 
-				return RedirectToAction("Index", "Task");
+                await this.activityLogService.LogActionAsync(TaskAction.CommentAdded, addCommentResult.TaskId, userId);
+
+                return RedirectToAction("Index", "Task");
 			}
 			catch (Exception ex)
 			{

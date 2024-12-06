@@ -8,7 +8,6 @@ using ProjectHub.Data.Models;
 using static ProjectHub.Common.GeneralApplicationConstants;
 using ProjectHub.Web.ViewModels.Task;
 using ProjectHub.Data.Models.Enums;
-using ProjectHub.Services.Data;
 using ProjectHub.Web.Infrastructure.Extensions;
 
 namespace ProjectHub.Web.Controllers
@@ -21,14 +20,16 @@ namespace ProjectHub.Web.Controllers
 		private readonly IMilestoneService milestoneService;
 		private readonly ITaskService taskService;
         private readonly IUserService userService;
+        private readonly IActivityLogService activityLogService;
 
-		public TaskController(UserManager<ApplicationUser> userManager, IProjectService projectService, IMilestoneService milestoneService, ITaskService taskService, IUserService userService)
+		public TaskController(UserManager<ApplicationUser> userManager, IProjectService projectService, IMilestoneService milestoneService, ITaskService taskService, IUserService userService, IActivityLogService activityLogService)
 		{
 			this.userManager = userManager;
 			this.projectService = projectService;
 			this.milestoneService = milestoneService;
 			this.taskService = taskService;
             this.userService = userService;
+            this.activityLogService = activityLogService;
 		}
 
         [HttpGet]
@@ -105,9 +106,9 @@ namespace ProjectHub.Web.Controllers
                 return View(model);
             }
 
-            bool isAddedResult = await this.taskService.CreateTaskAsync(model);
+            TaskCreateResult taskCreateResult = await this.taskService.CreateTaskAsync(model);
 
-            if (!isAddedResult)
+            if (!taskCreateResult.Success)
             {
                 this.ModelState.AddModelError(string.Empty, "An error occurred while creating the task!");
 
@@ -115,6 +116,9 @@ namespace ProjectHub.Web.Controllers
 
                 return View(model);
             }
+
+            string userId = this.User.GetUserId();
+            await this.activityLogService.LogActionAsync(TaskAction.Created, taskCreateResult.TaskId, userId);
 
             return RedirectToAction("Manage", "Project", new { projectId = model.ProjectId });
         }
@@ -135,6 +139,9 @@ namespace ProjectHub.Web.Controllers
             {
                 return BadRequest();
             }
+
+            string userId = this.User.GetUserId();
+            await this.activityLogService.LogActionAsync(TaskAction.Completed, taskId, userId);
 
             return RedirectToAction(nameof(DisplayCompletedTasks));
         }

@@ -5,7 +5,7 @@ namespace ProjectHub.Services.Data.Interfaces
 {
     public interface ICommentService
     {
-        Task<bool> AddCommentAsync(AddCommentFormModel model, string userId);
+        Task<AddCommentResult> AddCommentAsync(AddCommentFormModel model, string userId);
         Task<List<Comment>> GetCommentsByTaskIdAsync(string taskId);
     }
 }

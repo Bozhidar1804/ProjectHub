@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
 using ProjectHub.Data.Models;
@@ -65,6 +66,22 @@ namespace ProjectHub.Web.Areas.Admin.Controllers
         {
             StatisticsViewModel statistics = await this.managementService.GetStatisticsAsync();
             return View(statistics);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> ViewActivity()
+        {
+            try
+            {
+                var activityLogs = await this.managementService.GetAllActivityLogsAsync();
+                return View(activityLogs);
+            }
+            catch (Exception ex)
+            {
+                // Handle error gracefully
+                this.ModelState.AddModelError(string.Empty, "An error occurred while retrieving activity logs.");
+                return View();
+            }
         }
     }
 }

@@ -31,83 +31,84 @@
                                 <i class="bi bi-house-door"></i> Home
                             </a>
                         </li>
-
-                        @if (User.IsInRole(ModeratorRoleName))
+                        @if (!User.IsInRole(AdminRoleName))
                         {
+                            if (User.IsInRole(ModeratorRoleName))
+                            {
+                                <li class="nav-item dropdown">
+                                    <a class="btn btn-outline-primary nav-link dropdown-toggle px-2 mx-1" href="#" id="projectsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        <i class="bi bi-collection"></i> Projects
+                                    </a>
+                                    <ul class="dropdown-menu" aria-labelledby="projectsDropdown">
+                                        <li>
+                                            <a class="dropdown-item" asp-area="" asp-controller="Project" asp-action="Index">
+                                                <i class="bi bi-grid"></i> All Projects
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item" asp-area="" asp-controller="Project" asp-action="MyProjects">
+                                                <i class="bi bi-person"></i> My Projects
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            }
+                            else
+                            {
+                                <li class="nav-item">
+                                    <a class="btn btn-outline-primary nav-link px-2 mx-1" asp-area="" asp-controller="Project" asp-action="Index">
+                                        <i class="bi bi-collection"></i> Projects
+                                    </a>
+                                </li>
+                            }
+
+                            <li class="nav-item">
+                                @if (User.IsInRole(ModeratorRoleName))
+                                {
+                                    <div class="dropdown">
+                                        <a class="btn btn-outline-primary nav-link dropdown-toggle px-2 mx-1" href="#" id="candidaturesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                            <i class="bi bi-card-list"></i> Candidatures
+                                        </a>
+                                        <ul class="dropdown-menu" aria-labelledby="candidaturesDropdown">
+                                            <li>
+                                                <a class="dropdown-item" asp-area="" asp-controller="Candidature" asp-action="Index">
+                                                    <i class="bi bi-person"></i> Mine
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a class="dropdown-item" asp-area="" asp-controller="Candidature" asp-action="ReviewAll">
+                                                    <i class="bi bi-people"></i> To Review
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                }
+                                else
+                                {
+                                    <a class="btn btn-outline-primary nav-link px-2 mx-1" asp-area="" asp-controller="Candidature" asp-action="Index">
+                                        <i class="bi bi-card-list"></i> Candidatures
+                                    </a>
+                                }
+                            </li>
+
                             <li class="nav-item dropdown">
-                                <a class="btn btn-outline-primary nav-link dropdown-toggle px-2 mx-1" href="#" id="projectsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    <i class="bi bi-collection"></i> Projects
+                                <a class="btn btn-outline-primary nav-link dropdown-toggle px-2 mx-1" href="#" id="tasksDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="bi bi-check-circle"></i> Tasks
                                 </a>
-                                <ul class="dropdown-menu" aria-labelledby="projectsDropdown">
+                                <ul class="dropdown-menu" aria-labelledby="tasksDropdown">
                                     <li>
-                                        <a class="dropdown-item" asp-area="" asp-controller="Project" asp-action="Index">
-                                            <i class="bi bi-grid"></i> All Projects
+                                        <a class="dropdown-item" asp-area="" asp-controller="Task" asp-action="Index">
+                                            <i class="bi bi-hourglass"></i> Awaiting
                                         </a>
                                     </li>
                                     <li>
-                                        <a class="dropdown-item" asp-area="" asp-controller="Project" asp-action="MyProjects">
-                                            <i class="bi bi-person"></i> My Projects
+                                        <a class="dropdown-item" asp-area="" asp-controller="Task" asp-action="DisplayCompletedTasks">
+                                            <i class="bi bi-check-circle"></i> Completed
                                         </a>
                                     </li>
                                 </ul>
                             </li>
                         }
-                        else
-                        {
-                            <li class="nav-item">
-                                <a class="btn btn-outline-primary nav-link px-2 mx-1" asp-area="" asp-controller="Project" asp-action="Index">
-                                    <i class="bi bi-collection"></i> Projects
-                                </a>
-                            </li>
-                        }
-
-                        <li class="nav-item">
-                            @if (User.IsInRole(ModeratorRoleName))
-                            {
-                                <div class="dropdown">
-                                    <a class="btn btn-outline-primary nav-link dropdown-toggle px-2 mx-1" href="#" id="candidaturesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                        <i class="bi bi-card-list"></i> Candidatures
-                                    </a>
-                                    <ul class="dropdown-menu" aria-labelledby="candidaturesDropdown">
-                                        <li>
-                                            <a class="dropdown-item" asp-area="" asp-controller="Candidature" asp-action="Index">
-                                                <i class="bi bi-person"></i> Mine
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a class="dropdown-item" asp-area="" asp-controller="Candidature" asp-action="ReviewAll">
-                                                <i class="bi bi-people"></i> To Review
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            }
-                            else
-                            {
-                                <a class="btn btn-outline-primary nav-link px-2 mx-1" asp-area="" asp-controller="Candidature" asp-action="Index">
-                                    <i class="bi bi-card-list"></i> Candidatures
-                                </a>
-                            }
-                        </li>
-
-                        <li class="nav-item dropdown">
-                            <a class="btn btn-outline-primary nav-link dropdown-toggle px-2 mx-1" href="#" id="tasksDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                <i class="bi bi-check-circle"></i> Tasks
-                            </a>
-                            <ul class="dropdown-menu" aria-labelledby="tasksDropdown">
-                                <li>
-                                    <a class="dropdown-item" asp-area="" asp-controller="Task" asp-action="Index">
-                                        <i class="bi bi-hourglass"></i> Awaiting
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="dropdown-item" asp-area="" asp-controller="Task" asp-action="DisplayCompletedTasks">
-                                        <i class="bi bi-check-circle"></i> Completed
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-
                     </ul>
                     <partial name="_LoginPartial" />
                 </div>

@@ -1,9 +1,11 @@
 ﻿
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using ProjectHub.Data;
 using ProjectHub.Data.Models;
 using ProjectHub.Services.Data.Interfaces;
 using ProjectHub.Web.ViewModels.Comment;
+using ProjectHub.Web.ViewModels.Task;
 
 namespace ProjectHub.Services.Data
 {
@@ -15,7 +17,7 @@ namespace ProjectHub.Services.Data
             this.dbContext = dbContext;
         }
 
-		public async Task<bool> AddCommentAsync(AddCommentFormModel model, string userId)
+		public async Task<AddCommentResult> AddCommentAsync(AddCommentFormModel model, string userId)
 		{
 			Guid taskGuid = Guid.Empty;
 			bool isTaskGuidValid = IsGuidValid(model.TaskId, ref taskGuid);
@@ -25,8 +27,8 @@ namespace ProjectHub.Services.Data
 
 			if (!isTaskGuidValid || !isUserGuidValid)
 			{
-				return false;
-			}
+				return new AddCommentResult { Success = false, ErrorMessage = "Invalid ID was parsed." };
+            }
 
 			Comment commentToAdd = new Comment()
 			{
@@ -37,8 +39,9 @@ namespace ProjectHub.Services.Data
 
 			await this.dbContext.AddAsync(commentToAdd);
 			await this.dbContext.SaveChangesAsync();
-			return true;
-		}
+
+            return new AddCommentResult { Success = true, TaskId = model.TaskId };
+        }
 
         public async Task<List<Comment>> GetCommentsByTaskIdAsync(string taskId)
         {
