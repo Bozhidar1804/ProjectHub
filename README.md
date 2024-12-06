@@ -10,6 +10,8 @@ Every Member of the Project can add Comments to a Task. The Comments can be Upvo
 
 ## Database Diagram
 
+<img src="https://prnt.sc/1SZhcgm9nVEB" alt="DBDiagram1" width="500"/>
+
 ![image](https://prnt.sc/1SZhcgm9nVEB)
 ![image](https://prnt.sc/66qlQkOVreSw)
 
