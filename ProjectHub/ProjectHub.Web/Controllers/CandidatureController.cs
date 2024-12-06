@@ -70,6 +70,13 @@ namespace ProjectHub.Web.Controllers
         }
 
         [HttpGet]
+        public async Task<IActionResult> Details(string candidatureId)
+        {
+            CandidatureDetailsViewModel candidatureDetails = await this.candidatureService.GetCandidatureDetailsAsync(candidatureId);
+            return View(candidatureDetails);
+        }
+
+        [HttpGet]
         [Authorize(Roles = ModeratorRoleName)]
         public async Task<IActionResult> ReviewAll()
         {

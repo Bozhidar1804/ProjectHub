@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Identity.Client;
 using Newtonsoft.Json;
 
 using ProjectHub.Data;
@@ -26,13 +27,15 @@ namespace ProjectHub.Services.Data
             IEnumerable<CandidatureIndexViewModel> allCandidatures = await this.dbContext
                 .Candidatures
                 .Where(c => c.ApplicantId == userGuid && c.IsDeleted == false)
+                .Include(c => c.Project)
                 .Select(c => new CandidatureIndexViewModel()
                 {
                     CandidatureId = c.Id.ToString(),
                     AnswersWordCount = GetAnswerWordCount(c.Content),
                     DateApplied = c.ApplicationDate.ToString(DateFormat),
                     Status = c.Status,
-                    ProjectName = c.Project.Name
+                    ProjectName = c.Project.Name,
+                    Project = c.Project
                 })
                 .ToListAsync();
 
@@ -71,7 +74,8 @@ namespace ProjectHub.Services.Data
                 ApplicantId = userGuid,
                 Applicant = applicant,
                 Content = serializedContent,
-                Status = 0
+                Status = 0,
+                IsDeleted = false
             };
 
             await this.dbContext.AddAsync(candidatureToCreate);
@@ -153,6 +157,31 @@ namespace ProjectHub.Services.Data
             candidatureToUpdate.ApplicantId = candidature.ApplicantId;
 
             await this.dbContext.SaveChangesAsync();
+        }
+
+        public async Task<CandidatureDetailsViewModel> GetCandidatureDetailsAsync(string candidatureId)
+        {
+            Guid candidatureGuid = Guid.Empty;
+            bool isCandidatureGuidValid = IsGuidValid(candidatureId, ref candidatureGuid);
+
+            Candidature candidature = await this.dbContext.Candidatures
+            .Include(c => c.Project)
+            .Include(c => c.Applicant)
+            .FirstOrDefaultAsync(c => c.Id == candidatureGuid && !c.IsDeleted);
+
+            List<CandidatureContentModel> deserializedContent = JsonConvert.DeserializeObject<List<CandidatureContentModel>>(candidature.Content)!;
+
+            CandidatureDetailsViewModel model = new CandidatureDetailsViewModel()
+            {
+                Id = candidature.Id.ToString(),
+                Content = deserializedContent,
+                ProjectName = candidature.Project.Name,
+                ApplicantName = candidature.Applicant.UserName,
+                Status = candidature.Status,
+                ApplicationDate = candidature.ApplicationDate
+            };
+
+            return model;
         }
     }
 }

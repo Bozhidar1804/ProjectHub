@@ -1,0 +1,67 @@
+﻿@model StatisticsViewModel
+
+<div class="card mt-4 shadow-lg rounded">
+    <div class="card-header bg-gradient-dark text-light d-flex align-items-center justify-content-between"
+         style="background: linear-gradient(90deg, #0056b3, #003d80); color: #ffffff; font-weight: 600;">
+        <h4 class="mb-0"><i class="bi bi-bar-chart-line-fill me-2"></i> Platform Statistics</h4>
+        <i class="bi bi-info-circle text-light fs-5" title="Overview of platform statistics"></i>
+    </div>
+    <div class="card-body">
+        <div class="row text-center">
+            <div class="col-md-4 mb-4">
+                <div class="stat-card p-3 bg-light rounded shadow-sm">
+                    <h5>Total Users</h5>
+                    <p class="display-6 text-primary fw-bold">@Model.TotalUsers</p>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="stat-card p-3 bg-light rounded shadow-sm">
+                    <h5>Total Moderators</h5>
+                    <p class="display-6 text-info fw-bold">@Model.TotalModerators</p>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="stat-card p-3 bg-light rounded shadow-sm">
+                    <h5>Total Projects</h5>
+                    <p class="display-6 text-success fw-bold">@Model.TotalProjects</p>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="stat-card p-3 bg-light rounded shadow-sm">
+                    <h5>Total Candidatures</h5>
+                    <p class="display-6 text-warning fw-bold">@Model.TotalCandidatures</p>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="stat-card p-3 bg-light rounded shadow-sm">
+                    <h5>Pending Candidatures</h5>
+                    <p class="display-6 text-danger fw-bold">@Model.PendingCandidatures</p>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="stat-card p-3 bg-light rounded shadow-sm">
+                    <h5>Approved Candidatures</h5>
+                    <p class="display-6 text-success fw-bold">@Model.ApprovedCandidatures</p>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="stat-card p-3 bg-light rounded shadow-sm">
+                    <h5>Denied Candidatures</h5>
+                    <p class="display-6 text-muted fw-bold">@Model.DeniedCandidatures</p>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="stat-card p-3 bg-light rounded shadow-sm">
+                    <h5>Total Milestones</h5>
+                    <p class="display-6 text-info fw-bold">@Model.TotalMilestones</p>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="stat-card p-3 bg-light rounded shadow-sm">
+                    <h5>Total Tasks</h5>
+                    <p class="display-6 text-info fw-bold">@Model.TotalTasks</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

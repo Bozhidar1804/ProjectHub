@@ -26,6 +26,7 @@ namespace ProjectHub.Data
 		public DbSet<Comment> Comments { get; set; }
 		public DbSet<ActivityLog> ActivityLogs { get; set; }
         public DbSet<Candidature> Candidatures { get; set; }
+        public DbSet<Vote> Votes { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -36,7 +37,9 @@ namespace ProjectHub.Data
             modelBuilder.ApplyConfiguration(new ApplicationUserConfiguration());
             modelBuilder.ApplyConfiguration(new MilestoneConfiguration());
             modelBuilder.ApplyConfiguration(new CommentConfiguration());
+            //modelBuilder.ApplyConfiguration(new CandidatureConfiguration());
             modelBuilder.ApplyConfiguration(new ActivityLogConfiguration());
+            modelBuilder.ApplyConfiguration(new VoteConfiguration());
         }
     }
 }

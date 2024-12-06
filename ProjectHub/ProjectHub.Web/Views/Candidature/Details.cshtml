@@ -1,0 +1,43 @@
+﻿@model CandidatureDetailsViewModel
+
+<div class="card mt-4">
+    <div class="card-header bg-info text-white">
+        <h4>Candidature Details</h4>
+    </div>
+    <div class="card-body">
+        <dl class="row">
+            <dt class="col-sm-3">Applicant Name:</dt>
+            <dd class="col-sm-9">@Model.ApplicantName</dd>
+
+            <dt class="col-sm-3">Project Name:</dt>
+            <dd class="col-sm-9">@Model.ProjectName</dd>
+
+            <dt class="col-sm-3">Application Date:</dt>
+            <dd class="col-sm-9">@Model.ApplicationDate.ToString("f")</dd>
+
+            <dt class="col-sm-3">Status:</dt>
+            <dd class="col-sm-9">
+                <span class="badge
+                    @(Model.Status == CandidatureStatus.Pending ? "bg-warning" :
+                      Model.Status == CandidatureStatus.Approved ? "bg-success" : "bg-danger")">
+                    @Model.Status
+                </span>
+            </dd>
+
+            <dt class="col-sm-3">Content:</dt>
+            <div class="border rounded-3 p-4 mb-4 bg-white shadow-sm">
+                @foreach (var item in Model.Content)
+                {
+                    <div class="mb-4">
+                        <h5 class="fw-bold text-primary">@item.Question</h5>
+                        <p class="fs-6 text-dark">@item.Answer</p>
+                    </div>
+                }
+            </div>
+        </dl>
+
+        <a asp-action="Index" asp-controller="Candidature" class="btn btn-primary">
+            Back to List
+        </a>
+    </div>
+</div>

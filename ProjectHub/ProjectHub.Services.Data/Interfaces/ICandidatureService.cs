@@ -12,5 +12,6 @@ namespace ProjectHub.Services.Data.Interfaces
         Task<ICollection<Candidature>> GetCandidaturesForModeratorProjectsAsync(ICollection<Project> moderatorProjects);
         Task<Candidature> GetCandidatureByIdAsync(string candidatureId);
         System.Threading.Tasks.Task UpdateCandidatureAsync(Candidature candidature);
+        Task<CandidatureDetailsViewModel> GetCandidatureDetailsAsync(string candidatureId);
     }
 }

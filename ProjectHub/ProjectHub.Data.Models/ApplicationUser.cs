@@ -24,5 +24,6 @@ namespace ProjectHub.Data.Models
 		public ICollection<Task> Tasks { get; set; } = new List<Task>();
         public ICollection<ActivityLog> ActivityLogs { get; set; } = new List<ActivityLog>();
         public ICollection<Comment> Comments { get; set; } = new HashSet<Comment>();
+        public ICollection<Vote> Votes { get; set; } = new List<Vote>();
     }
 }

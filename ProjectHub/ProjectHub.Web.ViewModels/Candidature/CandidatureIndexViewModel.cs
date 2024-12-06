@@ -9,6 +9,7 @@ namespace ProjectHub.Web.ViewModels.Candidature
         public string DateApplied { get; set; } = DateTime.UtcNow.ToString(GeneralApplicationConstants.DateFormat);
         public CandidatureStatus Status { get; set; }
         public string ProjectName { get; set; } = null!;
+        public Data.Models.Project Project { get; set; } = null!;
         public int AnswersWordCount { get; set; }
     }
 }

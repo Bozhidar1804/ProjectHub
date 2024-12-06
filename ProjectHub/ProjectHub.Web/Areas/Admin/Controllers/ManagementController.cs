@@ -5,8 +5,6 @@ using ProjectHub.Data.Models;
 using ProjectHub.Web.Areas.Admin.Services;
 using ProjectHub.Web.Areas.Admin.Services.Interfaces;
 using ProjectHub.Web.Areas.Admin.ViewModels;
-using System.Data;
-using static ProjectHub.Common.GeneralApplicationConstants;
 
 namespace ProjectHub.Web.Areas.Admin.Controllers
 {
@@ -38,7 +36,35 @@ namespace ProjectHub.Web.Areas.Admin.Controllers
                 return RedirectToAction(nameof(UserRoles));
             }
 
-            return NotFound(); // Or handle a more specific error response
+            return NotFound(); // Could handle a more specific error response
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Projects()
+        {
+            var projects = await managementService.GetAllProjectsAsync();
+            return View(projects);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> SoftDeleteProject(string projectId)
+        {
+            await this.managementService.SoftDeleteProjectAsync(projectId);
+            return RedirectToAction(nameof(Projects));
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> RestoreProject(string projectId)
+        {
+            await this.managementService.RestoreProjectAsync(projectId);
+            return RedirectToAction(nameof(Projects));
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Statistics()
+        {
+            StatisticsViewModel statistics = await this.managementService.GetStatisticsAsync();
+            return View(statistics);
         }
     }
 }

@@ -33,6 +33,6 @@ namespace ProjectHub.Data.Models
         [Required]
         public DateTime ApplicationDate { get; set; } = DateTime.UtcNow;
 
-        public bool IsDeleted { get; set; }
+        public bool IsDeleted { get; set; } = false;
     }
 }

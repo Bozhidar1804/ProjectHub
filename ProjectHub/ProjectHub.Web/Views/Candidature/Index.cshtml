@@ -3,9 +3,9 @@
 
 @{
     ViewData["Title"] = "My Candidatures";
-    List<CandidatureIndexViewModel> pendingCandidatures = Model.Where(c => c.Status == CandidatureStatus.Pending).ToList();
-    List<CandidatureIndexViewModel> approvedCandidatures = Model.Where(c => c.Status == CandidatureStatus.Approved).ToList();
-    List<CandidatureIndexViewModel> deniedCandidatures = Model.Where(c => c.Status == CandidatureStatus.Denied).ToList();
+    List<CandidatureIndexViewModel> pendingCandidatures = Model.Where(c => c.Status == CandidatureStatus.Pending && !c.Project.IsDeleted).ToList();
+    List<CandidatureIndexViewModel> approvedCandidatures = Model.Where(c => c.Status == CandidatureStatus.Approved && !c.Project.IsDeleted).ToList();
+    List<CandidatureIndexViewModel> deniedCandidatures = Model.Where(c => c.Status == CandidatureStatus.Denied && !c.Project.IsDeleted).ToList();
 }
 
 <div class="container mt-4">
@@ -43,7 +43,7 @@
                                     <p>
                                         <strong>Content size:</strong> @candidature.AnswersWordCount words
                                     </p>
-                                    <a asp-action="Details" asp-controller="Candidature" asp-route-id="@candidature.CandidatureId" class="btn btn-warning btn-sm">
+                                    <a asp-action="Details" asp-controller="Candidature" asp-route-candidatureId="@candidature.CandidatureId" class="btn btn-warning btn-sm">
                                         View Details
                                     </a>
                                 </div>
@@ -78,7 +78,7 @@
                                     <p>
                                         <strong>Content size:</strong> @candidature.AnswersWordCount words
                                     </p>
-                                    <a asp-action="Details" asp-controller="Candidature" asp-route-id="@candidature.CandidatureId" class="btn btn-success btn-sm">
+                                    <a asp-action="Details" asp-controller="Candidature" asp-route-candidatureId="@candidature.CandidatureId" class="btn btn-success btn-sm">
                                         View Details
                                     </a>
                                 </div>
@@ -113,7 +113,7 @@
                                     <p>
                                         <strong>Content size:</strong> @candidature.AnswersWordCount words
                                     </p>
-                                    <a asp-action="Details" asp-controller="Candidature" asp-route-id="@candidature.CandidatureId" class="btn btn-danger btn-sm">
+                                    <a asp-action="Details" asp-controller="Candidature" asp-route-candidatureId="@candidature.CandidatureId" class="btn btn-danger btn-sm">
                                         View Details
                                     </a>
                                 </div>

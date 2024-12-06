@@ -8,7 +8,6 @@ using ProjectHub.Web.ViewModels.Comment;
 using ProjectHub.Web.Infrastructure.Extensions;
 using ProjectHub.Web.ViewModels.Task;
 using static ProjectHub.Common.GeneralApplicationConstants;
-using ProjectHub.Services.Data;
 
 namespace ProjectHub.Web.Controllers
 {
@@ -19,13 +18,15 @@ namespace ProjectHub.Web.Controllers
         private readonly IProjectService projectService;
         private readonly ITaskService taskService;
 		private readonly ICommentService commentService;
+        private readonly IVoteService voteService;
 
-		public CommentController(UserManager<ApplicationUser> userManager, IProjectService projectService, ITaskService taskService, ICommentService commentService)
+		public CommentController(UserManager<ApplicationUser> userManager, IProjectService projectService, ITaskService taskService, ICommentService commentService, IVoteService voteService)
         {
             this.userManager = userManager;
             this.projectService = projectService;
             this.taskService = taskService;
             this.commentService = commentService;
+            this.voteService = voteService;
         }
 
         [HttpGet]
@@ -110,9 +111,11 @@ namespace ProjectHub.Web.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Upvote(string commentId, string taskId)
         {
-            if (!string.IsNullOrEmpty(taskId))
+            string userId = this.User.GetUserId()!;
+
+            if (!string.IsNullOrEmpty(taskId) && !string.IsNullOrEmpty(userId))
             {
-                await this.commentService.UpvoteCommentAsync(commentId);
+                await this.voteService.VoteUpvoteForCommentAsync(commentId, userId);
             }
 
             return RedirectToAction(nameof(Index), new { taskId = taskId });
@@ -122,9 +125,11 @@ namespace ProjectHub.Web.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Downvote(string commentId, string taskId)
         {
-            if (!string.IsNullOrEmpty(taskId))
+            string userId = this.User.GetUserId()!;
+
+            if (!string.IsNullOrEmpty(taskId) && !string.IsNullOrEmpty(userId))
             {
-                await this.commentService.DownvoteCommentAsync(commentId);
+                await this.voteService.VoteDownvoteForCommentAsync(commentId, userId);
             }
 
             return RedirectToAction(nameof(Index), new { taskId = taskId });

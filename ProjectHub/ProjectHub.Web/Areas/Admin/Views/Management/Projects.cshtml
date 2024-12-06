@@ -1,0 +1,51 @@
+﻿@model IEnumerable<ProjectManagementViewModel>
+
+<h2>Project Management</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Creator</th>
+            <th>Created On</th>
+            <th>Status</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var project in Model)
+        {
+            <tr>
+                <td>@project.Title</td>
+                <td>@project.CreatorName</td>
+                <td>@project.CreatedOn</td>
+                <td>
+                    @if (project.IsDeleted)
+                    {
+                        <span class="badge bg-danger">Deleted</span>
+                    }
+                    else
+                    {
+                        <span class="badge bg-success">Active</span>
+                    }
+                </td>
+                <td>
+                    @if (!project.IsDeleted)
+                    {
+                        <form asp-action="SoftDeleteProject" asp-controller="Management" method="post" class="d-inline">
+                            <input type="hidden" name="projectId" value="@project.ProjectId" />
+                            <button type="submit" class="btn btn-danger btn-sm">Soft Delete</button>
+                        </form>
+                    }
+                    else
+                    {
+                        <form asp-action="RestoreProject" asp-controller="Management" method="post" class="d-inline">
+                            <input type="hidden" name="projectId" value="@project.ProjectId" />
+                            <button type="submit" class="btn btn-success btn-sm">Restore</button>
+                        </form>
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

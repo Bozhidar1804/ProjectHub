@@ -27,5 +27,7 @@ namespace ProjectHub.Data.Models
         public Guid PostedByUserId { get; set; }
         [ForeignKey(nameof(PostedByUserId))]
         public ApplicationUser PostedByUser { get; set; } = null!;
+
+        public ICollection<Vote> Votes { get; set; } = new List<Vote>();
     }
 }

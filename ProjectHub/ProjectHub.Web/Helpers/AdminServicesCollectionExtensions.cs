@@ -10,6 +10,7 @@ namespace ProjectHub.Web.Helpers
         // I had to create a separate AddAdminServices() method in order to register Admin services successfully.
         public static void AddAdminServices(this IServiceCollection serviceCollection)
         {
+            serviceCollection.AddScoped<IBaseAdminService, BaseAdminService>();
             serviceCollection.AddScoped<IManagementService, ManagementService>();
         }
     }
