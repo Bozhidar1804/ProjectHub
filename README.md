@@ -10,10 +10,8 @@ Every Member of the Project can add Comments to a Task. The Comments can be Upvo
 
 ## Database Diagram
 
-<img src="https://prnt.sc/1SZhcgm9nVEB" alt="DBDiagram1" width="500"/>
-
-![image](https://prnt.sc/1SZhcgm9nVEB)
-![image](https://prnt.sc/66qlQkOVreSw)
+![DBDiagram1](https://github.com/user-attachments/assets/2c083716-3700-4f6b-8038-0e3db08cb317)
+![DBDiagram2](https://github.com/user-attachments/assets/fbbe0ab6-59f4-451d-b25a-26a645318882)
 
 ## UserRoles:
 
