@@ -37,6 +37,7 @@ The Admin can manage every User's role, promoting or demoting to a Moderator. He
 - User's Awaiting Tasks are ordered 1. By their Project, 2. By the Milestone they are linked to.
 - A User can either Upvote or Downvote a Comment.
 - The following actions made to a task are logged: 1. Creation of the Task; 2. ReAssignment to a different User; 3. Completion of the task; 4. The adding of a Comment to the Task. These logs are displayed in the Admin Dashboard.
+- Milestone Progress is calculated dinamically.
 
 ### Notes:
 - The Registering of the Services happens in 2 different methods: the services that are being used only by the Admin are registered in a separate method.
