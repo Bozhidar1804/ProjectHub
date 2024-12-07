@@ -72,12 +72,12 @@ The Admin can manage every User's role, promoting or demoting to a Moderator. He
 - Implement functionality related to the StartDate and EndDate of the projects.
 
 ### Technologies used:
-C#
-ASP.NET with MVC pattern
-Entity Framework core
-Microsoft SQL Server
-JavaScript
-Html
-Css
-NUnit
-JSON
+- C#
+- ASP.NET with MVC pattern
+- Entity Framework core
+- Microsoft SQL Server
+- JavaScript
+- Html
+- Css
+- NUnit
+- JSON
