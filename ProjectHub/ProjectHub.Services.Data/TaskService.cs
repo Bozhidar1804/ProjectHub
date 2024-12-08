@@ -90,7 +90,7 @@ namespace ProjectHub.Services.Data
             Guid taskGuid = Guid.Empty;
             bool isTaskGuidValid = IsGuidValid(taskId, ref taskGuid);
 
-            ProjectHub.Data.Models.Task task = await this.dbContext.Tasks
+            ProjectHub.Data.Models.Task? task = await this.dbContext.Tasks
                 .FirstOrDefaultAsync(t => t.Id == taskGuid && !t.IsDeleted);
 
             if (task == null)
@@ -184,7 +184,7 @@ namespace ProjectHub.Services.Data
             Guid projectGuid = Guid.Empty;
             bool isProjectGuidValid = IsGuidValid(model.ProjectId, ref projectGuid);
 
-            Project project = await this.dbContext.Projects.FirstOrDefaultAsync(p => p.Id == projectGuid && !p.IsDeleted);
+            Project? project = await this.dbContext.Projects.FirstOrDefaultAsync(p => p.Id == projectGuid && !p.IsDeleted);
             List<ApplicationUser> teamMembers = project.TeamMembers.ToList();
             var tasks = await this.GetTasksByProjectIdAsync(model.ProjectId);
 
@@ -208,7 +208,7 @@ namespace ProjectHub.Services.Data
             Guid taskGuid = Guid.Empty;
             bool isTaskGuidValid = IsGuidValid(taskId, ref taskGuid);
 
-            string task = await this.dbContext.Tasks
+            string? task = await this.dbContext.Tasks
                 .Where(t => t.Id == taskGuid && !t.IsDeleted)
                 .Select(t => t.Title)
                 .FirstOrDefaultAsync();

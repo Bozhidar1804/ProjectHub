@@ -101,7 +101,7 @@ namespace ProjectHub.Web.Controllers
                 Members = project.TeamMembers.Select(tm => new ProjectMemberViewModel
                 {
                     UserId = tm.Id.ToString(),
-                    UserName = tm.UserName,
+                    UserName = tm.UserName!,
                     Role = tm.Id == project.CreatorId ? "Creator" : "Member",
                     CompletedTasks = project.Tasks.Count(t => t.AssignedToUserId == tm.Id && t.IsCompleted)
                 }).ToList()

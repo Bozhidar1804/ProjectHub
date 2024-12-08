@@ -103,7 +103,7 @@ namespace ProjectHub.Web.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Logout(string returnUrl = null)
+        public async Task<IActionResult> Logout(string returnUrl = null!)
         {
             await signInManager.SignOutAsync();
 

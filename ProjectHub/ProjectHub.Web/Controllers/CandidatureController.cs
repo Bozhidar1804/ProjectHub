@@ -80,7 +80,7 @@ namespace ProjectHub.Web.Controllers
         [Authorize(Roles = ModeratorRoleName)]
         public async Task<IActionResult> ReviewAll()
         {
-            string moderatorId = this.User.GetUserId();
+            string moderatorId = this.User.GetUserId()!;
 
             if (string.IsNullOrWhiteSpace(moderatorId))
             {

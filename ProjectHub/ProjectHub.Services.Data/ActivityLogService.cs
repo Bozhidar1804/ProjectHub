@@ -15,35 +15,6 @@ namespace ProjectHub.Services.Data
             this.dbContext = dbContext;
         }
 
-        public async Task<ActivityLog> GetActivityLogByIdAsync(string activityLogId)
-        {
-            Guid activityLogGuid = Guid.Empty;
-            bool isActivityLogGuidValid = IsGuidValid(activityLogId, ref activityLogGuid);
-
-            ActivityLog activityLog = await this.dbContext.ActivityLogs
-                .FirstOrDefaultAsync(al => al.Id == activityLogGuid && !al.IsDeleted);
-
-            if (activityLog == null)
-            {
-                throw new KeyNotFoundException($"Project with ID {activityLogId} not found.");
-            }
-
-            return activityLog;
-        }
-
-        public async Task<List<ActivityLog>> GetActivityLogsByProjectIdAsync(string projectId)
-        {
-            Guid projectGuid = Guid.Empty;
-            bool isProjectGuidValid = IsGuidValid(projectId, ref projectGuid);
-
-            List<ActivityLog> activityLogs = await dbContext.ActivityLogs
-                .Where(al => al.Task.ProjectId == projectGuid && !al.IsDeleted)
-                .OrderByDescending(al => al.Timestamp)
-                .ToListAsync();
-
-            return activityLogs;
-        }
-
         public async System.Threading.Tasks.Task LogActionAsync(TaskAction action, string taskId, string userId)
         {
             Guid taskGuid = Guid.Empty;

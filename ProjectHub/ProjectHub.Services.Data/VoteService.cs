@@ -29,9 +29,9 @@ namespace ProjectHub.Services.Data
 
             if (isCommentGuidValid && isUserGuidValid)
             {
-                Comment comment = await this.dbContext.Comments.FirstOrDefaultAsync(c => c.Id == commentGuid);
+                Comment? comment = await this.dbContext.Comments.FirstOrDefaultAsync(c => c.Id == commentGuid);
 
-                Vote existingVote = await this.dbContext.Votes
+                Vote? existingVote = await this.dbContext.Votes
                 .FirstOrDefaultAsync(v => v.CommentId == commentGuid && v.UserId == userGuid);
 
                 if (existingVote != null)
@@ -71,9 +71,9 @@ namespace ProjectHub.Services.Data
 
             if (isCommentGuidValid && isUserGuidValid)
             {
-                Comment comment = await this.dbContext.Comments.FirstOrDefaultAsync(c => c.Id == commentGuid);
+                Comment? comment = await this.dbContext.Comments.FirstOrDefaultAsync(c => c.Id == commentGuid);
 
-                Vote existingVote = await this.dbContext.Votes
+                Vote? existingVote = await this.dbContext.Votes
                 .FirstOrDefaultAsync(v => v.CommentId == commentGuid && v.UserId == userGuid);
 
                 if (existingVote != null)

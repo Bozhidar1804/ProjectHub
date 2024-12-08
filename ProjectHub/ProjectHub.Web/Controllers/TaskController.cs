@@ -117,8 +117,8 @@ namespace ProjectHub.Web.Controllers
                 return View(model);
             }
 
-            string userId = this.User.GetUserId();
-            await this.activityLogService.LogActionAsync(TaskAction.Created, taskCreateResult.TaskId, userId);
+            string userId = this.User.GetUserId()!;
+            await this.activityLogService.LogActionAsync(TaskAction.Created, taskCreateResult.TaskId!, userId);
 
             return RedirectToAction("Manage", "Project", new { projectId = model.ProjectId });
         }
@@ -140,7 +140,7 @@ namespace ProjectHub.Web.Controllers
                 return BadRequest();
             }
 
-            string userId = this.User.GetUserId();
+            string userId = this.User.GetUserId()!;
             await this.activityLogService.LogActionAsync(TaskAction.Completed, taskId, userId);
 
             return RedirectToAction(nameof(DisplayCompletedTasks));

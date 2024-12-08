@@ -18,20 +18,21 @@ namespace ProjectHub.Services.Tests
         private IActivityLogService activityLogService;
 
         [SetUp]
-        public async System.Threading.Tasks.Task SetUp()
+        public void SetUp()
         {
             var options = new DbContextOptionsBuilder<ProjectHubDbContext>()
-                .UseInMemoryDatabase(databaseName: Guid.NewGuid().ToString())
+                .UseInMemoryDatabase("ProjectServiceTestDb")
                 .Options;
 
             this.dbContext = new ProjectHubDbContext(options);
+            this.activityLogService = new ActivityLogService(this.dbContext);
             this.projectService = new ProjectService(dbContext, activityLogService);
         }
         [Test]
         public void SetMaxMilestonesAsync_ShouldThrowArgumentOutOfRangeException_WhenMaxMilestonesLessThanOrEqualToZero()
         {
             // Create and add a test project
-            var testProject = new Project
+            Project testProject = new Project
             {
                 Id = Guid.NewGuid(),
                 Name = "Test Project",
@@ -58,10 +59,10 @@ namespace ProjectHub.Services.Tests
         public async System.Threading.Tasks.Task GetCreatorAllProjectsAsync_ShouldReturnProjectsByCreatorId_WhenCalled()
         {
             // Create test users
-            var creatorUser = new ApplicationUser { Id = Guid.NewGuid(), UserName = "creatorUser", Email = "creatorUser@example.com", FullName="CreatorUser" };
+            ApplicationUser creatorUser = new ApplicationUser { Id = Guid.NewGuid(), UserName = "creatorUser", Email = "creatorUser@example.com", FullName="CreatorUser" };
 
             // Create test projects
-            var testProject1 = new Project
+            Project testProject1 = new Project
             {
                 Id = Guid.NewGuid(),
                 Name = "Creator's Test Project 1",
@@ -73,7 +74,7 @@ namespace ProjectHub.Services.Tests
                 IsDeleted = false
             };
 
-            var testProject2 = new Project
+            Project testProject2 = new Project
             {
                 Id = Guid.NewGuid(),
                 Name = "Creator's Test Project 2",
@@ -95,7 +96,7 @@ namespace ProjectHub.Services.Tests
             IEnumerable<ProjectIndexViewModel> result = await projectService.GetCreatorAllProjectsAsync(creatorUserId);
 
             // Assert
-            Assert.AreEqual(2, result.Count()); // Expecting 2 projects for this creator
+            Assert.That(result.Count(), Is.EqualTo(2)); // Expecting 2 projects for this creator
             Assert.IsTrue(result.Any(p => p.Name == "Creator's Test Project 1"));
             Assert.IsTrue(result.Any(p => p.Name == "Creator's Test Project 2"));
             Assert.IsFalse(result.Any(p => p.IsDeleted)); // Ensure no deleted projects are returned
@@ -118,8 +119,8 @@ namespace ProjectHub.Services.Tests
                 IsDeleted = false
             };
 
-            dbContext.Projects.AddAsync(testProject);
-            dbContext.SaveChangesAsync();
+            await dbContext.Projects.AddAsync(testProject);
+            await dbContext.SaveChangesAsync();
 
             // Arrange
             int newMaxMilestones = 5;
@@ -129,8 +130,8 @@ namespace ProjectHub.Services.Tests
 
             // Assert
             Assert.IsTrue(result);
-            var updatedProject = await dbContext.Projects.FindAsync(testProject.Id);
-            Assert.AreEqual(newMaxMilestones, updatedProject.MaxMilestones);
+            Project? updatedProject = await dbContext.Projects.FindAsync(testProject.Id);
+            Assert.That(updatedProject.MaxMilestones, Is.EqualTo(newMaxMilestones));
         }
 
         [Test]
@@ -150,28 +151,28 @@ namespace ProjectHub.Services.Tests
                 IsDeleted = false
             };
 
-            dbContext.Projects.AddAsync(testProject);
-            dbContext.SaveChangesAsync();
+            await dbContext.Projects.AddAsync(testProject);
+            await dbContext.SaveChangesAsync();
 
             // Arrange
-            var projectToUpdate = await dbContext.Projects.FindAsync(testProject.Id);
+            Project? projectToUpdate = await dbContext.Projects.FindAsync(testProject.Id);
             projectToUpdate.Name = "Updated Project Name";
             projectToUpdate.Description = "Updated Description";
 
             // Act
             await projectService.UpdateProjectAsync(projectToUpdate);
-            var updatedProject = await dbContext.Projects.FindAsync(testProject.Id);
+            Project? updatedProject = await dbContext.Projects.FindAsync(testProject.Id);
 
             // Assert
-            Assert.AreEqual("Updated Project Name", updatedProject.Name);
-            Assert.AreEqual("Updated Description", updatedProject.Description);
+            Assert.That(updatedProject.Name, Is.EqualTo("Updated Project Name"));
+            Assert.That(updatedProject.Description, Is.EqualTo("Updated Description"));
         }
 
         [Test]
         public async System.Threading.Tasks.Task GetAllProjectsAsync_ShouldReturnCorrectProjects_WhenCalled()
         {
             // Arrange
-            var project = new Project
+            Project project = new Project
             {
                 Id = Guid.NewGuid(),
                 Name = "Test Project",
@@ -221,7 +222,7 @@ namespace ProjectHub.Services.Tests
 
             // Assert
             Assert.That(result, Is.True);
-            Project createdProject = await this.dbContext.Projects.FirstOrDefaultAsync();
+            Project? createdProject = await this.dbContext.Projects.FirstOrDefaultAsync();
             Assert.That(createdProject, Is.Not.Null);
             Assert.That(createdProject!.Name, Is.EqualTo("New Project"));
             Assert.That(createdProject.CreatorId, Is.EqualTo(Guid.Parse(userId)));
@@ -258,7 +259,7 @@ namespace ProjectHub.Services.Tests
             await this.dbContext.SaveChangesAsync();
 
             // Act
-            var result = await this.projectService.SoftDeleteProjectAsync(projectId.ToString());
+            bool result = await this.projectService.SoftDeleteProjectAsync(projectId.ToString());
 
             // Assert
             Assert.That(result, Is.True);

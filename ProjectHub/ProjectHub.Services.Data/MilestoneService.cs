@@ -64,22 +64,6 @@ namespace ProjectHub.Services.Data
             return true;
 		}
 
-		public async Task<Milestone> GetMilestoneByIdAsync(string milestoneId)
-        {
-            Guid milestoneGuid = Guid.Empty;
-            bool isMilestoneGuidValid = IsGuidValid(milestoneId, ref milestoneGuid);
-
-            Milestone? milestone = await this.dbContext.Milestones
-                .FirstOrDefaultAsync(m => m.Id == milestoneGuid && !m.IsDeleted);
-
-            if (milestone == null)
-            {
-                throw new KeyNotFoundException($"Project with ID {milestoneId} not found.");
-            }
-
-            return milestone;
-        }
-
         public async Task<List<Milestone>> GetMilestonesByProjectIdAsync(string projectId)
         {
             Guid projectGuid = Guid.Empty;

@@ -39,7 +39,7 @@ namespace ProjectHub.Services.Data
             Guid userGuid = Guid.Empty;
             bool isUserGuidValid = IsGuidValid(userId, ref userGuid);
 
-            ApplicationUser user = await this.dbContext
+            ApplicationUser? user = await this.dbContext
                 .Users
                 .FirstOrDefaultAsync(u => u.Id == userGuid);
 

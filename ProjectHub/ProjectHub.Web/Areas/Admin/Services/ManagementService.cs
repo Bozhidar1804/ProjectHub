@@ -137,7 +137,7 @@ namespace ProjectHub.Web.Areas.Admin.Services
             Guid projectGuid = Guid.Empty;
             bool isProjectGuidValid = IsGuidValid(projectId, ref projectGuid);
 
-            Project project = await this.dbContext.Projects.FirstOrDefaultAsync(p => p.Id == projectGuid && !p.IsDeleted);
+            Project? project = await this.dbContext.Projects.FirstOrDefaultAsync(p => p.Id == projectGuid && !p.IsDeleted);
 
             project.IsDeleted = true;
             await this.dbContext.SaveChangesAsync();
@@ -148,7 +148,7 @@ namespace ProjectHub.Web.Areas.Admin.Services
             Guid projectGuid = Guid.Empty;
             bool isProjectGuidValid = IsGuidValid(projectId, ref projectGuid);
 
-            Project project = await this.dbContext.Projects.FirstOrDefaultAsync(p => p.Id == projectGuid && p.IsDeleted);
+            Project? project = await this.dbContext.Projects.FirstOrDefaultAsync(p => p.Id == projectGuid && p.IsDeleted);
 
             project.IsDeleted = false;
             await this.dbContext.SaveChangesAsync();

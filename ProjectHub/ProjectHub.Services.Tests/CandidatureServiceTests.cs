@@ -21,7 +21,7 @@ namespace ProjectHub.Services.Tests
         public void SetUp()
         {
             var options = new DbContextOptionsBuilder<ProjectHubDbContext>()
-                .UseInMemoryDatabase("ProjectHubTestDb")
+                .UseInMemoryDatabase("CandidatureServiceTestDb")
                 .Options;
 
             dbContext = new ProjectHubDbContext(options);
@@ -62,12 +62,8 @@ namespace ProjectHub.Services.Tests
         [TearDown]
         public void TearDown()
         {
-            dbContext.Candidatures.RemoveRange(dbContext.Candidatures);
-            dbContext.Projects.RemoveRange(dbContext.Projects);
-            dbContext.Users.RemoveRange(dbContext.Users);
-            dbContext.SaveChanges();
-            dbContext.Database.EnsureDeleted();
-            dbContext.Dispose();
+            this.dbContext.Database.EnsureDeleted();
+            this.dbContext.Dispose();
         }
 
         [Test]
@@ -89,7 +85,7 @@ namespace ProjectHub.Services.Tests
 
             // Assert
             Assert.IsTrue(result);
-            Assert.AreEqual(2, dbContext.Candidatures.Count());
+            Assert.That(dbContext.Candidatures.Count(), Is.EqualTo(2));
         }
 
         [Test]
@@ -103,7 +99,7 @@ namespace ProjectHub.Services.Tests
 
             // Assert
             Assert.IsNotNull(candidatures);
-            Assert.AreEqual(1, candidatures.Count());
+            Assert.That(candidatures.Count(), Is.EqualTo(1));
         }
 
         [Test]
@@ -117,7 +113,7 @@ namespace ProjectHub.Services.Tests
 
             // Assert
             Assert.IsNotNull(candidature);
-            Assert.AreEqual(candidatureId, candidature.Id.ToString());
+            Assert.That(candidature.Id.ToString(), Is.EqualTo(candidatureId));
         }
 
         [Test]
@@ -132,7 +128,7 @@ namespace ProjectHub.Services.Tests
             dbContext.Entry(candidature).Reload();
 
             // Assert
-            Assert.AreEqual(CandidatureStatus.Approved, candidature.Status);
+            Assert.That(candidature.Status, Is.EqualTo(CandidatureStatus.Approved));
         }
 
         [Test]
@@ -146,7 +142,7 @@ namespace ProjectHub.Services.Tests
 
             // Assert
             Assert.IsNotNull(details);
-            Assert.AreEqual(candidatureId, details.Id);
+            Assert.That(details.Id, Is.EqualTo(candidatureId));
         }
     }
 }

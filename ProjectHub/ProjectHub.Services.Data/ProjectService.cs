@@ -239,7 +239,7 @@ namespace ProjectHub.Services.Data
                 Guid taskGuid = Guid.Empty;
                 bool isTaskGuidValid = IsGuidValid(taskModel.TaskId, ref taskGuid);
 
-                ProjectHub.Data.Models.Task taskToUpdate = await this.dbContext.Tasks
+                ProjectHub.Data.Models.Task? taskToUpdate = await this.dbContext.Tasks
                     .FirstOrDefaultAsync(t => t.Id == taskGuid && !t.IsDeleted);
 
                 if (taskToUpdate == null)

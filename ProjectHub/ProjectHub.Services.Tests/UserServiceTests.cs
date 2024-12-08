@@ -17,7 +17,7 @@ namespace ProjectHub.Services.Tests
         public void SetUp()
         {
             var options = new DbContextOptionsBuilder<ProjectHubDbContext>()
-                .UseInMemoryDatabase("TestDb")
+                .UseInMemoryDatabase("UserServiceTestDb")
                 .Options;
 
             dbContext = new ProjectHubDbContext(options);
@@ -41,7 +41,7 @@ namespace ProjectHub.Services.Tests
             string fullName = await _userService.GetFullNameByEmailAsync(email);
 
             // Assert
-            Assert.AreEqual("User One", fullName);
+            Assert.That(fullName, Is.EqualTo("User One"));
         }
 
         [Test]
@@ -54,7 +54,7 @@ namespace ProjectHub.Services.Tests
             string fullName = await _userService.GetFullNameByEmailAsync(email);
 
             // Assert
-            Assert.AreEqual("User not found", fullName);
+            Assert.That(fullName, Is.EqualTo("User not found"));
         }
 
         [Test]
@@ -68,7 +68,7 @@ namespace ProjectHub.Services.Tests
 
             // Assert
             Assert.IsNotNull(user);
-            Assert.AreEqual("user1@example.com", user.Email);
+            Assert.That(user.Email, Is.EqualTo("user1@example.com"));
         }
 
         [Test]
@@ -92,7 +92,7 @@ namespace ProjectHub.Services.Tests
 
             // Assert
             Assert.IsNotNull(users);
-            Assert.AreEqual(2, users.Count);
+            Assert.That(users.Count, Is.EqualTo(2));
         }
 
         [TearDown]

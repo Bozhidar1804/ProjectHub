@@ -61,7 +61,7 @@ namespace ProjectHub.Services.Data
             };
             string serializedContent = JsonConvert.SerializeObject(content);
 
-            ApplicationUser applicant = await this.dbContext.Users.FirstOrDefaultAsync(u => u.Id == userGuid);
+            ApplicationUser? applicant = await this.dbContext.Users.FirstOrDefaultAsync(u => u.Id == userGuid);
 
             if (applicant == null)
             {
@@ -116,7 +116,7 @@ namespace ProjectHub.Services.Data
                 return null;
             }
 
-            Candidature candidatureToReturn = await this.dbContext.Candidatures
+            Candidature? candidatureToReturn = await this.dbContext.Candidatures
                 .Include(c => c.Applicant)
                 .Include(c => c.Project)
                 .FirstOrDefaultAsync(c => c.Id == candidatureGuid && !c.IsDeleted);
@@ -142,7 +142,7 @@ namespace ProjectHub.Services.Data
                 throw new ArgumentNullException(nameof(candidature), "Candidature cannot be null.");
             }
 
-            Candidature candidatureToUpdate = await this.dbContext.Candidatures
+            Candidature? candidatureToUpdate = await this.dbContext.Candidatures
                 .FirstOrDefaultAsync(c => c.Id == candidature.Id);
 
             if (candidatureToUpdate == null)
@@ -164,7 +164,7 @@ namespace ProjectHub.Services.Data
             Guid candidatureGuid = Guid.Empty;
             bool isCandidatureGuidValid = IsGuidValid(candidatureId, ref candidatureGuid);
 
-            Candidature candidature = await this.dbContext.Candidatures
+            Candidature? candidature = await this.dbContext.Candidatures
             .Include(c => c.Project)
             .Include(c => c.Applicant)
             .FirstOrDefaultAsync(c => c.Id == candidatureGuid && !c.IsDeleted);
@@ -176,7 +176,7 @@ namespace ProjectHub.Services.Data
                 Id = candidature.Id.ToString(),
                 Content = deserializedContent,
                 ProjectName = candidature.Project.Name,
-                ApplicantName = candidature.Applicant.UserName,
+                ApplicantName = candidature.Applicant.UserName!,
                 Status = candidature.Status,
                 ApplicationDate = candidature.ApplicationDate
             };

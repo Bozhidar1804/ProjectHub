@@ -18,7 +18,7 @@ namespace ProjectHub.Services.Tests
         {
             // Setup in-memory database
             var options = new DbContextOptionsBuilder<ProjectHubDbContext>()
-                .UseInMemoryDatabase("ProjectHubTestDb")
+                .UseInMemoryDatabase("VoteServiceTestDb")
                 .Options;
 
             dbContext = new ProjectHubDbContext(options);
@@ -36,10 +36,10 @@ namespace ProjectHub.Services.Tests
                 PostedByUserId = user1.Id
             };
 
-            dbContext.Users.AddAsync(user1);
-            dbContext.Users.AddAsync(user2);
-            dbContext.Comments.AddAsync(comment);
-            dbContext.SaveChangesAsync();
+            await dbContext.Users.AddAsync(user1);
+            await dbContext.Users.AddAsync(user2);
+            await dbContext.Comments.AddAsync(comment);
+            await dbContext.SaveChangesAsync();
         }
 
         [Test]
@@ -95,7 +95,7 @@ namespace ProjectHub.Services.Tests
             var vote = await dbContext.Votes.FirstOrDefaultAsync(v => v.CommentId == commentId && v.UserId == userId);
             Assert.IsNotNull(vote);
             Assert.IsTrue(vote.IsUpvote);
-            Assert.AreEqual(1, await dbContext.Comments.Where(c => c.Id == commentId).Select(c => c.Upvotes).FirstOrDefaultAsync());
+            Assert.That(await dbContext.Comments.Where(c => c.Id == commentId).Select(c => c.Upvotes).FirstOrDefaultAsync(), Is.EqualTo(1));
         }
 
         [Test]
@@ -112,19 +112,14 @@ namespace ProjectHub.Services.Tests
             var vote = await dbContext.Votes.FirstOrDefaultAsync(v => v.CommentId == commentId && v.UserId == userId);
             Assert.IsNotNull(vote);
             Assert.IsFalse(vote.IsUpvote);
-            Assert.AreEqual(1, await dbContext.Comments.Where(c => c.Id == commentId).Select(c => c.Downvotes).FirstOrDefaultAsync());
+            Assert.That(await dbContext.Comments.Where(c => c.Id == commentId).Select(c => c.Downvotes).FirstOrDefaultAsync(), Is.EqualTo(1));
         }
 
         [TearDown]
-        public async System.Threading.Tasks.Task TearDown()
+        public void TearDown()
         {
-            // Clear all data inserted during tests
-            dbContext.Votes.RemoveRange(dbContext.Votes);
-            dbContext.Comments.RemoveRange(dbContext.Comments);
-            dbContext.Users.RemoveRange(dbContext.Users);
-            dbContext.SaveChangesAsync();
-            dbContext.Database.EnsureDeleted();
-            dbContext.Dispose();
+            this.dbContext.Database.EnsureDeleted();
+            this.dbContext.Dispose();
         }
     }
 }

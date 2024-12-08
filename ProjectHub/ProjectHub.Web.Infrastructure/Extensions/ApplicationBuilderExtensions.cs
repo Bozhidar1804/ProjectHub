@@ -32,7 +32,7 @@ namespace ProjectHub.Web.Infrastructure.Extensions
                     throw new InvalidOperationException($"Error occurred while creating the {AdminRoleName} role!");
                 }
 
-                ApplicationUser adminUser = await userManager.FindByEmailAsync(email);
+                ApplicationUser? adminUser = await userManager.FindByEmailAsync(email);
 
                 await userManager.AddToRoleAsync(adminUser, AdminRoleName);
             }).GetAwaiter().GetResult();

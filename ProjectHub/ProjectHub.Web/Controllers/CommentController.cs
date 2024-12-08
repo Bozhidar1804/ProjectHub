@@ -91,7 +91,7 @@ namespace ProjectHub.Web.Controllers
 
 			try
 			{
-                string userId = this.User.GetUserId();
+                string userId = this.User.GetUserId()!;
 
                 AddCommentResult addCommentResult = await this.commentService.AddCommentAsync(model, userId);
 
@@ -101,7 +101,7 @@ namespace ProjectHub.Web.Controllers
 					return View(model);
 				}
 
-                await this.activityLogService.LogActionAsync(TaskAction.CommentAdded, addCommentResult.TaskId, userId);
+                await this.activityLogService.LogActionAsync(TaskAction.CommentAdded, addCommentResult.TaskId!, userId);
 
                 return RedirectToAction("Index", "Task");
 			}
