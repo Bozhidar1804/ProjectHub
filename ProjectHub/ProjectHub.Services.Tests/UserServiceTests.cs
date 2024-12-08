@@ -5,7 +5,7 @@ using ProjectHub.Services.Data;
 using ProjectHub.Services.Data.Interfaces;
 using ProjectHub.Data.Models;
 
-namespace ProjectHub.Services.UserServiceTests
+namespace ProjectHub.Services.Tests
 {
     [TestFixture]
     public class UserServiceTests
