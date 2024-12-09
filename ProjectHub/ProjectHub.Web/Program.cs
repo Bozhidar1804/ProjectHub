@@ -72,6 +72,14 @@ namespace ProjectHub.Web
 			app.UseAuthentication();
 			app.UseAuthorization();
 
+            // Seed the database
+            using (IServiceScope scope = app.Services.CreateScope())
+            {
+                IServiceProvider services = scope.ServiceProvider;
+
+                DatabaseSeeder.Seed(services);
+            }
+
             app.SeedAdministrator(AdminEmail);
 
             app.MapControllerRoute(

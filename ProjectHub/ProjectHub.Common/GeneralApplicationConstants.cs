@@ -8,10 +8,13 @@ namespace ProjectHub.Common
 {
     public static class GeneralApplicationConstants
     {
+        // Admin
         public const string AdminRoleName = "Administrator";
         public const string AdminEmail = "admin@gmail.com";
         public const string AdminAreaName = "Admin";
+        // Moderator
         public const string ModeratorRoleName = "Moderator";
+        // User
         public const string UserRoleName = "User";
 
         public const string DateFormat = "dd/MM/yyyy";
