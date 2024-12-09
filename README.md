@@ -27,7 +27,7 @@ The Moderator has every functionality of the User. He can also create a project.
 
 The Admin can manage every User's role, promoting or demoting to a Moderator. He can delete every project in the application. He can see activities and actions made to every task. The Admin has a view which is displaying some statistics about the whole application.
 
-### Some information about the functionality:
+## Some information about the functionality:
 
 - Unauthenticated users can see only the Home page of the application, displaying the purpose of the platform and the questions for the candidatures.
 - If a User has applied to a Project and his Candidature is pending, he can't apply to the Project again.
@@ -40,41 +40,41 @@ The Admin can manage every User's role, promoting or demoting to a Moderator. He
 - The following actions made to a task are logged: 1. Creation of the Task; 2. ReAssignment to a different User; 3. Completion of the task; 4. The adding of a Comment to the Task. These logs are displayed in the Admin Dashboard.
 - Milestone Progress is calculated dinamically.
 
-### Seeding information:
+## Seeding information:
 
 - The Data Seeding happens in the Program.cs. Entities in each Seed method are added to the database if the table is empty. Seed all entities at once when all tables are empty.
 
-#### USERS:
+### USERS:
 
-Admin - admin@gmail.com - admin123
+Admin - admin@gmail.com - admin123 <br />
 
-Moderator1 - moderator1@gmail.com - mod123
-Moderator2 - moderator2@gmail.com - mod123
+Moderator1 - moderator1@gmail.com - mod123 <br />
+Moderator2 - moderator2@gmail.com - mod123 <br />
 
-User1 - user1@gmail.com - user123
-User2 - user2@gmail.com - user123
-User3 - user3@gmail.com - user123
+User1 - user1@gmail.com - user123 <br />
+User2 - user2@gmail.com - user123 <br />
+User3 - user3@gmail.com - user123 <br />
 
-#### PROJECTS:
+### PROJECTS:
 
-Moderator1 - has 3 projects;
-Moderator2 - has 2 projects;
+Moderator1 - has 3 projects; <br />
+Moderator2 - has 2 projects; <br />
 
-Software Development Project - has 2 members - Mod1, User2;
-Construction Project - has 1 member - Mod2;
-Event Planning - has 2 members - Mod1, User1;
-Marketing Campaign - has 1 member - Mod2;
-Research Project - has 2 members - Mod1, User3;
+Software Development Project - has 2 members - Mod1, User2; <br />
+Construction Project - has 1 member - Mod2; <br />
+Event Planning - has 2 members - Mod1, User1; <br />
+Marketing Campaign - has 1 member - Mod2; <br />
+Research Project - has 2 members - Mod1, User3; <br />
 
-#### CANDIDATURES:
+### CANDIDATURES:
 
-User1 - has 1 approved candidature, 1 pending candidature;
-User2 - has 1 approved candidature, 1 pending candidature;
-User3 - has 1 approved candidature, 1 denied candidature;
+User1 - has 1 approved candidature, 1 pending candidature; <br />
+User2 - has 1 approved candidature, 1 pending candidature; <br />
+User3 - has 1 approved candidature, 1 denied candidature; <br />
 
-Moderator2 - has 2 Candidatures To Review.
+Moderator2 - has 2 Candidatures To Review. <br />
 
-### Notes:
+## Notes:
 
 - The Registering of the Services happens in 2 different methods: the services that are being used only by the Admin are registered in a separate method.
 - SoftDetele is being used in the Application.
@@ -100,7 +100,7 @@ Moderator2 - has 2 Candidatures To Review.
   }
   }
 
-### What I would improve and change in the Application:
+## What I would improve and change in the Application:
 
 - I would fix the ambiguous name reference for the Task entity - it matches System.Threading.Tasks.Task;
 - I should have made Git commits more frequent and detailed;
@@ -109,7 +109,7 @@ Moderator2 - has 2 Candidatures To Review.
 - I would implement Repository Design Patern;
 - Implement functionality related to the StartDate and EndDate of the projects.
 
-### Technologies used:
+## Technologies used:
 
 - C#
 - ASP.NET with MVC pattern
