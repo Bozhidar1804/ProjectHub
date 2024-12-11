@@ -41,7 +41,8 @@ The Admin can manage every User's role, promoting or demoting to a Moderator. He
 - A User can either Upvote or Downvote a Comment.
 - The following actions made to a task are logged: 1. Creation of the Task; 2. ReAssignment to a different User; 3. Completion of the task; 4. The adding of a Comment to the Task. These logs are displayed in the Admin Dashboard.
 - Milestone Progress is calculated dinamically.
-- The application contains pagination functionality in Admin/Management/UserRoles.
+- The application contains Pagination functionality in Admin/Management/UserRoles.
+- The application contains Filtering functionality in Admin/Management/Projects.
 
 ## Seeding information:
 

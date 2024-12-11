@@ -121,12 +121,24 @@ namespace ProjectHub.Web.Areas.Admin.Services
             return true; // Successfully changed the role
         }
 
-        public async Task<IEnumerable<ProjectManagementViewModel>> GetAllProjectsAsync()
+        public async Task<IEnumerable<ProjectManagementViewModel>> GetProjectsByFilterAsync(string filter)
         {
-            List<ProjectManagementViewModel> projectsToManage = await this.dbContext.Projects
-            .Include(p => p.Creator)
-            .Include(p => p.Tasks)
-            .Include(p => p.Milestones)
+            IQueryable<Project> query = this.dbContext.Projects.Include(p => p.Creator);
+
+            switch (filter)
+            {
+                case "Active":
+                    query = query.Where(p => !p.IsDeleted);
+                    break;
+                case "Deleted":
+                    query = query.Where(p => p.IsDeleted);
+                    break;
+                default:
+                    // No filtering for "All"
+                    break;
+            }
+
+            List<ProjectManagementViewModel> projectsToManage = await query
             .Select(p => new ProjectManagementViewModel
             {
                 ProjectId = p.Id.ToString(),

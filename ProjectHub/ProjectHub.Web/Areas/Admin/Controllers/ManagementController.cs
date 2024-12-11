@@ -42,9 +42,9 @@ namespace ProjectHub.Web.Areas.Admin.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> Projects()
+        public async Task<IActionResult> Projects(string filter = "All")
         {
-            var projects = await managementService.GetAllProjectsAsync();
+            var projects = await managementService.GetProjectsByFilterAsync(filter);
             return View(projects);
         }
 
