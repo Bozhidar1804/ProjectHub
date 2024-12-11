@@ -129,7 +129,6 @@ The Seed method seeds 8 ActivityLog entities, 1 for each creation of a Task. The
 
 - I would fix the ambiguous name reference for the Task entity - it matches System.Threading.Tasks.Task;
 - I should have made Git commits more frequent and detailed;
-- I would add filtering options around the project;
 - I would add more images around the application;
 - I would implement Repository Design Patern;
 - Implement functionality related to the StartDate and EndDate of the projects.
