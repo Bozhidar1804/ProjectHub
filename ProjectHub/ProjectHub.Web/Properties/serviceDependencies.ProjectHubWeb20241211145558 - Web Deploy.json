@@ -1,0 +1,12 @@
+{
+  "dependencies": {
+    "mssql2": {
+      "serviceConnectorResourceId": "/subscriptions/[parameters('subscriptionId')]/resourcegroups/[parameters('resourceGroupName')]/providers/Microsoft.Web/sites/ProjectHubWeb20241211145558/providers/Microsoft.ServiceLinker/linkers/ConnectionStringsProjectHubDbContextConn_13461C0677",
+      "secretStore": "AzureAppSettings",
+      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourcegroups/[parameters('resourceGroupName')]/providers/Microsoft.Sql/servers/projecthubwebdbserver/databases/ProjectHub.Web_db",
+      "type": "mssql.azure",
+      "connectionId": "ConnectionStrings:ProjectHubDbContextConnection",
+      "dynamicId": null
+    }
+  }
+}

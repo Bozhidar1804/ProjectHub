@@ -6,6 +6,7 @@ using ProjectHub.Data.Models;
 using ProjectHub.Web.Areas.Admin.Services;
 using ProjectHub.Web.Areas.Admin.Services.Interfaces;
 using ProjectHub.Web.Areas.Admin.ViewModels;
+using ProjectHub.Web.Helpers;
 
 namespace ProjectHub.Web.Areas.Admin.Controllers
 {
@@ -21,12 +22,12 @@ namespace ProjectHub.Web.Areas.Admin.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> UserRoles()
+        public async Task<IActionResult> UserRoles(int pageIndex = 1)
         {
-            List<UserRoleViewModel> userRoles = await this.managementService.GetUserRolesAsync();
+            const int pageSize = 3; // Customize the page size as needed
+            PaginatedList<UserRoleViewModel> userRoles = await this.managementService.GetAllUsersWithRolesAsync(pageIndex, pageSize);
             return View(userRoles);
         }
-
         [HttpPost]
         public async Task<IActionResult> ChangeUserRole(string userId, string roleName)
         {

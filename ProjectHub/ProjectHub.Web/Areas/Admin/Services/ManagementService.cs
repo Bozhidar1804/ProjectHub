@@ -9,6 +9,7 @@ using static ProjectHub.Common.GeneralApplicationConstants;
 using ProjectHub.Data;
 using ProjectHub.Data.Models.Enums;
 using System;
+using ProjectHub.Web.Helpers;
 
 namespace ProjectHub.Web.Areas.Admin.Services
 {
@@ -25,7 +26,7 @@ namespace ProjectHub.Web.Areas.Admin.Services
             this.dbContext = dbContext;
         }
 
-        public async Task<List<UserRoleViewModel>> GetUserRolesAsync()
+        public async Task<PaginatedList<UserRoleViewModel>> GetAllUsersWithRolesAsync(int pageIndex, int pageSize)
         {
             List<ApplicationUser> users = await this.userManager.Users.ToListAsync();
             List<UserRoleViewModel> userRoles = new List<UserRoleViewModel>();
@@ -47,7 +48,14 @@ namespace ProjectHub.Web.Areas.Admin.Services
                             u.Role == ModeratorRoleName ? 2 : 3) // Role-based sorting
                 .ToList();
 
-            return userRoles;
+            // Apply pagination
+            int totalCount = userRoles.Count;
+            List<UserRoleViewModel> paginatedRoles = userRoles
+                .Skip((pageIndex - 1) * pageSize)
+                .Take(pageSize)
+                .ToList();
+
+            return new PaginatedList<UserRoleViewModel>(paginatedRoles, totalCount, pageIndex, pageSize);
         }
 
         public async Task<bool> ChangeUserRoleAsync(string userId, string role)

@@ -8,6 +8,8 @@ Each Candidature contains answers to the questions that everyone should answer i
 The ProjectCreator creates Milestones for the Project, which contain Tasks. Tasks are assigned to a specific User, who is a part of the Project. The User has to Complete the Task in order for the team to progress with the Milestones.
 Every Member of the Project can add Comments to a Task. The Comments can be Upvoted or Downvoted. Some of the Actions made to a Task are logged in the ActivityLog entity.
 
+- The site has Responsive layout for different devices.
+
 ## Database Diagram
 
 ![DBDiagram1](https://github.com/user-attachments/assets/2c083716-3700-4f6b-8038-0e3db08cb317)
@@ -39,6 +41,7 @@ The Admin can manage every User's role, promoting or demoting to a Moderator. He
 - A User can either Upvote or Downvote a Comment.
 - The following actions made to a task are logged: 1. Creation of the Task; 2. ReAssignment to a different User; 3. Completion of the task; 4. The adding of a Comment to the Task. These logs are displayed in the Admin Dashboard.
 - Milestone Progress is calculated dinamically.
+- The application contains pagination functionality in Admin/Management/UserRoles.
 
 ## Seeding information:
 
@@ -73,6 +76,10 @@ User2 - has 1 approved candidature, 1 pending candidature; <br />
 User3 - has 1 approved candidature, 1 denied candidature; <br />
 
 Moderator2 - has 2 Candidatures To Review. <br />
+
+## Azure Deployment:
+
+- I tried to deploy the application using Azure, but the domain displays HTTP Error 500.30 - ASP.NET Core app failed to start. I have done the migration script into the azure database, but the error still occurrs.
 
 ## Notes:
 

@@ -1,5 +1,5 @@
 ﻿@using static ProjectHub.Common.GeneralApplicationConstants;
-@model IEnumerable<UserRoleViewModel>
+@model ProjectHub.Web.Helpers.PaginatedList<UserRoleViewModel>;
 
 <h2 class="mb-4 text-center text-primary">Manage User Roles</h2>
 
@@ -54,7 +54,45 @@
             }
         </tbody>
     </table>
-    <a asp-controller="Home" asp-action="Index" class="btn btn-outline-info btn-sm">
-        <i class="bi bi-house-door"></i> Back to Dashboard
-    </a>
 </div>
+
+<nav aria-label="Page navigation">
+    <ul class="pagination justify-content-center">
+        @if (Model.HasPreviousPage)
+        {
+            <li class="page-item">
+                <a class="page-link" asp-action="UserRoles" asp-route-pageIndex="@(Model.PageIndex - 1)">Previous</a>
+            </li>
+        }
+        else
+        {
+            <li class="page-item disabled">
+                <span class="page-link">Previous</span>
+            </li>
+        }
+
+        @for (int i = 1; i <= Model.TotalPages; i++)
+        {
+            <li class="page-item @(Model.PageIndex == i ? "active" : "")">
+                <a class="page-link" asp-action="UserRoles" asp-route-pageIndex="@i">@i</a>
+            </li>
+        }
+
+        @if (Model.HasNextPage)
+        {
+            <li class="page-item">
+                <a class="page-link" asp-action="UserRoles" asp-route-pageIndex="@(Model.PageIndex + 1)">Next</a>
+            </li>
+        }
+        else
+        {
+            <li class="page-item disabled">
+                <span class="page-link">Next</span>
+            </li>
+        }
+    </ul>
+</nav>
+
+<a asp-controller="Home" asp-action="Index" class="btn btn-outline-info btn-sm">
+    <i class="bi bi-house-door"></i> Back to Dashboard
+</a>

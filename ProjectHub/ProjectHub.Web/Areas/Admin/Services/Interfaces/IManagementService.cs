@@ -1,10 +1,11 @@
 ﻿using ProjectHub.Web.Areas.Admin.ViewModels;
+using ProjectHub.Web.Helpers;
 
 namespace ProjectHub.Web.Areas.Admin.Services.Interfaces
 {
     public interface IManagementService
     {
-        Task<List<UserRoleViewModel>> GetUserRolesAsync();
+        Task<PaginatedList<UserRoleViewModel>> GetAllUsersWithRolesAsync(int pageIndex, int pageSize);
         Task<bool> ChangeUserRoleAsync(string userId, string role);
         Task<IEnumerable<ProjectManagementViewModel>> GetAllProjectsAsync();
         Task SoftDeleteProjectAsync(string projectId);
