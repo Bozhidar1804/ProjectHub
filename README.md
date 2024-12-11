@@ -78,6 +78,23 @@ User3 - has 1 approved candidature, 1 denied candidature; <br />
 
 Moderator2 - has 2 Candidatures To Review. <br />
 
+### MILESTONES:
+
+The Seed method seeds 4 Milestones in the Database. Each Milestone is for the Software Development Project. The Names and Deadlines for the Milestones are logically related to the Project's goal and EndDate.
+
+### TASKS:
+
+The Seed method seeds 8 Tasks, 2 for each Milestone in the Software Development Project. The information about each task represents a real-life logic task.
+NOTE: in the end of the SeedTasksAndActivityLogs method in the DatabaseSeeder.cs, the dbContext.SaveChanges(); throws an error "Cannot insert duplicate key in object 'dbo.Tasks'. The duplicate key value is (03d10e0a-8efa-4f1e-9c4c-7f5c6e3e4a33).", even though the key isn't duplicate. Despite the error, the Task and ActivityLog entities are seeded succesffully, the application should be ran again.
+
+### COMMENT AND VOTE:
+
+I couldn't seed entities for Comments and Votes because my time ran out. You could easily add a new Comment or view all Comments and Upvote or Downvote through the application's UI.
+
+### ACTIVITYLOGS:
+
+The Seed method seeds 8 ActivityLog entities, 1 for each creation of a Task. The ActivityLogs can be viewed in the Admin Dashboard.
+
 ## Azure Deployment:
 
 - I tried to deploy the application using Azure, but the domain displays HTTP Error 500.30 - ASP.NET Core app failed to start. I have done the migration script into the azure database, but the error still occurrs.

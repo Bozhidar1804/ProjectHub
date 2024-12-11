@@ -1,8 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-using ProjectHub.Data.Models;
-
 namespace ProjectHub.Data.Configuration
 {
     public class TaskConfiguration : IEntityTypeConfiguration<Models.Task>

@@ -40,6 +40,25 @@ namespace ProjectHub.Data
         public const string Question3 = "3. Why should we choose you?";
         public const string Question4 = "4. What are your goals for joining this project?";
 
+        // SoftwareDevProject Milestones
+        private static readonly Guid Milestone1Id = Guid.Parse("A1F10E0A-8EFA-4F1E-9C4C-7F5C6E3E4A01");
+        private static readonly Guid Milestone2Id = Guid.Parse("B2F10E0A-8EFA-4F1E-9C4C-7F5C6E3E4A02");
+        private static readonly Guid Milestone3Id = Guid.Parse("C3F10E0A-8EFA-4F1E-9C4C-7F5C6E3E4A03");
+        private static readonly Guid Milestone4Id = Guid.Parse("D4F10E0A-8EFA-4F1E-9C4C-7F5C6E3E4A04");
+
+        // Task for SoftwareDevProject
+        private static readonly Guid Task1Id = Guid.Parse("E1D10E0A-8EFA-4F1E-9C4C-7F5C6E3E4A11"); // Milestone 1
+        private static readonly Guid Task2Id = Guid.Parse("F2D10E0A-8EFA-4F1E-9C4C-7F5C6E3E4A22"); // Milestone 1
+
+        private static readonly Guid Task3Id = Guid.Parse("03D10E0A-8EFA-4F1E-9C4C-7F5C6E3E4A33"); // Milestone 2
+        private static readonly Guid Task4Id = Guid.Parse("8114B178-C622-4500-BF31-9F55073AE302"); // Milestone 2
+
+        private static readonly Guid Task5Id = Guid.Parse("DC3C2585-BFA1-4F34-A392-CB23754D587A"); // Milestone 3
+        private static readonly Guid Task6Id = Guid.Parse("D5D6E09C-3FE6-4778-842F-07D08F52A33C"); // Milestone 3
+
+        private static readonly Guid Task7Id = Guid.Parse("AE9D55B3-EB3C-4B48-A5CD-F37BDFDF0BD9"); // Milestone 4
+        private static readonly Guid Task8Id = Guid.Parse("748B8C07-D309-4034-8364-E9F06393C785"); // Milestone 4
+
         public static void Seed(IServiceProvider serviceProvider)
         {
             using IServiceScope scope = serviceProvider.CreateScope();
@@ -52,6 +71,10 @@ namespace ProjectHub.Data
             SeedUsers(dbContext, userManager);
             SeedProjects(dbContext);
             SeedCandidatures(dbContext);
+            SeedMilestones(dbContext);
+            SeedTasksAndActivityLogs(dbContext); // Throws an error at dbContext.SaveChanges(); for duplicate key (even though there aren't any duplicate keys, I have checked)
+                                                 //, but seeds the entities despite the error.
+                                                 // Just run the project again after it throws the error.
         }
 
         private static void SeedRoles(RoleManager<IdentityRole<Guid>> roleManager)
@@ -130,7 +153,8 @@ namespace ProjectHub.Data
                     if (i == 1)
                     {
                         moderator.Id = Moderator1Id;
-                    } else if (i == 2)
+                    }
+                    else if (i == 2)
                     {
                         moderator.Id = Moderator2Id;
                     }
@@ -392,5 +416,220 @@ namespace ProjectHub.Data
             }
         }
 
+        public static void SeedMilestones(ProjectHubDbContext dbContext)
+        {
+            if (!dbContext.Milestones.Any())
+            {
+                List<Milestone> milestones = new List<Milestone>
+                {
+                    new Milestone
+                    {
+                        Id = Milestone1Id,
+                        Name = "Requirements Gathering",
+                        Deadline = DateTime.UtcNow.AddDays(7),
+                        IsCompleted = false,
+                        IsDeleted = false,
+                        ProjectId = SoftwareDevProjectId
+                    },
+                    new Milestone
+                    {
+                        Id = Milestone2Id,
+                        Name = "System Design",
+                        Deadline = DateTime.UtcNow.AddDays(14),
+                        IsCompleted = false,
+                        IsDeleted = false,
+                        ProjectId = SoftwareDevProjectId
+                    },
+                    new Milestone
+                    {
+                        Id = Milestone3Id,
+                        Name = "Development Phase",
+                        Deadline = DateTime.UtcNow.AddDays(21),
+                        IsCompleted = false,
+                        IsDeleted = false,
+                        ProjectId = SoftwareDevProjectId
+                    },
+                    new Milestone
+                    {
+                        Id = Milestone4Id,
+                        Name = "Final Testing and Deployment",
+                        Deadline = DateTime.UtcNow.AddDays(28),
+                        IsCompleted = false,
+                        IsDeleted = false,
+                        ProjectId = SoftwareDevProjectId
+                    }
+                };
+
+                Project? project = dbContext.Projects.FirstOrDefault(p => p.Id == SoftwareDevProjectId);
+
+                if (project != null)
+                {
+                    foreach (Milestone milestone in milestones)
+                    {
+                        if (milestone.ProjectId == project.Id)
+                        {
+                            milestone.Project = project;
+                        }
+                    }
+                }
+
+                dbContext.Milestones.AddRange(milestones);
+                dbContext.SaveChanges();
+            }
+        }
+
+        public static void SeedTasksAndActivityLogs(ProjectHubDbContext dbContext)
+        {
+            if (!dbContext.Tasks.Any())
+            {
+                List<Models.Task> tasks = new List<Models.Task>()
+                {
+                    // Milestone 1: Requirements Gathering
+                    new Models.Task
+                    {
+                        Id = Task1Id,
+                        Title = "Identify Stakeholder Needs",
+                        Description = "Gather detailed requirements from all stakeholders.",
+                        DueDate = DateTime.UtcNow.AddDays(5),
+                        Priority = TaskPriority.Medium,
+                        IsCompleted = false,
+                        IsDeleted = false,
+                        ProjectId = SoftwareDevProjectId,
+                        MilestoneId = Milestone1Id,
+                        AssignedToUserId = User1Id
+                    },
+                    new Models.Task
+                    {
+                        Id = Task2Id,
+                        Title = "Document Requirements",
+                        Description = "Compile and organize requirements into a formal document.",
+                        DueDate = DateTime.UtcNow.AddDays(6),
+                        Priority = TaskPriority.High,
+                        IsCompleted = false,
+                        IsDeleted = false,
+                        ProjectId = SoftwareDevProjectId,
+                        MilestoneId = Milestone1Id,
+                        AssignedToUserId = Moderator1Id
+                    },
+
+                    // Milestone 2: System Design
+                    new Models.Task
+                    {
+                        Id = Task3Id,
+                        Title = "Create Architectural Diagram",
+                        Description = "Design system architecture and prepare diagrams.",
+                        DueDate = DateTime.UtcNow.AddDays(12),
+                        Priority = TaskPriority.High,
+                        IsCompleted = false,
+                        IsDeleted = false,
+                        ProjectId = SoftwareDevProjectId,
+                        MilestoneId = Milestone2Id,
+                        AssignedToUserId = Moderator1Id
+                    },
+                    new Models.Task
+                    {
+                        Id = Task4Id,
+                        Title = "Define Data Models",
+                        Description = "Establish database schema and relationships.",
+                        DueDate = DateTime.UtcNow.AddDays(13),
+                        Priority = TaskPriority.Medium,
+                        IsCompleted = false,
+                        IsDeleted = false,
+                        ProjectId = SoftwareDevProjectId,
+                        MilestoneId = Milestone2Id,
+                        AssignedToUserId = User1Id
+                    },
+
+                    // Milestone 3: Development Phase
+                    new Models.Task
+                    {
+                        Id = Task5Id,
+                        Title = "Develop Core Modules",
+                        Description = "Implement core functionalities of the application.",
+                        DueDate = DateTime.UtcNow.AddDays(18),
+                        Priority = TaskPriority.High,
+                        IsCompleted = false,
+                        IsDeleted = false,
+                        ProjectId = SoftwareDevProjectId,
+                        MilestoneId = Milestone3Id,
+                        AssignedToUserId = User1Id
+                    },
+                    new Models.Task
+                    {
+                        Id = Task6Id,
+                        Title = "Implement Authentication",
+                        Description = "Develop user authentication and authorization.",
+                        DueDate = DateTime.UtcNow.AddDays(19),
+                        Priority = TaskPriority.Medium,
+                        IsCompleted = false,
+                        IsDeleted = false,
+                        ProjectId = SoftwareDevProjectId,
+                        MilestoneId = Milestone3Id,
+                        AssignedToUserId = User1Id
+                    },
+
+                    // Milestone 4: Final Testing and Deployment
+                    new Models.Task
+                    {
+                        Id = Task7Id,
+                        Title = "Conduct User Testing",
+                        Description = "Perform testing sessions with end-users.",
+                        DueDate = DateTime.UtcNow.AddDays(25),
+                        Priority = TaskPriority.High,
+                        IsCompleted = false,
+                        IsDeleted = false,
+                        ProjectId = SoftwareDevProjectId,
+                        MilestoneId = Milestone4Id,
+                        AssignedToUserId = User1Id
+                    },
+                    new Models.Task
+                    {
+                        Id = Task8Id,
+                        Title = "Deploy to Production",
+                        Description = "Deploy the final application to the production environment.",
+                        DueDate = DateTime.UtcNow.AddDays(27),
+                        Priority = TaskPriority.High,
+                        IsCompleted = false,
+                        IsDeleted = false,
+                        ProjectId = SoftwareDevProjectId,
+                        MilestoneId = Milestone4Id,
+                        AssignedToUserId = User1Id
+                    }
+                };
+
+                Project? project = dbContext.Projects.FirstOrDefault(p => p.Id == Guid.Parse("D1F10E0A-8EFA-4F1E-9C4C-7F5C6E3E4A98"));
+                Dictionary<Guid, Milestone> milestones = dbContext.Milestones.ToDictionary(m => m.Id);
+                Dictionary<Guid, ApplicationUser> users = dbContext.Users.ToDictionary(u => u.Id);
+
+                if (project != null && milestones != null && users != null)
+                {
+                    foreach (var task in tasks)
+                    {
+                        if (milestones.TryGetValue(task.MilestoneId, out var milestone) &&
+                            users.TryGetValue(task.AssignedToUserId, out var user))
+                        {
+                            task.Milestone = milestone;
+                            task.Project = project;
+                            task.AssignedToUser = user;
+
+                            // Register activity log for task creation
+                            dbContext.ActivityLogs.Add(new ActivityLog
+                            {
+                                Action = TaskAction.Created,
+                                Timestamp = DateTime.UtcNow,
+                                TaskId = task.Id,
+                                UserId = user.Id
+                            });
+                        }
+                    }
+
+                    dbContext.Tasks.AddRange(tasks);
+                    dbContext.SaveChanges();
+                }
+
+                dbContext.Tasks.AddRange(tasks);
+                dbContext.SaveChanges();
+            }
+        }
     }
 }

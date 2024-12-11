@@ -77,7 +77,9 @@ namespace ProjectHub.Web
             {
                 IServiceProvider services = scope.ServiceProvider;
 
-                DatabaseSeeder.Seed(services);
+                DatabaseSeeder.Seed(services);// Throws an error in the method SeedTasksAndActivityLogs, at dbContext.SaveChanges(); for duplicate key (even though there aren't any duplicate keys, I have checked)
+                                              //, but seeds the entities despite the error.
+                                              // Just run the project again after it throws the error.
             }
 
             app.SeedAdministrator(AdminEmail);

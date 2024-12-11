@@ -13,7 +13,7 @@
 
 		public static class Task
 		{
-			public const int TaskTitleMaxLength = 30;
+			public const int TaskTitleMaxLength = 100;
 			public const int TaskTitleMinLength = 2;
 			public const int TaskDescriptionMaxLength = 300;
 			public const int TaskDescriptionMinLength = 5;
